@@ -63,16 +63,16 @@ The Orchestrator (future) matches demand → Capability → knowledge units → 
 eos.capability.<domain>.<name>
 ```
 
-First landed Capability:
+First landed Capabilities:
 
 ```text
 eos.capability.design.system-architecture
+eos.capability.security.review
 ```
 
 Additional illustrative IDs (not all landed):
 
 ```text
-eos.capability.security.review
 eos.capability.data.database-selection
 eos.capability.delivery.deployment-strategy
 eos.capability.quality.test-planning

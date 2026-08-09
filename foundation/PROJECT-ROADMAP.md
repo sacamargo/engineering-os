@@ -60,8 +60,10 @@ Introduce the minimum set of Capabilities and knowledge units that make the syst
 ### Phase 2 Proof (landed)
 
 - [x] First coarse Capability: `eos.capability.design.system-architecture`
-- [x] First fulfillment playbook: `eos.playbook.design.system-architecture`
-- [x] First fulfillment framework: `eos.framework.design.architecture-trade-offs`
+- [x] Architecture fulfillment playbook + trade-off framework
+- [x] Second coarse Capability: `eos.capability.security.review`
+- [x] Security fulfillment playbook + risk-prioritization framework
+- [x] Soft `related_capability` adjacency between architecture and security review
 - [x] Contract validation over the live catalog directories
 
 ### Broader Phase 2 backlog

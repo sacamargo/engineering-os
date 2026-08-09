@@ -131,11 +131,25 @@ outputs:
         findings = validate_paths(
             [
                 repo_root / "capabilities" / "design" / "system-architecture.md",
+                repo_root / "capabilities" / "security" / "review.md",
                 repo_root / "playbooks" / "design" / "system-architecture.md",
+                repo_root / "playbooks" / "security" / "application-review.md",
                 repo_root / "frameworks" / "design" / "architecture-trade-offs.md",
+                repo_root / "frameworks" / "security" / "risk-prioritization.md",
             ]
         )
         self.assertEqual(findings, [], "\n".join(f.format() for f in findings))
+
+    def test_related_capability_is_soft_adjacency(self) -> None:
+        repo_root = CONTRACTS.parent
+        architecture = load_unit(repo_root / "capabilities" / "design" / "system-architecture.md")
+        security = load_unit(repo_root / "capabilities" / "security" / "review.md")
+        arch_rels = {(r.get("type"), r.get("target")) for r in architecture.meta.get("relationships", [])}
+        sec_rels = {(r.get("type"), r.get("target")) for r in security.meta.get("relationships", [])}
+        self.assertIn(("related_capability", "eos.capability.security.review"), arch_rels)
+        self.assertIn(("related_capability", "eos.capability.design.system-architecture"), sec_rels)
+        self.assertNotIn(("depends_on", "eos.capability.security.review"), arch_rels)
+        self.assertNotIn(("depends_on", "eos.capability.design.system-architecture"), sec_rels)
 
 
 if __name__ == "__main__":

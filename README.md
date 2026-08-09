@@ -55,12 +55,12 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-This repository has completed Foundation and Phase 1 Contracts, and landed a Phase 2 proof vertical:
+This repository has completed Foundation and Phase 1 Contracts, and is growing a Phase 2 proof catalog:
 
-- one real Capability (`eos.capability.design.system-architecture`)
-- two fulfillment units (playbook + framework)
+- `eos.capability.design.system-architecture` with playbook + framework fulfillment
+- `eos.capability.security.review` with playbook + framework fulfillment
 
-The catalog is intentionally tiny. Broader methodology content comes later.
+The catalog remains intentionally small. Broader methodology content comes later.
 
 ---
 
@@ -77,4 +77,5 @@ The catalog is intentionally tiny. Broader methodology content comes later.
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
 | [Contracts](contracts/README.md) | Enforceable unit/capability metadata and validation |
-| [System Architecture Capability](capabilities/design/system-architecture.md) | First real Capability (Phase 2 proof) |
+| [System Architecture Capability](capabilities/design/system-architecture.md) | Architecture-design intent routing |
+| [Application Security Review Capability](capabilities/security/review.md) | Security-review intent routing |

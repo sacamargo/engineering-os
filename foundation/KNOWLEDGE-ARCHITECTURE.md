@@ -88,10 +88,12 @@ Examples:
 
 ```text
 eos.capability.design.system-architecture
+eos.capability.security.review
 eos.playbook.design.system-architecture
+eos.playbook.security.application-review
 eos.framework.design.architecture-trade-offs
+eos.framework.security.risk-prioritization
 eos.checklist.review.pull-request-quality
-eos.skill.design.trade-off-analysis
 eos.standard.quality.definition-of-done
 ```
 

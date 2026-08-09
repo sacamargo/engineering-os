@@ -31,6 +31,8 @@ relationships:
     target: eos.playbook.design.system-architecture
   - type: fulfilled_by
     target: eos.framework.design.architecture-trade-offs
+  - type: related_capability
+    target: eos.capability.security.review
 ---
 
 # System Architecture Design
@@ -72,3 +74,9 @@ Bound units:
 | `eos.framework.design.architecture-trade-offs` | Decision model for comparing architectural options |
 
 Additional units may be bound later without changing this Capability’s identity.
+
+## Related Intent Classes
+
+This Capability is often adjacent to Application Security Review when architecture choices create or remove trust-boundary risk.
+
+`related_capability` means soft co-relevance for future routing. It does **not** create an execution sequence or Capability DAG.
