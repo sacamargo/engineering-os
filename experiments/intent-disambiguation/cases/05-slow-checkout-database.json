@@ -1,0 +1,34 @@
+{
+  "id": "05-slow-checkout-database",
+  "utterance": "My checkout is extremely slow and I suspect the database.",
+  "frame": {
+    "desired_outcome": "Diagnosis and improvement path for checkout latency with suspected database involvement",
+    "object_of_work": "Checkout path / database interaction in an existing system",
+    "intent_class_hint": "investigate / optimize performance",
+    "domain_hints": ["performance", "database", "runtime behavior"],
+    "constraints": [],
+    "risk_signals": [
+      "production user-facing slowness"
+    ],
+    "multi_intent": false,
+    "notes": "Existing Capabilities (architecture design, security review) do not honestly cover performance diagnosis. Keyword overlap with 'system' or 'application' must not force a false primary."
+  },
+  "candidates": [],
+  "primary": null,
+  "secondary": [],
+  "related_suggested": [],
+  "insufficient_coverage": [
+    {
+      "missing_intent_class": "performance investigation and optimization",
+      "reason": "No active Capability offers performance diagnosis or optimization as an intent class."
+    },
+    {
+      "missing_intent_class": "database engineering / data-store performance review",
+      "reason": "Database suspicion is central; no database Capability exists in the catalog to claim."
+    }
+  ],
+  "clarifying_questions": [
+    "Do you want Engineering OS to stop and declare catalog coverage insufficient, or wait until a Performance/Database Capability is introduced?"
+  ],
+  "fulfillment_preview": null
+}

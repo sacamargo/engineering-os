@@ -1,0 +1,43 @@
+{
+  "id": "03-architecture-security-risks",
+  "utterance": "Review this architecture and determine whether it introduces security risks.",
+  "frame": {
+    "desired_outcome": "Security risk assessment of an existing architecture",
+    "object_of_work": "Existing architecture artifact",
+    "intent_class_hint": "security review of a design",
+    "domain_hints": ["security", "architecture"],
+    "constraints": [],
+    "risk_signals": ["trust-boundary risk", "design-introduced weaknesses"],
+    "multi_intent": true,
+    "notes": "Primary outcome is security evaluation. Architecture is the object of review, not the ask to redesign. Soft adjacency to System Architecture Design is warranted for boundary context, not as a mandatory prerequisite DAG."
+  },
+  "candidates": [
+    {
+      "id": "eos.capability.security.review",
+      "rationale": "Primary intent is to assess security risks introduced by an architecture; fits Application Security Review more than greenfield architecture design.",
+      "confidence": "high"
+    },
+    {
+      "id": "eos.capability.design.system-architecture",
+      "rationale": "Architecture is the object under review; architecture Capability may help interpret structure, but the desired outcome is risk determination, not a new architecture proposal.",
+      "confidence": "medium"
+    }
+  ],
+  "primary": "eos.capability.security.review",
+  "secondary": [
+    "eos.capability.design.system-architecture"
+  ],
+  "related_suggested": [
+    "eos.capability.design.system-architecture"
+  ],
+  "insufficient_coverage": [],
+  "clarifying_questions": [
+    "Should the output stay a security review of the current architecture, or also propose architecture changes?"
+  ],
+  "fulfillment_preview": {
+    "primary_unit": "eos.playbook.security.application-review",
+    "also": [
+      "eos.framework.security.risk-prioritization"
+    ]
+  }
+}

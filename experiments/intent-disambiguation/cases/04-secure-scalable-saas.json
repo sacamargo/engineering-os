@@ -1,0 +1,52 @@
+{
+  "id": "04-secure-scalable-saas",
+  "utterance": "Build a secure SaaS platform capable of handling 100,000 users.",
+  "frame": {
+    "desired_outcome": "A build plan spanning architecture, security, scale, and availability concerns",
+    "object_of_work": "SaaS platform (greenfield)",
+    "intent_class_hint": "build / create product with multiple quality attributes",
+    "domain_hints": ["architecture", "security", "scalability", "availability"],
+    "constraints": [
+      "target scale around 100,000 users",
+      "security required",
+      "high availability implied"
+    ],
+    "risk_signals": [
+      "security requirements present",
+      "scale/availability risk if architecture is naive"
+    ],
+    "multi_intent": true,
+    "notes": "Do not keyword-route on 'secure' alone to Security Review, nor collapse the whole ask into Architecture. Catalog currently offers architecture design and security review; scale/availability/build-delivery Capabilities are not present as dedicated offers."
+  },
+  "candidates": [
+    {
+      "id": "eos.capability.design.system-architecture",
+      "rationale": "Building a platform at stated scale requires system structure, boundaries, and trade-offs; architecture is a strong partial fit.",
+      "confidence": "medium"
+    },
+    {
+      "id": "eos.capability.security.review",
+      "rationale": "Security is required, but the utterance is not primarily an audit of an existing app; Security Review may apply later to designs/components, not as sole primary for 'build'.",
+      "confidence": "low"
+    }
+  ],
+  "primary": null,
+  "secondary": [],
+  "related_suggested": [],
+  "insufficient_coverage": [
+    {
+      "missing_intent_class": "product/platform delivery planning for greenfield build",
+      "reason": "No active Capability currently represents end-to-end 'build this product' delivery as an offered intent class."
+    },
+    {
+      "missing_intent_class": "scalability and high-availability design/review",
+      "reason": "Scale and availability are explicit constraints/outcomes but no dedicated Capability exists yet; do not invent one at runtime."
+    }
+  ],
+  "clarifying_questions": [
+    "Is the immediate need to shape the system architecture, to review a proposed design for security, or to plan delivery across multiple concerns?",
+    "Do you already have an architecture to review, or should architecture be designed first?",
+    "Which constraint is hardest: security, scale to 100k users, or availability?"
+  ],
+  "fulfillment_preview": null
+}

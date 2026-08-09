@@ -55,12 +55,11 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-This repository has completed Foundation and Phase 1 Contracts, and is growing a Phase 2 proof catalog:
+This repository has completed Foundation and Phase 1 Contracts, holds a small Phase 2 Capability proof catalog, and includes an Intent Resolution experiment for candidate disambiguation (not an Orchestrator).
 
 - `eos.capability.design.system-architecture` with playbook + framework fulfillment
 - `eos.capability.security.review` with playbook + framework fulfillment
-
-The catalog remains intentionally small. Broader methodology content comes later.
+- Intent framing + candidate resolution protocol + authored cases
 
 ---
 
@@ -74,8 +73,10 @@ The catalog remains intentionally small. Broader methodology content comes later
 | [System Architecture](foundation/SYSTEM-ARCHITECTURE.md) | Layers, module taxonomy, dependency rules |
 | [Knowledge Architecture](foundation/KNOWLEDGE-ARCHITECTURE.md) | Knowledge units, retrieval, and AI consumption |
 | [Capability Model](foundation/CAPABILITY-MODEL.md) | Intent-class routing and fulfillment facades |
+| [Intent Resolution](foundation/INTENT-RESOLUTION.md) | Framing requests into Capability candidates |
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
 | [Contracts](contracts/README.md) | Enforceable unit/capability metadata and validation |
+| [Intent Disambiguation Experiment](experiments/intent-disambiguation/README.md) | Authored routing cases + structural evaluator |
 | [System Architecture Capability](capabilities/design/system-architecture.md) | Architecture-design intent routing |
 | [Application Security Review Capability](capabilities/security/review.md) | Security-review intent routing |

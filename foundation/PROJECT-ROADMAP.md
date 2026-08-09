@@ -65,6 +65,7 @@ Introduce the minimum set of Capabilities and knowledge units that make the syst
 - [x] Security fulfillment playbook + risk-prioritization framework
 - [x] Soft `related_capability` adjacency between architecture and security review
 - [x] Contract validation over the live catalog directories
+- [x] Intent Resolution protocol + disambiguation experiment (candidates vs selection vs insufficient coverage)
 
 ### Broader Phase 2 backlog
 

@@ -304,6 +304,8 @@ This protocol is vendor-neutral. Any AI system can implement it:
 8. **Verify** — apply linked checklists/standards; request human review where required
 9. **Record** — note Capability IDs and unit IDs that governed the work (for auditability)
 
+Steps 1–3 are detailed in [Intent Resolution](INTENT-RESOLUTION.md). Candidate Capabilities are not the same as selected Capabilities. Insufficient catalog coverage is a valid outcome.
+
 ### Portability Requirement
 
 An AI system consumes Engineering OS correctly when it can:

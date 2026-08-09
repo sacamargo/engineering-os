@@ -1,0 +1,34 @@
+{
+  "id": "01-saas-architecture",
+  "utterance": "Design the architecture for my SaaS application.",
+  "frame": {
+    "desired_outcome": "A coherent system architecture recommendation for a SaaS application",
+    "object_of_work": "SaaS application (greenfield or redesign implied)",
+    "intent_class_hint": "design / structure system architecture",
+    "domain_hints": ["architecture", "saas"],
+    "constraints": [],
+    "risk_signals": [],
+    "multi_intent": false,
+    "notes": "Outcome verb is design/structure. Domain noun SaaS does not by itself select security, performance, or data Capabilities."
+  },
+  "candidates": [
+    {
+      "id": "eos.capability.design.system-architecture",
+      "rationale": "Applicability matches proposing system structure under goals/constraints; utterance is not primarily a security audit or implementation ask.",
+      "confidence": "high"
+    }
+  ],
+  "primary": "eos.capability.design.system-architecture",
+  "secondary": [],
+  "related_suggested": [
+    "eos.capability.security.review"
+  ],
+  "insufficient_coverage": [],
+  "clarifying_questions": [],
+  "fulfillment_preview": {
+    "primary_unit": "eos.playbook.design.system-architecture",
+    "also": [
+      "eos.framework.design.architecture-trade-offs"
+    ]
+  }
+}

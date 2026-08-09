@@ -1,0 +1,34 @@
+{
+  "id": "02-security-audit",
+  "utterance": "Audit this application for security vulnerabilities.",
+  "frame": {
+    "desired_outcome": "Identified security risks/weaknesses with prioritized recommendations",
+    "object_of_work": "Existing application",
+    "intent_class_hint": "review / audit security posture",
+    "domain_hints": ["security", "application"],
+    "constraints": [],
+    "risk_signals": ["vulnerabilities", "security exposure"],
+    "multi_intent": false,
+    "notes": "Outcome is evaluation of security posture, not architecture design and not patch implementation."
+  },
+  "candidates": [
+    {
+      "id": "eos.capability.security.review",
+      "rationale": "Matches Application Security Review applicability: evaluate an existing application for security risks and missing controls.",
+      "confidence": "high"
+    }
+  ],
+  "primary": "eos.capability.security.review",
+  "secondary": [],
+  "related_suggested": [
+    "eos.capability.design.system-architecture"
+  ],
+  "insufficient_coverage": [],
+  "clarifying_questions": [],
+  "fulfillment_preview": {
+    "primary_unit": "eos.playbook.security.application-review",
+    "also": [
+      "eos.framework.security.risk-prioritization"
+    ]
+  }
+}

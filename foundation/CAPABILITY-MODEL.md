@@ -198,6 +198,8 @@ Expected Orchestrator responsibilities (future; not implemented here):
 - assemble minimum context packages
 - refuse or escalate when no Capability fits (instead of improvising methodology)
 
+Routing semantics for candidates vs selection vs insufficient coverage are defined in [Intent Resolution](INTENT-RESOLUTION.md). A structural experiment lives in `experiments/intent-disambiguation/`.
+
 Expected non-responsibilities:
 
 - inventing Capabilities at runtime

@@ -59,6 +59,7 @@ Authoritative design intent. Changes rarely and only with explicit rationale.
 | `SYSTEM-ARCHITECTURE.md` | Layers, modules, dependencies |
 | `KNOWLEDGE-ARCHITECTURE.md` | Knowledge units, retrieval, AI consumption |
 | `CAPABILITY-MODEL.md` | Intent-class routing and fulfillment facades |
+| `INTENT-RESOLUTION.md` | Intent framing and Capability candidate resolution |
 | `PROJECT-ROADMAP.md` | Long-term evolution sequence |
 | `ENGINEERING-WORKFLOW.md` | How this repository is developed |
 
@@ -166,9 +167,11 @@ engineering-os/
 │   ├── SYSTEM-ARCHITECTURE.md
 │   ├── KNOWLEDGE-ARCHITECTURE.md
 │   ├── CAPABILITY-MODEL.md
+│   ├── INTENT-RESOLUTION.md
 │   ├── PROJECT-ROADMAP.md
 │   └── ENGINEERING-WORKFLOW.md
 ├── contracts/                       # Enforceable schemas + validation
+├── experiments/                     # Focused architectural experiments
 ├── capabilities/                    # Intent catalog (proof started)
 ├── playbooks/                       # Fulfillment methods (proof started)
 ├── frameworks/                      # Decision models (proof started)
