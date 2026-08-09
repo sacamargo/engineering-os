@@ -21,6 +21,9 @@ Language: communicate with humans in Spanish; all repository content (docs, comm
 6. Run the relevant validations/tests for the change.
 7. Create one Conventional Commit (no empty or process-only commits):
    - `feat(scope): ...`, `fix(scope): ...`, `docs(scope): ...`, `refactor(scope): ...`
+   - Keep the human local Git identity as Author. Never set Author/Committer to Cursor.
+   - Never change `git config`. End every agent commit message with:
+     `Co-authored-by: Cursor <cursoragent@cursor.com>`
 8. Push the branch to GitHub.
 9. Integrate the branch into `main`.
 10. Push updated `main` to GitHub.
@@ -35,6 +38,7 @@ Language: communicate with humans in Spanish; all repository content (docs, comm
 - Never overwrite existing local work; never delete work without an explicit reason.
 - Touch only files required for the task.
 - After finishing a task, stop; do not start the next one automatically.
+- Human remains Git Author; agent credit is only via `Co-authored-by: Cursor <cursoragent@cursor.com>`.
 
 ## Required completion report (Spanish)
 
