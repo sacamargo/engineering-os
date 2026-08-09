@@ -20,7 +20,7 @@ Engineering OS treats software engineering as a system that can be operated deli
 | Layer | Role |
 |---|---|
 | **Foundation** | Vision, philosophy, principles, system/knowledge/capability models, workflow, roadmap |
-| **Contracts** | Enforceable schemas for Capabilities and knowledge units (next) |
+| **Contracts** | Enforceable schemas and validation for Capabilities and knowledge units |
 | **Capabilities** | Durable intent classes the system offers to fulfill |
 | **Modules** | Knowledge units that fulfill Capabilities: playbooks, skills, standards, workflows, templates, checklists, frameworks |
 | **Adaptations** | Thin, optional bridges to specific AI tools and environments |
@@ -55,9 +55,11 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-This repository is completing its **foundation phase**.
+This repository has completed its **foundation** and landed **Phase 1 — Contracts**.
 
-System architecture, knowledge architecture, capability model, and engineering workflow are in place. Module contracts come next. Capabilities, playbooks, and skills are intentionally not present yet as content catalogs.
+System architecture, knowledge architecture, capability model, and engineering workflow are in place. Contracts define enforceable metadata and relationship rules for Capabilities and knowledge units.
+
+Capabilities, playbooks, and skills are intentionally not present yet as content catalogs.
 
 ---
 
@@ -73,3 +75,4 @@ System architecture, knowledge architecture, capability model, and engineering w
 | [Capability Model](foundation/CAPABILITY-MODEL.md) | Intent-class routing and fulfillment facades |
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
+| [Contracts](contracts/README.md) | Enforceable unit/capability metadata and validation |

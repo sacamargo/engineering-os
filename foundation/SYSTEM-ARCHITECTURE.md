@@ -66,7 +66,13 @@ Authoritative design intent. Changes rarely and only with explicit rationale.
 
 Machine-reviewable rules that implement Knowledge Architecture and Capability Model for authors and tooling.
 
-Contracts are introduced in Phase 1. Until then, the foundation documents above are the interim authorities.
+Authoritative contract artifacts live in `contracts/`:
+
+- `contracts/SPEC.md` — invariants and encoding rules
+- `contracts/unit.schema.json` — single-unit metadata shape
+- `contracts/validate.py` — executable catalog validator
+
+Foundation documents remain the architectural authority for meaning. Contracts enforce encoding and structural invariants.
 
 ### Layer 2 — Capability Catalog
 
@@ -106,11 +112,11 @@ Additional types may be proposed only when an existing type cannot express the n
 
 ---
 
-## Interim Requirements
+## Authoring Requirements
 
-Until contracts exist, every future Capability and module MUST:
+Every Capability and module MUST:
 
-1. Declare purpose, audience, applicability, and limits
+1. Satisfy [Contracts](../contracts/SPEC.md) metadata and relationship rules
 2. Remain AI-agnostic at the core
 3. Be independently adoptable (modules) or clearly offered (capabilities)
 4. Be written in professional English
@@ -153,7 +159,7 @@ Allowed:
 ```text
 engineering-os/
 ├── README.md
-├── foundation/                      # Kernel (exists now)
+├── foundation/                      # Kernel
 │   ├── VISION.md
 │   ├── PHILOSOPHY.md
 │   ├── PRINCIPLES.md
@@ -162,7 +168,7 @@ engineering-os/
 │   ├── CAPABILITY-MODEL.md
 │   ├── PROJECT-ROADMAP.md
 │   └── ENGINEERING-WORKFLOW.md
-├── contracts/                       # Future — schema implementations
+├── contracts/                       # Enforceable schemas + validation
 ├── capabilities/                    # Future — intent catalog
 ├── playbooks/                       # Future
 ├── frameworks/                      # Future

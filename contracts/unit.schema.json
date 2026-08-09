@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-os.dev/schemas/unit.schema.json",
+  "title": "Engineering OS Knowledge Unit Metadata",
+  "description": "Single-unit metadata shape. Catalog rules (duplicates, references, cycles) are enforced by contracts/validate.py.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "type",
+    "title",
+    "summary",
+    "purpose",
+    "audience",
+    "status",
+    "applicability",
+    "limits"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^eos\\.(capability|playbook|framework|standard|workflow|skill|template|checklist|adaptation)\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "capability",
+        "playbook",
+        "framework",
+        "standard",
+        "workflow",
+        "skill",
+        "template",
+        "checklist",
+        "adaptation"
+      ]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "audience": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated", "retired"]
+    },
+    "applicability": { "type": "string", "minLength": 1 },
+    "limits": { "type": "string", "minLength": 1 },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "principles": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "domain": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "complexity": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "estimated_effort": { "type": "string", "minLength": 1 },
+    "language": {
+      "type": "string",
+      "const": "en"
+    },
+    "version": { "type": "string", "minLength": 1 },
+    "entry_signals": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "outcome_expectations": { "type": "string", "minLength": 1 },
+    "arbitration": { "type": "string", "minLength": 1 },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "target"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "references",
+              "depends_on",
+              "composes",
+              "specializes",
+              "alternative_to",
+              "supersedes",
+              "conflicts_with",
+              "fulfilled_by",
+              "primary_fulfillment",
+              "related_capability"
+            ]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "capability" } },
+        "required": ["type"]
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            { "required": ["inputs"] },
+            { "required": ["outputs"] }
+          ]
+        }
+      },
+      "else": {
+        "required": ["inputs", "outputs"]
+      }
+    }
+  ]
+}

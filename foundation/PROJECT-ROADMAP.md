@@ -38,15 +38,18 @@ Implement Knowledge Architecture and Capability Model as enforceable authoring c
 
 Expected work:
 
-- On-disk metadata schema for knowledge units and Capabilities
-- Validation rules for IDs, required fields, and relationship types (including `fulfilled_by`)
-- Naming and path conventions aligned to identity
-- Quality bar for accepting new units and Capabilities
-- Rules that prevent Capability anti-patterns (1:1 aliases, fine-grained explosion, method-owning Capabilities)
-- Deprecation / `supersedes` policy
-- Cross-reference consistency rules (metadata vs body)
+- [x] On-disk metadata schema for knowledge units and Capabilities
+- [x] Validation rules for IDs, required fields, and relationship types (including `fulfilled_by`)
+- [x] Naming identity conventions aligned to `eos.<type>.<domain>.<name>`
+- [x] Structural quality rules that prevent Capability relationship anti-patterns (method I/O on Capabilities; module-owned `fulfilled_by`)
+- [x] Deprecation / `supersedes` policy at lifecycle + relationship level
+- [ ] Path layout enforcement (deferred — IDs remain authoritative)
+- [ ] Cross-reference consistency rules for body links vs metadata (deferred)
+- [ ] Automated detection of Capability 1:1 playbook aliases (deferred until catalog evidence)
 
 **Exit criteria:** The first Capability and its fulfillment units can be created against explicit contracts, and an AI system can route intent → Capability → units without repository folklore.
+
+Phase 1 contract machinery is landed in `contracts/`. Content catalog creation remains Phase 2.
 
 ---
 

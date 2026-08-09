@@ -122,8 +122,8 @@ Contracts (Phase 1) will formalize encoding (for example YAML front matter). The
 | `status` | `draft` \| `active` \| `deprecated` \| `retired` |
 | `applicability` | When to use it |
 | `limits` | When not to use it |
-| `inputs` | What the unit expects (artifacts, context, decisions) |
-| `outputs` | What the unit produces |
+| `inputs` | What the unit expects (artifacts, context, decisions) — **required for fulfillment modules**; not used on Capabilities |
+| `outputs` | What the unit produces — **required for fulfillment modules**; not used on Capabilities |
 | `principles` | Principle IDs this unit operationalizes (optional but preferred) |
 
 ### Optional Metadata
@@ -405,21 +405,26 @@ To keep hundreds of playbooks coherent:
 | Typed relationships | Enables composition without copy-paste |
 | Lifecycle states | Prevents zombie guidance |
 | Context packages | Prevents context bloat for AI |
-| Contracts (next phase) | Make the above enforceable |
+| Contracts | Make the above enforceable |
 
 ---
 
-## Deferred Encoding Details
+## Encoding and Validation
 
-Intentionally deferred to Phase 1 (Contracts):
+Contracts implement the encoding details previously deferred here:
 
-- Exact on-disk metadata syntax
-- Validation tooling
+- On-disk metadata syntax: YAML front matter — see [contracts/SPEC.md](../contracts/SPEC.md)
+- Validation tooling: [contracts/validate.py](../contracts/validate.py)
+- Formal schema mirror: [contracts/unit.schema.json](../contracts/unit.schema.json)
+
+Still deferred beyond Phase 1 contracts:
+
 - Generated catalogs and situation indexes
-- Formal JSON/YAML schemas
-- Unit-level semver rules
+- Unit-level semver policy (lifecycle + `supersedes` remain mandatory)
+- Body ↔ metadata cross-reference linting
+- Context package runtime schema
 
-This document is the architectural authority those contracts must implement.
+This document remains the architectural authority those contracts implement.
 
 ---
 
