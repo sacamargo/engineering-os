@@ -208,11 +208,12 @@ Before integrating a change, verify:
 
 ## Current Phase Constraints
 
-While the project remains pre-catalog (contracts exist; content catalogs do not):
+While the catalog remains intentionally small:
 
-- Do not land playbooks, skills, templates, or adaptations as product content yet
+- Expand Capabilities only when routing value is clear; resist fine-grained explosion
+- Do not land skills, templates, or adaptations as product content yet unless a later phase requires them
 - Contract fixtures under `contracts/fixtures/` are test material, not the catalog
-- Prefer improving kernel/contract clarity over expanding surface area
+- Prefer evidence-driven catalog growth over completeness theater
 - Knowledge Architecture, Capability Model, System Architecture, and Contracts outrank local convenience
 
 When Git is initialized, this workflow becomes mandatory for all subsequent history.

@@ -55,11 +55,12 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-This repository has completed its **foundation** and landed **Phase 1 — Contracts**.
+This repository has completed Foundation and Phase 1 Contracts, and landed a Phase 2 proof vertical:
 
-System architecture, knowledge architecture, capability model, and engineering workflow are in place. Contracts define enforceable metadata and relationship rules for Capabilities and knowledge units.
+- one real Capability (`eos.capability.design.system-architecture`)
+- two fulfillment units (playbook + framework)
 
-Capabilities, playbooks, and skills are intentionally not present yet as content catalogs.
+The catalog is intentionally tiny. Broader methodology content comes later.
 
 ---
 
@@ -76,3 +77,4 @@ Capabilities, playbooks, and skills are intentionally not present yet as content
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
 | [Contracts](contracts/README.md) | Enforceable unit/capability metadata and validation |
+| [System Architecture Capability](capabilities/design/system-architecture.md) | First real Capability (Phase 2 proof) |

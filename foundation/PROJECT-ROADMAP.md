@@ -57,10 +57,19 @@ Phase 1 contract machinery is landed in `contracts/`. Content catalog creation r
 
 Introduce the minimum set of Capabilities and knowledge units that make the system operationally useful.
 
+### Phase 2 Proof (landed)
+
+- [x] First coarse Capability: `eos.capability.design.system-architecture`
+- [x] First fulfillment playbook: `eos.playbook.design.system-architecture`
+- [x] First fulfillment framework: `eos.framework.design.architecture-trade-offs`
+- [x] Contract validation over the live catalog directories
+
+### Broader Phase 2 backlog
+
 Priority order (subject to revision with evidence):
 
-1. **Coarse Capability catalog** — durable intent classes only where routing value is clear
-2. **Decision frameworks** — how to choose under uncertainty
+1. **Coarse Capability catalog** — add intent classes only where routing value is clear
+2. **Decision frameworks** — expand beyond the architecture trade-off proof
 3. **Engineering standards** — quality bars that raise the floor
 4. **Playbooks** — end-to-end ways of working for high-frequency situations
 5. **Checklists** — verifiable gates for readiness and risk
@@ -68,7 +77,7 @@ Priority order (subject to revision with evidence):
 7. **Workflows** — composable sequences with clear boundaries
 8. **Skills** — portable AI-operable procedures
 
-Early Capabilities and playbooks should target timeless engineering intents (for example: architecture design, security review, change delivery, incident response, test planning), not tool onboarding.
+Early Capabilities and playbooks should target timeless engineering intents (for example: security review, change delivery, incident response, test planning), not tool onboarding.
 
 **Exit criteria:** A team can adopt a coherent Capability subset and improve real delivery outcomes without adopting the entire catalog.
 

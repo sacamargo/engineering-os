@@ -1,5 +1,5 @@
 ---
-id: eos.capability.design.system-architecture
+id: eos.capability.fixture.system-architecture
 type: capability
 title: System Architecture Design
 summary: Help design a system architecture under stated goals and constraints.
@@ -8,7 +8,7 @@ audience: Engineers and architects
 status: active
 applicability: Greenfield or significant redesign architecture work
 limits: Does not replace detailed implementation playbooks
-domain: design
+domain: fixture
 language: en
 entry_signals:
   - Design the architecture for this system

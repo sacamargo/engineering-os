@@ -63,10 +63,15 @@ The Orchestrator (future) matches demand → Capability → knowledge units → 
 eos.capability.<domain>.<name>
 ```
 
-Illustrative only (no catalog entries exist yet):
+First landed Capability:
 
 ```text
 eos.capability.design.system-architecture
+```
+
+Additional illustrative IDs (not all landed):
+
+```text
 eos.capability.security.review
 eos.capability.data.database-selection
 eos.capability.delivery.deployment-strategy
@@ -177,7 +182,7 @@ Adaptations   →  may package Capabilities or Modules; never become source of t
 
 A playbook must remain meaningful if discovered directly. Capabilities optimize routing; they do not imprison knowledge.
 
-Planned directory (created only when the first Capability lands): `capabilities/`.
+Planned directory: `capabilities/` (now present with the first Capability).
 
 ---
 

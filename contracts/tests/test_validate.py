@@ -124,6 +124,19 @@ outputs:
         code = main(["--root", str(VALID)])
         self.assertEqual(code, 0)
 
+    def test_live_catalog_validates(self) -> None:
+        repo_root = CONTRACTS.parent
+        code = main(["--repo-root", str(repo_root)])
+        self.assertEqual(code, 0)
+        findings = validate_paths(
+            [
+                repo_root / "capabilities" / "design" / "system-architecture.md",
+                repo_root / "playbooks" / "design" / "system-architecture.md",
+                repo_root / "frameworks" / "design" / "architecture-trade-offs.md",
+            ]
+        )
+        self.assertEqual(findings, [], "\n".join(f.format() for f in findings))
+
 
 if __name__ == "__main__":
     unittest.main()

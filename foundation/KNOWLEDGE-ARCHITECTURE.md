@@ -84,11 +84,12 @@ Recommended form:
 eos.<type>.<domain>.<name>
 ```
 
-Examples (illustrative only — units do not exist yet):
+Examples:
 
 ```text
-eos.capability.security.review
-eos.playbook.delivery.change-introduction
+eos.capability.design.system-architecture
+eos.playbook.design.system-architecture
+eos.framework.design.architecture-trade-offs
 eos.checklist.review.pull-request-quality
 eos.skill.design.trade-off-analysis
 eos.standard.quality.definition-of-done

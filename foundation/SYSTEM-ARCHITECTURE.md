@@ -169,9 +169,9 @@ engineering-os/
 │   ├── PROJECT-ROADMAP.md
 │   └── ENGINEERING-WORKFLOW.md
 ├── contracts/                       # Enforceable schemas + validation
-├── capabilities/                    # Future — intent catalog
-├── playbooks/                       # Future
-├── frameworks/                      # Future
+├── capabilities/                    # Intent catalog (proof started)
+├── playbooks/                       # Fulfillment methods (proof started)
+├── frameworks/                      # Decision models (proof started)
 ├── standards/                       # Future
 ├── workflows/                       # Future
 ├── skills/                          # Future
