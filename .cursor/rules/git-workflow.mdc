@@ -1,0 +1,41 @@
+---
+description: Mandatory Git workflow for every Engineering OS change
+alwaysApply: true
+---
+
+# Engineering OS Git Workflow
+
+Language: communicate with humans in Spanish; all repository content (docs, comments, errors, config text) must be in English.
+
+## Before any file change
+
+1. Run `git status`. If there are uncommitted changes, STOP and notify the user.
+2. Sync latest `main` (`fetch` + fast-forward). Never change files on `main`.
+3. Create a task branch BEFORE editing anything:
+   - `feat/<slug>`, `fix/<slug>`, `refactor/<slug>`, `docs/<slug>`, `chore/<slug>`, `test/<slug>`
+4. Do all work only on that branch. One related task per branch.
+
+## Before updating main
+
+5. Review the full diff.
+6. Run the relevant validations/tests for the change.
+7. Create one Conventional Commit (no empty or process-only commits):
+   - `feat(scope): ...`, `fix(scope): ...`, `docs(scope): ...`, `refactor(scope): ...`
+8. Push the branch to GitHub.
+9. Integrate the branch into `main`.
+10. Push updated `main` to GitHub.
+11. Verify `main` is clean and matches the expected commit.
+
+`main` must always stay a coherent, working project state.
+
+## Hard rules
+
+- Never edit on `main`; never branch after changes already started.
+- Never mix unrelated tasks; never force-push unless the user explicitly asks.
+- Never overwrite existing local work; never delete work without an explicit reason.
+- Touch only files required for the task.
+- After finishing a task, stop; do not start the next one automatically.
+
+## Required completion report (Spanish)
+
+Report: branch; files created/modified; validations + results; commit message + hash; branch pushed; `main` status + confirmation; final `git status`.
