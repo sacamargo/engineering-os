@@ -211,9 +211,9 @@ Before integrating a change, verify:
 While the catalog remains intentionally small:
 
 - Expand Capabilities only when routing value is clear; resist fine-grained explosion
-- Do not land skills, templates, or adaptations as product content yet unless a later phase requires them
-- Contract fixtures under `contracts/fixtures/` are test material, not the catalog
 - Prefer evidence-driven catalog growth over completeness theater
-- Knowledge Architecture, Capability Model, System Architecture, and Contracts outrank local convenience
+- Keep adaptations thin; never fork canonical methods into tool-specific copies
+- Contract fixtures under `contracts/fixtures/` are test material, not the catalog
+- Knowledge Architecture, Capability Model, System Architecture, Intent Resolution, and Contracts outrank local convenience
 
 When Git is initialized, this workflow becomes mandatory for all subsequent history.

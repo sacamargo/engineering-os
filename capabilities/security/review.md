@@ -34,6 +34,10 @@ relationships:
     target: eos.framework.security.risk-prioritization
   - type: related_capability
     target: eos.capability.design.system-architecture
+  - type: related_capability
+    target: eos.capability.quality.test-planning
+  - type: related_capability
+    target: eos.capability.operations.observability
 ---
 
 # Application Security Review

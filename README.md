@@ -55,11 +55,14 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-This repository has completed Foundation and Phase 1 Contracts, holds a small Phase 2 Capability proof catalog, and includes an Intent Resolution experiment for candidate disambiguation (not an Orchestrator).
+Functional agency MVP is available:
 
-- `eos.capability.design.system-architecture` with playbook + framework fulfillment
-- `eos.capability.security.review` with playbook + framework fulfillment
-- Intent framing + candidate resolution protocol + authored cases
+- Capabilities: architecture, security review, test planning, observability/metrics
+- Portable agency skill: `eos.skill.agency.capability-routing`
+- Cursor adaptation skill: `.cursor/skills/engineering-os-agency`
+- Use cases: `experiments/agency-mvp/USE-CASES.md`
+
+This is not the full long-term catalog. Missing domains still return honest `insufficient_coverage`.
 
 ---
 
@@ -78,5 +81,8 @@ This repository has completed Foundation and Phase 1 Contracts, holds a small Ph
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
 | [Contracts](contracts/README.md) | Enforceable unit/capability metadata and validation |
 | [Intent Disambiguation Experiment](experiments/intent-disambiguation/README.md) | Authored routing cases + structural evaluator |
+| [Agency MVP Use Cases](experiments/agency-mvp/USE-CASES.md) | Runnable prompts to test the agency loop |
 | [System Architecture Capability](capabilities/design/system-architecture.md) | Architecture-design intent routing |
 | [Application Security Review Capability](capabilities/security/review.md) | Security-review intent routing |
+| [Test Planning Capability](capabilities/quality/test-planning.md) | Validation strategy intent routing |
+| [Observability Capability](capabilities/operations/observability.md) | Metrics/monitoring intent routing |

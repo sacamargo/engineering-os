@@ -132,10 +132,18 @@ outputs:
             [
                 repo_root / "capabilities" / "design" / "system-architecture.md",
                 repo_root / "capabilities" / "security" / "review.md",
+                repo_root / "capabilities" / "quality" / "test-planning.md",
+                repo_root / "capabilities" / "operations" / "observability.md",
                 repo_root / "playbooks" / "design" / "system-architecture.md",
                 repo_root / "playbooks" / "security" / "application-review.md",
+                repo_root / "playbooks" / "quality" / "test-planning.md",
+                repo_root / "playbooks" / "operations" / "observability-design.md",
                 repo_root / "frameworks" / "design" / "architecture-trade-offs.md",
                 repo_root / "frameworks" / "security" / "risk-prioritization.md",
+                repo_root / "frameworks" / "quality" / "test-risk-prioritization.md",
+                repo_root / "frameworks" / "operations" / "signal-prioritization.md",
+                repo_root / "skills" / "agency" / "capability-routing.md",
+                repo_root / "adaptations" / "cursor" / "engineering-os-agency.md",
             ]
         )
         self.assertEqual(findings, [], "\n".join(f.format() for f in findings))

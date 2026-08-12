@@ -1,0 +1,36 @@
+{
+  "id": "07-observability-metrics",
+  "utterance": "What metrics and alerts should this checkout API expose?",
+  "frame": {
+    "desired_outcome": "Observability and alert design for a checkout API",
+    "object_of_work": "Checkout API",
+    "intent_class_hint": "design metrics/monitoring",
+    "domain_hints": ["operations", "observability", "metrics"],
+    "constraints": [],
+    "risk_signals": ["production failure detection"],
+    "multi_intent": false,
+    "notes": "Outcome is measurement/alert design, not a security audit or architecture rewrite."
+  },
+  "candidates": [
+    {
+      "id": "eos.capability.operations.observability",
+      "rationale": "Matches observability applicability for defining metrics and actionable alerts.",
+      "confidence": "high"
+    }
+  ],
+  "primary": "eos.capability.operations.observability",
+  "secondary": [],
+  "related_suggested": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.quality.test-planning",
+    "eos.capability.security.review"
+  ],
+  "insufficient_coverage": [],
+  "clarifying_questions": [],
+  "fulfillment_preview": {
+    "primary_unit": "eos.playbook.operations.observability-design",
+    "also": [
+      "eos.framework.operations.signal-prioritization"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "06-test-planning",
+  "utterance": "Plan the tests for this checkout redesign before release.",
+  "frame": {
+    "desired_outcome": "A risk-based test plan before release",
+    "object_of_work": "Checkout redesign",
+    "intent_class_hint": "plan validation / testing",
+    "domain_hints": ["quality", "testing"],
+    "constraints": ["pre-release"],
+    "risk_signals": ["checkout/payment risk"],
+    "multi_intent": false,
+    "notes": "Primary intent is validation planning, not security audit or architecture redesign."
+  },
+  "candidates": [
+    {
+      "id": "eos.capability.quality.test-planning",
+      "rationale": "Matches test-planning applicability for deciding what to validate before release.",
+      "confidence": "high"
+    }
+  ],
+  "primary": "eos.capability.quality.test-planning",
+  "secondary": [],
+  "related_suggested": [
+    "eos.capability.security.review",
+    "eos.capability.design.system-architecture",
+    "eos.capability.operations.observability"
+  ],
+  "insufficient_coverage": [],
+  "clarifying_questions": [],
+  "fulfillment_preview": {
+    "primary_unit": "eos.playbook.quality.test-planning",
+    "also": [
+      "eos.framework.quality.test-risk-prioritization"
+    ]
+  }
+}

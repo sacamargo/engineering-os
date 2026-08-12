@@ -66,6 +66,10 @@ Introduce the minimum set of Capabilities and knowledge units that make the syst
 - [x] Soft `related_capability` adjacency between architecture and security review
 - [x] Contract validation over the live catalog directories
 - [x] Intent Resolution protocol + disambiguation experiment (candidates vs selection vs insufficient coverage)
+- [x] Test Planning Capability + fulfillment
+- [x] Observability/Metrics Capability + fulfillment
+- [x] Portable agency routing skill + Cursor adaptation
+- [x] Runnable agency use cases
 
 ### Broader Phase 2 backlog
 

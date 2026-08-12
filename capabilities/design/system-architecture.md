@@ -33,6 +33,10 @@ relationships:
     target: eos.framework.design.architecture-trade-offs
   - type: related_capability
     target: eos.capability.security.review
+  - type: related_capability
+    target: eos.capability.quality.test-planning
+  - type: related_capability
+    target: eos.capability.operations.observability
 ---
 
 # System Architecture Design

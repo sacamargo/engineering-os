@@ -1,0 +1,65 @@
+{
+  "id": "08-multi-viewpoint-booking-saas",
+  "utterance": "Build a secure, testable, and observable SaaS booking platform for sports courts.",
+  "frame": {
+    "desired_outcome": "Multi-viewpoint foundation for building a booking SaaS",
+    "object_of_work": "Sports-court booking SaaS",
+    "intent_class_hint": "build with architecture, security, test, and observability concerns",
+    "domain_hints": ["architecture", "security", "quality", "operations"],
+    "constraints": [
+      "secure",
+      "testable",
+      "observable"
+    ],
+    "risk_signals": [
+      "security requirements",
+      "production operability requirements"
+    ],
+    "multi_intent": true,
+    "notes": "Do not collapse into one Capability. Existing catalog can partially cover architecture, security review, test planning, and observability. Full product-delivery Capability may still be missing."
+  },
+  "candidates": [
+    {
+      "id": "eos.capability.design.system-architecture",
+      "rationale": "Greenfield platform needs system structure and boundaries.",
+      "confidence": "high"
+    },
+    {
+      "id": "eos.capability.security.review",
+      "rationale": "Security is an explicit required viewpoint; review applies as designs/surfaces appear.",
+      "confidence": "medium"
+    },
+    {
+      "id": "eos.capability.quality.test-planning",
+      "rationale": "Testability is an explicit required viewpoint.",
+      "confidence": "medium"
+    },
+    {
+      "id": "eos.capability.operations.observability",
+      "rationale": "Observability is an explicit required viewpoint.",
+      "confidence": "medium"
+    }
+  ],
+  "primary": "eos.capability.design.system-architecture",
+  "secondary": [
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "related_suggested": [],
+  "insufficient_coverage": [
+    {
+      "missing_intent_class": "end-to-end product delivery / build management",
+      "reason": "No Capability currently owns full product delivery management; the catalog covers major engineering viewpoints but not a complete build-agency program manager offer."
+    }
+  ],
+  "clarifying_questions": [
+    "Should we start with architecture as primary, then security/test/observability passes over that architecture?"
+  ],
+  "fulfillment_preview": {
+    "primary_unit": "eos.playbook.design.system-architecture",
+    "also": [
+      "eos.framework.design.architecture-trade-offs"
+    ]
+  }
+}

@@ -68,6 +68,8 @@ First landed Capabilities:
 ```text
 eos.capability.design.system-architecture
 eos.capability.security.review
+eos.capability.quality.test-planning
+eos.capability.operations.observability
 ```
 
 Additional illustrative IDs (not all landed):
@@ -75,7 +77,6 @@ Additional illustrative IDs (not all landed):
 ```text
 eos.capability.data.database-selection
 eos.capability.delivery.deployment-strategy
-eos.capability.quality.test-planning
 eos.capability.performance.optimization
 eos.capability.api.design
 eos.capability.scalability.review

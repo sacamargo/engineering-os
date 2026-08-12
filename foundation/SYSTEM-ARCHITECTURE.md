@@ -172,15 +172,15 @@ engineering-os/
 │   └── ENGINEERING-WORKFLOW.md
 ├── contracts/                       # Enforceable schemas + validation
 ├── experiments/                     # Focused architectural experiments
-├── capabilities/                    # Intent catalog (proof started)
-├── playbooks/                       # Fulfillment methods (proof started)
-├── frameworks/                      # Decision models (proof started)
+├── capabilities/                    # Intent catalog
+├── playbooks/                       # Fulfillment methods
+├── frameworks/                      # Decision models
+├── skills/                          # Portable AI-operable procedures
+├── adaptations/                     # Optional tool packaging
 ├── standards/                       # Future
 ├── workflows/                       # Future
-├── skills/                          # Future
 ├── templates/                       # Future
-├── checklists/                      # Future
-└── adaptations/                     # Future, optional, peripheral
+└── checklists/                      # Future
 ```
 
 Empty directories are intentionally omitted. Folders appear when content justifies them.
