@@ -14,4 +14,4 @@ Validate:
 python3 contracts/validate_execution.py
 ```
 
-Narrative companion (Task 20): `execution-plan.md` (added separately).
+Narrative companion: [`execution-plan.md`](execution-plan.md).
