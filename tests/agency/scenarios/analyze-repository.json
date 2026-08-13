@@ -1,0 +1,32 @@
+{
+  "id": "analyze-repository",
+  "intent": "Analyze this repository",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.operations.observability"
+  ],
+  "gaps_detected": [
+    {
+      "area": "codebase_intelligence_runtime",
+      "status": "not_implemented_phase3"
+    },
+    {
+      "area": "deep_static_analysis",
+      "status": "missing_capability"
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "architecture_readout",
+    "observability_gaps"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "map-structure",
+    "identify-risks"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": false,
+  "notes": ""
+}

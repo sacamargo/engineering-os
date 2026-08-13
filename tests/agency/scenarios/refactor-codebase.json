@@ -1,0 +1,31 @@
+{
+  "id": "refactor-codebase",
+  "intent": "Refactor this codebase",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.quality.test-planning",
+    "eos.capability.security.review"
+  ],
+  "gaps_detected": [
+    {
+      "area": "implementation_execution",
+      "status": "missing_capability"
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "refactor_plan",
+    "test_strategy",
+    "risk_review"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "characterize",
+    "plan-refactor",
+    "plan-tests"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": false,
+  "notes": ""
+}

@@ -1,0 +1,32 @@
+{
+  "id": "audit-system",
+  "intent": "Audit this system",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.security.review",
+    "eos.capability.design.system-architecture",
+    "eos.capability.quality.test-planning"
+  ],
+  "gaps_detected": [
+    {
+      "area": "compliance_certification",
+      "status": "missing_capability",
+      "professional_validation_required": true
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "security_audit",
+    "architecture_findings",
+    "test_coverage_gaps"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "security-review",
+    "architecture-review",
+    "test-gap-analysis"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": true,
+  "notes": "Compliance certification requires professional escalation when claimed as formal audit."
+}

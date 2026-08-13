@@ -1,0 +1,29 @@
+{
+  "id": "design-architecture",
+  "intent": "Design the architecture of this idea",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review"
+  ],
+  "gaps_detected": [
+    {
+      "area": "domain_specialist_detail",
+      "status": "may_require_human"
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "architecture",
+    "threat_model"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "clarify-intent",
+    "design",
+    "security-pass"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": false,
+  "notes": ""
+}

@@ -1,0 +1,46 @@
+{
+  "id": "build-saas",
+  "intent": "Build a booking SaaS",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "gaps_detected": [
+    {
+      "area": "backend_implementation",
+      "status": "missing_capability"
+    },
+    {
+      "area": "frontend_implementation",
+      "status": "missing_capability"
+    },
+    {
+      "area": "database_engineering",
+      "status": "missing_capability"
+    },
+    {
+      "area": "devops_delivery",
+      "status": "missing_capability"
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "architecture",
+    "threat_model",
+    "test_strategy",
+    "observability_plan"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "design",
+    "review",
+    "plan-tests",
+    "plan-observability"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": false,
+  "notes": ""
+}

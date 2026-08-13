@@ -1,0 +1,48 @@
+{
+  "id": "build-iot-system",
+  "intent": "Build IoT automation for a padel court including access and lighting",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "gaps_detected": [
+    {
+      "area": "iot_device_engineering",
+      "status": "missing_capability"
+    },
+    {
+      "area": "networking",
+      "status": "missing_capability"
+    },
+    {
+      "area": "physical_access_control",
+      "status": "missing_capability",
+      "professional_validation_required": true
+    },
+    {
+      "area": "electrical_engineering",
+      "status": "missing_capability",
+      "professional_validation_required": true
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "system_architecture",
+    "threat_model",
+    "electrical_scope",
+    "physical_access_scope"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "design",
+    "security",
+    "scope-electrical",
+    "scope-physical"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": true,
+  "notes": ""
+}

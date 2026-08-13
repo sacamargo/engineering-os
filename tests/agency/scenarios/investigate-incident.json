@@ -1,0 +1,36 @@
+{
+  "id": "investigate-incident",
+  "intent": "Investigate this incident",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.operations.observability",
+    "eos.capability.security.review",
+    "eos.capability.design.system-architecture"
+  ],
+  "gaps_detected": [
+    {
+      "area": "incident_response_runtime",
+      "status": "missing_capability"
+    },
+    {
+      "area": "production_access",
+      "status": "human_required",
+      "professional_validation_required": true
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "incident_timeline",
+    "hypotheses",
+    "mitigation_options"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "gather-evidence",
+    "correlate",
+    "propose-mitigations"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": true,
+  "notes": ""
+}

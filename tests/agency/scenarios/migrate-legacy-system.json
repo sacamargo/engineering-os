@@ -1,0 +1,37 @@
+{
+  "id": "migrate-legacy-system",
+  "intent": "Migrate this legacy system",
+  "intent_recognized": true,
+  "capabilities_resolved": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "gaps_detected": [
+    {
+      "area": "legacy_migration_execution",
+      "status": "missing_capability"
+    },
+    {
+      "area": "data_migration_cutover",
+      "status": "human_required",
+      "professional_validation_required": true
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": [
+    "migration_architecture",
+    "risk_register",
+    "test_strategy"
+  ],
+  "tasks_generated": true,
+  "task_examples": [
+    "assess",
+    "design-migration",
+    "plan-validation"
+  ],
+  "validation_required": true,
+  "human_escalation_when_necessary": true,
+  "notes": ""
+}
