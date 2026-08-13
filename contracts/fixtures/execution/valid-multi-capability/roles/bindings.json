@@ -1,0 +1,20 @@
+{
+  "bindings": [
+    {
+      "capability_id": "eos.capability.design.system-architecture",
+      "role_ids": ["eos.role.system-architect"]
+    },
+    {
+      "capability_id": "eos.capability.security.review",
+      "role_ids": ["eos.role.security-engineer"]
+    },
+    {
+      "capability_id": "eos.capability.quality.test-planning",
+      "role_ids": ["eos.role.qa-test-engineer"]
+    },
+    {
+      "capability_id": "eos.capability.operations.observability",
+      "role_ids": ["eos.role.observability-engineer"]
+    }
+  ]
+}

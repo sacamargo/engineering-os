@@ -1,0 +1,8 @@
+{
+  "id": "eos.artifact.demo-saas.observability-plan",
+  "type": "observability_plan",
+  "title": "Observability Plan",
+  "project_id": "eos.project.demo-saas",
+  "status": "planned",
+  "version": "0.1.0"
+}

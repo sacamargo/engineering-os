@@ -1,0 +1,15 @@
+{
+  "id": "eos.task.demo-saas.design-architecture",
+  "title": "Design architecture",
+  "description": "Produce system architecture for booking SaaS.",
+  "objective": "Approved architecture artifact.",
+  "project_id": "eos.project.demo-saas",
+  "capability_ids": ["eos.capability.design.system-architecture"],
+  "role_ids": ["eos.role.system-architect"],
+  "input_artifact_ids": [],
+  "output_artifact_ids": ["eos.artifact.demo-saas.architecture"],
+  "depends_on_task_ids": [],
+  "status": "ready",
+  "priority": "high",
+  "risk": "medium"
+}

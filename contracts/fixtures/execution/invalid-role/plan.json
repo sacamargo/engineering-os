@@ -1,0 +1,7 @@
+{
+  "id": "eos.plan.bad-role",
+  "project_id": "eos.project.bad-role",
+  "intent_summary": "Invalid role binding shape",
+  "status": "draft",
+  "revision": 1
+}

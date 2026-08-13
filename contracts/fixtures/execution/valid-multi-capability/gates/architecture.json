@@ -1,0 +1,13 @@
+{
+  "id": "eos.gate.demo-saas.architecture",
+  "title": "Architecture Gate",
+  "project_id": "eos.project.demo-saas",
+  "condition": "Architecture artifact approved and threat model drafted.",
+  "required_evidence": [
+    "eos.artifact.demo-saas.architecture",
+    "eos.task.demo-saas.design-architecture"
+  ],
+  "result": "pending",
+  "approver": "eos.role.system-architect",
+  "on_failure": "block_dependent_tasks"
+}

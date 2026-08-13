@@ -1,0 +1,8 @@
+{
+  "id": "eos.artifact.valid-dep.impl",
+  "type": "implementation",
+  "title": "Impl",
+  "project_id": "eos.project.valid-dep",
+  "status": "planned",
+  "depends_on_artifacts": ["eos.artifact.valid-dep.schema"]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "eos.task.cycle.b",
+  "title": "B",
+  "description": "Depends on A",
+  "objective": "Cycle",
+  "project_id": "eos.project.cycle",
+  "depends_on_task_ids": ["eos.task.cycle.a"],
+  "status": "pending"
+}

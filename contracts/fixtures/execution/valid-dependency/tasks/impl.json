@@ -1,0 +1,11 @@
+{
+  "id": "eos.task.valid-dep.impl",
+  "title": "Implement",
+  "description": "Implement against schema",
+  "objective": "Implementation draft",
+  "project_id": "eos.project.valid-dep",
+  "input_artifact_ids": ["eos.artifact.valid-dep.schema"],
+  "output_artifact_ids": ["eos.artifact.valid-dep.impl"],
+  "depends_on_task_ids": ["eos.task.valid-dep.schema"],
+  "status": "ready"
+}

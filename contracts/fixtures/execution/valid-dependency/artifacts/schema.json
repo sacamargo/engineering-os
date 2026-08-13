@@ -1,0 +1,7 @@
+{
+  "id": "eos.artifact.valid-dep.schema",
+  "type": "database_schema",
+  "title": "Schema",
+  "project_id": "eos.project.valid-dep",
+  "status": "approved"
+}

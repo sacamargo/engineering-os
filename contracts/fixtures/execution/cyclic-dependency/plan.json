@@ -1,0 +1,8 @@
+{
+  "id": "eos.plan.cycle",
+  "project_id": "eos.project.cycle",
+  "intent_summary": "Cyclic tasks",
+  "task_ids": ["eos.task.cycle.a", "eos.task.cycle.b"],
+  "status": "draft",
+  "revision": 1
+}

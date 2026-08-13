@@ -1,0 +1,10 @@
+{
+  "id": "eos.task.bad",
+  "title": "",
+  "description": "",
+  "objective": "",
+  "project_id": "eos.project.bad-task",
+  "status": "unknown",
+  "input_artifact_ids": ["eos.artifact.bad-task.missing"],
+  "role_ids": ["not-a-role"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "eos.plan.broken-art",
+  "project_id": "eos.project.broken-art",
+  "intent_summary": "Broken artifact dependency",
+  "artifact_ids": ["eos.artifact.broken-art.child"],
+  "status": "draft",
+  "revision": 1
+}

@@ -1,0 +1,7 @@
+{
+  "id": "eos.plan.bad-bind",
+  "project_id": "eos.project.bad-bind",
+  "intent_summary": "Invalid role binding fixture",
+  "status": "draft",
+  "revision": 1
+}

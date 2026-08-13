@@ -1,0 +1,8 @@
+{
+  "id": "eos.plan.bad-task",
+  "project_id": "eos.project.bad-task",
+  "intent_summary": "Invalid task fixture",
+  "task_ids": ["eos.task.bad-task.broken"],
+  "status": "draft",
+  "revision": 1
+}

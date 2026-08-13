@@ -1,0 +1,21 @@
+{
+  "id": "eos.plan.valid-dep",
+  "project_id": "eos.project.valid-dep",
+  "intent_summary": "Valid sequential dependency",
+  "artifact_ids": ["eos.artifact.valid-dep.schema", "eos.artifact.valid-dep.impl"],
+  "task_ids": ["eos.task.valid-dep.schema", "eos.task.valid-dep.impl"],
+  "dependencies": [
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.valid-dep.impl",
+      "to": "eos.task.valid-dep.schema"
+    },
+    {
+      "kind": "task_requires_artifact",
+      "from": "eos.task.valid-dep.impl",
+      "to": "eos.artifact.valid-dep.schema"
+    }
+  ],
+  "status": "draft",
+  "revision": 1
+}

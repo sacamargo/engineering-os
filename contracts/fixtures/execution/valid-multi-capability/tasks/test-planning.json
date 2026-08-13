@@ -1,0 +1,13 @@
+{
+  "id": "eos.task.demo-saas.test-planning",
+  "title": "Test planning",
+  "description": "Define test strategy.",
+  "objective": "Test strategy artifact.",
+  "project_id": "eos.project.demo-saas",
+  "capability_ids": ["eos.capability.quality.test-planning"],
+  "role_ids": ["eos.role.qa-test-engineer"],
+  "input_artifact_ids": ["eos.artifact.demo-saas.architecture"],
+  "output_artifact_ids": ["eos.artifact.demo-saas.test-strategy"],
+  "depends_on_task_ids": ["eos.task.demo-saas.design-architecture"],
+  "status": "pending"
+}

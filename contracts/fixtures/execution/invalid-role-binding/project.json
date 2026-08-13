@@ -1,0 +1,7 @@
+{
+  "id": "eos.project.bad-bind",
+  "title": "Bad binding",
+  "objective": "Fixture",
+  "status": "planned",
+  "capability_ids": ["eos.capability.design.system-architecture"]
+}

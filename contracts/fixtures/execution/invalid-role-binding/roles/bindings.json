@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "capability_id": "eos.capability.design.system-architecture",
+      "role_ids": []
+    },
+    {
+      "capability_id": "eos.capability.nonexistent.capability",
+      "role_ids": ["BackendEngineer"]
+    }
+  ]
+}

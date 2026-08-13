@@ -1,0 +1,7 @@
+{
+  "id": "eos.project.bad-role",
+  "title": "Bad role",
+  "objective": "Fixture",
+  "status": "planned",
+  "role_ids": ["BackendEngineer"]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eos.task.demo-saas.observability-design",
+  "title": "Observability design",
+  "description": "Define observability plan.",
+  "objective": "Observability plan artifact.",
+  "project_id": "eos.project.demo-saas",
+  "capability_ids": ["eos.capability.operations.observability"],
+  "role_ids": ["eos.role.observability-engineer"],
+  "input_artifact_ids": ["eos.artifact.demo-saas.architecture"],
+  "output_artifact_ids": ["eos.artifact.demo-saas.observability-plan"],
+  "depends_on_task_ids": ["eos.task.demo-saas.design-architecture"],
+  "status": "pending"
+}

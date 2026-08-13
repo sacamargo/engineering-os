@@ -1,0 +1,8 @@
+{
+  "id": "eos.decision.demo-saas.postgres",
+  "title": "Use PostgreSQL as booking authority",
+  "choice": "PostgreSQL",
+  "reason": "Need strong uniqueness and transactional guarantees.",
+  "status": "proposed",
+  "project_id": "eos.project.demo-saas"
+}

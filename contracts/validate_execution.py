@@ -112,6 +112,18 @@ def validate_bundle(bundle_dir: Path, capability_ids: set[str]) -> list[str]:
         obj = load_json(path)
         decisions[obj.get("id")] = obj
 
+    role_bindings: list[dict[str, Any]] = []
+    roles_dir = bundle_dir / "roles"
+    if roles_dir.exists():
+        for path in sorted(roles_dir.glob("*.json")):
+            obj = load_json(path)
+            if isinstance(obj, dict) and isinstance(obj.get("bindings"), list):
+                role_bindings.extend(b for b in obj["bindings"] if isinstance(b, dict))
+            elif isinstance(obj, dict) and "capability_id" in obj and "role_ids" in obj:
+                role_bindings.append(obj)
+            else:
+                errors.append(f"{label}: invalid role binding file '{path.name}'")
+
     # Project
     pid = project.get("id")
     if not isinstance(pid, str) or not PROJECT_RE.fullmatch(pid):
@@ -273,6 +285,21 @@ def validate_bundle(bundle_dir: Path, capability_ids: set[str]) -> list[str]:
         elif kind == "gate_requires_task":
             if frm not in gates or to not in tasks:
                 errors.append(f"{label}: invalid gate_requires_task {frm}->{to}")
+
+    # Role bindings (Capability → Role expertise; Role ≠ Capability)
+    for binding in role_bindings:
+        cid = binding.get("capability_id")
+        roles = binding.get("role_ids")
+        if not isinstance(cid, str) or not CAPABILITY_RE.fullmatch(cid):
+            errors.append(f"{label}: invalid role binding capability '{cid}'")
+        elif capability_ids and cid not in capability_ids:
+            errors.append(f"{label}: role binding unknown capability '{cid}'")
+        if not isinstance(roles, list) or not roles:
+            errors.append(f"{label}: role binding for '{cid}' requires non-empty role_ids")
+        else:
+            for rid in roles:
+                if not isinstance(rid, str) or not ROLE_RE.fullmatch(rid):
+                    errors.append(f"{label}: invalid role binding role id '{rid}'")
 
     return errors
 

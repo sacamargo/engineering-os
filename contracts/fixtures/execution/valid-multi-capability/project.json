@@ -1,0 +1,33 @@
+{
+  "id": "eos.project.demo-saas",
+  "title": "Demo SaaS Booking",
+  "objective": "Plan a multi-capability booking SaaS execution bundle.",
+  "context": "Contract fixture only.",
+  "constraints": ["No inventing capabilities"],
+  "status": "planned",
+  "capability_ids": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "role_ids": [
+    "eos.role.system-architect",
+    "eos.role.security-engineer",
+    "eos.role.qa-test-engineer",
+    "eos.role.observability-engineer"
+  ],
+  "artifact_ids": [
+    "eos.artifact.demo-saas.architecture",
+    "eos.artifact.demo-saas.threat-model",
+    "eos.artifact.demo-saas.test-strategy",
+    "eos.artifact.demo-saas.observability-plan"
+  ],
+  "task_ids": [
+    "eos.task.demo-saas.design-architecture",
+    "eos.task.demo-saas.security-review",
+    "eos.task.demo-saas.test-planning",
+    "eos.task.demo-saas.observability-design"
+  ],
+  "gate_ids": ["eos.gate.demo-saas.architecture"]
+}

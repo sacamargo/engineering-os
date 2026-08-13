@@ -1,0 +1,9 @@
+{
+  "id": "eos.task.bad-dep.child",
+  "title": "Child",
+  "description": "Depends on missing task",
+  "objective": "Fail validation",
+  "project_id": "eos.project.bad-dep",
+  "depends_on_task_ids": ["eos.task.bad-dep.missing-parent"],
+  "status": "pending"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "eos.artifact.broken-art.child",
+  "type": "architecture",
+  "title": "Child",
+  "project_id": "eos.project.broken-art",
+  "status": "planned",
+  "depends_on_artifacts": ["eos.artifact.broken-art.missing"]
+}

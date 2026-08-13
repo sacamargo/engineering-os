@@ -1,0 +1,11 @@
+{
+  "id": "eos.artifact.demo-saas.threat-model",
+  "type": "threat_model",
+  "title": "Threat Model",
+  "project_id": "eos.project.demo-saas",
+  "status": "planned",
+  "version": "0.1.0",
+  "depends_on_artifacts": [
+    "eos.artifact.demo-saas.architecture"
+  ]
+}

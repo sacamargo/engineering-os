@@ -1,0 +1,15 @@
+{
+  "id": "eos.task.demo-saas.security-review",
+  "title": "Security review",
+  "description": "Threat model against architecture.",
+  "objective": "Threat model ready for gate.",
+  "project_id": "eos.project.demo-saas",
+  "capability_ids": ["eos.capability.security.review"],
+  "role_ids": ["eos.role.security-engineer"],
+  "input_artifact_ids": ["eos.artifact.demo-saas.architecture"],
+  "output_artifact_ids": ["eos.artifact.demo-saas.threat-model"],
+  "depends_on_task_ids": ["eos.task.demo-saas.design-architecture"],
+  "status": "pending",
+  "priority": "high",
+  "risk": "high"
+}

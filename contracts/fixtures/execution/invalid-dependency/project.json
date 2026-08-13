@@ -1,0 +1,6 @@
+{
+  "id": "eos.project.bad-dep",
+  "title": "Bad dependency",
+  "objective": "Fixture",
+  "status": "planned"
+}

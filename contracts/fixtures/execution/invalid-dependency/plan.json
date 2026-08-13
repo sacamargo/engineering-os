@@ -1,0 +1,15 @@
+{
+  "id": "eos.plan.bad-dep",
+  "project_id": "eos.project.bad-dep",
+  "intent_summary": "Missing dependency target",
+  "task_ids": ["eos.task.bad-dep.child"],
+  "dependencies": [
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.bad-dep.child",
+      "to": "eos.task.bad-dep.missing-parent"
+    }
+  ],
+  "status": "draft",
+  "revision": 1
+}

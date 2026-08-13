@@ -1,0 +1,8 @@
+{
+  "id": "eos.artifact.demo-saas.architecture",
+  "type": "architecture",
+  "title": "Architecture",
+  "project_id": "eos.project.demo-saas",
+  "status": "planned",
+  "version": "0.1.0"
+}

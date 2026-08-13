@@ -1,0 +1,8 @@
+{
+  "id": "eos.plan.bad-gate",
+  "project_id": "eos.project.bad-gate",
+  "intent_summary": "Invalid gate",
+  "gate_ids": ["eos.gate.bad-gate.main"],
+  "status": "draft",
+  "revision": 1
+}

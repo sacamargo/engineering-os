@@ -1,0 +1,9 @@
+{
+  "id": "eos.task.valid-dep.schema",
+  "title": "Design schema",
+  "description": "Create schema",
+  "objective": "Schema approved",
+  "project_id": "eos.project.valid-dep",
+  "output_artifact_ids": ["eos.artifact.valid-dep.schema"],
+  "status": "completed"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "eos.gate.bad",
+  "title": "Bad",
+  "project_id": "eos.project.bad-gate",
+  "condition": "",
+  "required_evidence": [],
+  "result": "maybe"
+}

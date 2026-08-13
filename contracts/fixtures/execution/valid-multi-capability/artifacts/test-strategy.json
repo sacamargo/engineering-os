@@ -1,0 +1,8 @@
+{
+  "id": "eos.artifact.demo-saas.test-strategy",
+  "type": "test_strategy",
+  "title": "Test Strategy",
+  "project_id": "eos.project.demo-saas",
+  "status": "planned",
+  "version": "0.1.0"
+}
