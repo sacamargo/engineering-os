@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-os.dev/schemas/execution/role-binding.schema.json",
+  "title": "Engineering OS Role Binding",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["capability_id", "role_ids"],
+  "properties": {
+    "capability_id": { "type": "string", "minLength": 1 },
+    "role_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^eos\\.role\\.[a-z][a-z0-9-]*$" }
+    }
+  }
+}

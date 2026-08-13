@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-os.dev/schemas/execution/decision.schema.json",
+  "title": "Engineering OS Decision",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "project_id", "title", "status", "choice", "reason"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^eos\\.decision\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$" },
+    "project_id": { "type": "string" },
+    "title": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["proposed", "accepted", "superseded", "rejected"] },
+    "choice": { "type": "string", "minLength": 1 },
+    "reason": { "type": "string", "minLength": 1 },
+    "alternatives": { "type": "array", "items": { "type": "string" } },
+    "evidence_ids": { "type": "array", "items": { "type": "string" } },
+    "validation": { "type": "string" }
+  }
+}

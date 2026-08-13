@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-os.dev/schemas/execution/project.schema.json",
+  "title": "Engineering OS Project",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "title", "objective", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^eos\\.project\\.[a-z][a-z0-9-]*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "objective": { "type": "string", "minLength": 1 },
+    "context": { "type": "string" },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "status": {
+      "type": "string",
+      "enum": ["discovered", "planned", "ready", "executing", "blocked", "validating", "completed", "failed", "cancelled"]
+    },
+    "capability_ids": { "type": "array", "items": { "type": "string" } },
+    "insufficient_coverage": { "type": "array" },
+    "role_ids": { "type": "array", "items": { "type": "string", "pattern": "^eos\\.role\\.[a-z][a-z0-9-]*$" } },
+    "artifact_ids": { "type": "array", "items": { "type": "string" } },
+    "task_ids": { "type": "array", "items": { "type": "string" } },
+    "gate_ids": { "type": "array", "items": { "type": "string" } },
+    "decision_ids": { "type": "array", "items": { "type": "string" } }
+  }
+}

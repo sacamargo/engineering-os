@@ -213,6 +213,8 @@ Exit codes:
 
 Machine-readable schema mirror: `unit.schema.json` (single-unit metadata shape). Catalog rules (duplicates, references, cycles) are enforced by the validator beyond JSON Schema.
 
+Execution Layer contracts live under `contracts/execution/` and are validated by `contracts/validate_execution.py`.
+
 ---
 
 ## Why These Contracts Exist

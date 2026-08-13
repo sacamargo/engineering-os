@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-os.dev/schemas/execution/artifact.schema.json",
+  "title": "Engineering OS Artifact",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "project_id", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^eos\\.artifact\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$" },
+    "type": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "project_id": { "type": "string" },
+    "origin": { "type": "object", "additionalProperties": true },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "drafting", "ready_for_review", "approved", "superseded", "rejected"]
+    },
+    "depends_on_artifacts": { "type": "array", "items": { "type": "string" } },
+    "version": { "type": "string" }
+  }
+}
