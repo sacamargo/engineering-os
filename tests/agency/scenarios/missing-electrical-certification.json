@@ -1,0 +1,32 @@
+{
+  "id": "missing-electrical-certification",
+  "intent": "Certify this installation electrically.",
+  "intent_recognized": true,
+  "outcome": "insufficient_capability",
+  "capabilities_resolved": [],
+  "gaps_detected": [
+    {
+      "area": "electrical_engineering",
+      "status": "missing_capability",
+      "professional_validation_required": true
+    },
+    {
+      "area": "electrical_certification",
+      "status": "outside_software_agency_scope",
+      "professional_validation_required": true
+    }
+  ],
+  "artifacts_identified": true,
+  "artifact_examples": ["professional_scope_request"],
+  "tasks_generated": true,
+  "task_examples": ["escalate-to-licensed-electrician"],
+  "validation_required": true,
+  "human_escalation_when_necessary": true,
+  "professional_validation_required": true,
+  "invented_capability": false,
+  "forbidden_invented_ids": [
+    "eos.capability.electrical.certification",
+    "eos.capability.physical.electrical-signoff"
+  ],
+  "conceptual_response": "Insufficient capability. Professional validation required. Do not invent a Capability."
+}
