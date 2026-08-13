@@ -1,0 +1,16 @@
+{
+  "id": "eos.escalation.padel-iot.physical-access",
+  "project_id": "eos.project.padel-iot",
+  "domain": "physical_access_control",
+  "can_reason": true,
+  "can_execute": false,
+  "requires_professional_approval": true,
+  "reason": "Physical locks/gates and site security hardware require specialist validation.",
+  "related_artifact_ids": [
+    "eos.artifact.padel-iot.physical-access-scope"
+  ],
+  "related_gate_ids": [
+    "eos.gate.padel-iot.professional-physical-access"
+  ],
+  "status": "required"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eos.gate.padel-iot.professional-electrical",
+  "title": "Electrical Professional Gate",
+  "project_id": "eos.project.padel-iot",
+  "condition": "Licensed electrical professional approves lighting/power scope before any install execution.",
+  "required_evidence": [
+    "eos.artifact.padel-iot.electrical-scope"
+  ],
+  "result": "pending",
+  "on_failure": "block_physical_execution",
+  "approver": "licensed_professional",
+  "autonomous_pass_forbidden": true
+}

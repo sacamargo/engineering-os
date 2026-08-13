@@ -1,0 +1,15 @@
+{
+  "id": "eos.artifact.padel-iot.test-strategy",
+  "type": "test_strategy",
+  "title": "Test strategy for software/cloud portions",
+  "project_id": "eos.project.padel-iot",
+  "status": "planned",
+  "version": "0.1.0",
+  "origin": {
+    "kind": "agency_scenario",
+    "project": "padel-iot"
+  },
+  "depends_on_artifacts": [
+    "eos.artifact.padel-iot.system-architecture"
+  ]
+}

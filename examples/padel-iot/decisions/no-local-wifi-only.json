@@ -1,0 +1,8 @@
+{
+  "id": "eos.decision.padel-iot.no-local-wifi-only",
+  "title": "Do not depend solely on local Wi-Fi",
+  "choice": "Require WAN/cellular/backhaul path independent of venue Wi-Fi",
+  "reason": "User constraint: remote control must work without local Wi-Fi.",
+  "status": "proposed",
+  "project_id": "eos.project.padel-iot"
+}

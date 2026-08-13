@@ -1,0 +1,11 @@
+{
+  "id": "eos.gate.padel-iot.security",
+  "title": "Security Gate",
+  "project_id": "eos.project.padel-iot",
+  "condition": "Remote access threats are dispositioned for software/cloud path.",
+  "required_evidence": [
+    "eos.artifact.padel-iot.threat-model"
+  ],
+  "result": "pending",
+  "on_failure": "block_dependent_tasks"
+}

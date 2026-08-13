@@ -1,0 +1,13 @@
+{
+  "id": "eos.gate.padel-iot.professional-physical-access",
+  "title": "Physical Access Professional Gate",
+  "project_id": "eos.project.padel-iot",
+  "condition": "Qualified physical-access specialist approves lock/gate scope before install execution.",
+  "required_evidence": [
+    "eos.artifact.padel-iot.physical-access-scope"
+  ],
+  "result": "pending",
+  "on_failure": "block_physical_execution",
+  "approver": "licensed_professional",
+  "autonomous_pass_forbidden": true
+}

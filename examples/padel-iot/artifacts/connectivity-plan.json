@@ -1,0 +1,15 @@
+{
+  "id": "eos.artifact.padel-iot.connectivity-plan",
+  "type": "network_plan",
+  "title": "Connectivity plan without local-WiFi dependence (gap-aware)",
+  "project_id": "eos.project.padel-iot",
+  "status": "planned",
+  "version": "0.1.0",
+  "origin": {
+    "kind": "agency_scenario",
+    "project": "padel-iot"
+  },
+  "depends_on_artifacts": [
+    "eos.artifact.padel-iot.system-architecture"
+  ]
+}

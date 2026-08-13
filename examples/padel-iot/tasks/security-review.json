@@ -1,0 +1,25 @@
+{
+  "id": "eos.task.padel-iot.security-review",
+  "title": "Security review",
+  "description": "Threat model for remote court control",
+  "objective": "Produce eos.artifact.padel-iot.threat-model",
+  "project_id": "eos.project.padel-iot",
+  "capability_ids": [
+    "eos.capability.security.review"
+  ],
+  "role_ids": [
+    "eos.role.security-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.padel-iot.system-architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.padel-iot.threat-model"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.padel-iot.design-architecture"
+  ],
+  "status": "pending",
+  "priority": "high",
+  "risk": "high"
+}

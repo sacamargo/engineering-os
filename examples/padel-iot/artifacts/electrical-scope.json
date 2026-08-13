@@ -1,0 +1,16 @@
+{
+  "id": "eos.artifact.padel-iot.electrical-scope",
+  "type": "professional_scope",
+  "title": "Electrical work scope requiring licensed professional",
+  "project_id": "eos.project.padel-iot",
+  "status": "planned",
+  "version": "0.1.0",
+  "origin": {
+    "kind": "agency_scenario",
+    "project": "padel-iot"
+  },
+  "professional_validation_required": true,
+  "depends_on_artifacts": [
+    "eos.artifact.padel-iot.system-architecture"
+  ]
+}

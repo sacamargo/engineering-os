@@ -1,0 +1,130 @@
+{
+  "id": "eos.plan.padel-iot",
+  "project_id": "eos.project.padel-iot",
+  "intent_summary": "Automate a padel court (access, lighting, remote mobile control) without local-WiFi dependence; escalate electrical and physical access to professionals.",
+  "capability_ids": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "insufficient_coverage": [
+    {
+      "area": "iot_device_engineering",
+      "status": "missing_capability",
+      "needed_for": "Controllers, sensors, actuators"
+    },
+    {
+      "area": "networking",
+      "status": "missing_capability",
+      "needed_for": "Non-WiFi local fallback / WAN path"
+    },
+    {
+      "area": "cloud_mobile",
+      "status": "missing_capability",
+      "needed_for": "Remote control path and mobile client"
+    },
+    {
+      "area": "physical_access_control",
+      "status": "missing_capability",
+      "needed_for": "Locks/gates hardware integration",
+      "professional_validation_required": true
+    },
+    {
+      "area": "electrical_engineering",
+      "status": "missing_capability",
+      "needed_for": "Lighting circuits, power, compliance",
+      "professional_validation_required": true
+    },
+    {
+      "area": "reliability_ops",
+      "status": "partial",
+      "note": "Observability Capability exists; full reliability Capability does not"
+    }
+  ],
+  "artifact_ids": [
+    "eos.artifact.padel-iot.system-architecture",
+    "eos.artifact.padel-iot.threat-model",
+    "eos.artifact.padel-iot.connectivity-plan",
+    "eos.artifact.padel-iot.mobile-control-plan",
+    "eos.artifact.padel-iot.observability-plan",
+    "eos.artifact.padel-iot.test-strategy",
+    "eos.artifact.padel-iot.electrical-scope",
+    "eos.artifact.padel-iot.physical-access-scope"
+  ],
+  "task_ids": [
+    "eos.task.padel-iot.design-architecture",
+    "eos.task.padel-iot.security-review",
+    "eos.task.padel-iot.test-planning",
+    "eos.task.padel-iot.observability-design",
+    "eos.task.padel-iot.connectivity-plan",
+    "eos.task.padel-iot.mobile-control-plan",
+    "eos.task.padel-iot.electrical-scope",
+    "eos.task.padel-iot.physical-access-scope"
+  ],
+  "gate_ids": [
+    "eos.gate.padel-iot.architecture",
+    "eos.gate.padel-iot.security",
+    "eos.gate.padel-iot.professional-electrical",
+    "eos.gate.padel-iot.professional-physical-access"
+  ],
+  "dependencies": [
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.padel-iot.security-review",
+      "to": "eos.task.padel-iot.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.padel-iot.test-planning",
+      "to": "eos.task.padel-iot.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.padel-iot.observability-design",
+      "to": "eos.task.padel-iot.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.padel-iot.connectivity-plan",
+      "to": "eos.task.padel-iot.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.padel-iot.mobile-control-plan",
+      "to": "eos.task.padel-iot.connectivity-plan"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.padel-iot.electrical-scope",
+      "to": "eos.task.padel-iot.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.padel-iot.physical-access-scope",
+      "to": "eos.task.padel-iot.design-architecture"
+    },
+    {
+      "kind": "gate_requires_artifact",
+      "from": "eos.gate.padel-iot.architecture",
+      "to": "eos.artifact.padel-iot.system-architecture"
+    },
+    {
+      "kind": "gate_requires_artifact",
+      "from": "eos.gate.padel-iot.security",
+      "to": "eos.artifact.padel-iot.threat-model"
+    },
+    {
+      "kind": "gate_requires_artifact",
+      "from": "eos.gate.padel-iot.professional-electrical",
+      "to": "eos.artifact.padel-iot.electrical-scope"
+    },
+    {
+      "kind": "gate_requires_artifact",
+      "from": "eos.gate.padel-iot.professional-physical-access",
+      "to": "eos.artifact.padel-iot.physical-access-scope"
+    }
+  ],
+  "status": "draft",
+  "revision": 1
+}

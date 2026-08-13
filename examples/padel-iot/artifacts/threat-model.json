@@ -1,0 +1,15 @@
+{
+  "id": "eos.artifact.padel-iot.threat-model",
+  "type": "threat_model",
+  "title": "Security threat model for remote access and devices",
+  "project_id": "eos.project.padel-iot",
+  "status": "planned",
+  "version": "0.1.0",
+  "origin": {
+    "kind": "agency_scenario",
+    "project": "padel-iot"
+  },
+  "depends_on_artifacts": [
+    "eos.artifact.padel-iot.system-architecture"
+  ]
+}

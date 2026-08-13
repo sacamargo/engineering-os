@@ -1,0 +1,21 @@
+{
+  "id": "eos.task.padel-iot.design-architecture",
+  "title": "Design system architecture",
+  "description": "Boundary software/IoT/cloud/physical",
+  "objective": "Produce eos.artifact.padel-iot.system-architecture",
+  "project_id": "eos.project.padel-iot",
+  "capability_ids": [
+    "eos.capability.design.system-architecture"
+  ],
+  "role_ids": [
+    "eos.role.system-architect"
+  ],
+  "input_artifact_ids": [],
+  "output_artifact_ids": [
+    "eos.artifact.padel-iot.system-architecture"
+  ],
+  "depends_on_task_ids": [],
+  "status": "ready",
+  "priority": "high",
+  "risk": "high"
+}

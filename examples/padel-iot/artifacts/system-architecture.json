@@ -1,0 +1,12 @@
+{
+  "id": "eos.artifact.padel-iot.system-architecture",
+  "type": "architecture",
+  "title": "End-to-end system architecture (software + IoT boundaries)",
+  "project_id": "eos.project.padel-iot",
+  "status": "planned",
+  "version": "0.1.0",
+  "origin": {
+    "kind": "agency_scenario",
+    "project": "padel-iot"
+  }
+}

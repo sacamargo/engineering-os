@@ -1,0 +1,25 @@
+{
+  "id": "eos.task.padel-iot.connectivity-plan",
+  "title": "Connectivity plan (gap)",
+  "description": "Non-WiFi-dependent connectivity options",
+  "objective": "Produce eos.artifact.padel-iot.connectivity-plan",
+  "project_id": "eos.project.padel-iot",
+  "capability_ids": [],
+  "role_ids": [
+    "eos.role.infrastructure-engineer",
+    "eos.role.cloud-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.padel-iot.system-architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.padel-iot.connectivity-plan"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.padel-iot.design-architecture"
+  ],
+  "status": "blocked",
+  "priority": "high",
+  "risk": "high",
+  "block_reason": "missing_capability_coverage"
+}

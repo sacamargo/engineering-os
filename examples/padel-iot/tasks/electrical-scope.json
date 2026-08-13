@@ -1,0 +1,28 @@
+{
+  "id": "eos.task.padel-iot.electrical-scope",
+  "title": "Define electrical professional scope",
+  "description": "Lighting/power scope for licensed electrician",
+  "objective": "Produce eos.artifact.padel-iot.electrical-scope",
+  "project_id": "eos.project.padel-iot",
+  "capability_ids": [],
+  "role_ids": [
+    "eos.role.electrical-engineer-professional",
+    "eos.role.system-architect"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.padel-iot.system-architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.padel-iot.electrical-scope"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.padel-iot.design-architecture"
+  ],
+  "status": "blocked",
+  "priority": "high",
+  "risk": "critical",
+  "block_reason": "professional_validation_required",
+  "can_reason": true,
+  "can_execute": false,
+  "requires_professional_approval": true
+}

@@ -1,0 +1,26 @@
+{
+  "id": "eos.task.padel-iot.observability-design",
+  "title": "Observability design",
+  "description": "Telemetry for devices and cloud path",
+  "objective": "Produce eos.artifact.padel-iot.observability-plan",
+  "project_id": "eos.project.padel-iot",
+  "capability_ids": [
+    "eos.capability.operations.observability"
+  ],
+  "role_ids": [
+    "eos.role.observability-engineer",
+    "eos.role.sre-reliability-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.padel-iot.system-architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.padel-iot.observability-plan"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.padel-iot.design-architecture"
+  ],
+  "status": "pending",
+  "priority": "high",
+  "risk": "high"
+}

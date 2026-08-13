@@ -1,0 +1,24 @@
+{
+  "id": "eos.task.padel-iot.mobile-control-plan",
+  "title": "Mobile control plan (gap)",
+  "description": "Remote mobile control architecture",
+  "objective": "Produce eos.artifact.padel-iot.mobile-control-plan",
+  "project_id": "eos.project.padel-iot",
+  "capability_ids": [],
+  "role_ids": [
+    "eos.role.cloud-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.padel-iot.connectivity-plan"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.padel-iot.mobile-control-plan"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.padel-iot.connectivity-plan"
+  ],
+  "status": "blocked",
+  "priority": "high",
+  "risk": "high",
+  "block_reason": "missing_capability_coverage"
+}

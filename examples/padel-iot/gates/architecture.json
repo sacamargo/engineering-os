@@ -1,0 +1,11 @@
+{
+  "id": "eos.gate.padel-iot.architecture",
+  "title": "Architecture Gate",
+  "project_id": "eos.project.padel-iot",
+  "condition": "Boundaries between software, IoT, cloud, and physical domains are explicit.",
+  "required_evidence": [
+    "eos.artifact.padel-iot.system-architecture"
+  ],
+  "result": "pending",
+  "on_failure": "block_dependent_tasks"
+}

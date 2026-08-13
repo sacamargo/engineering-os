@@ -1,0 +1,16 @@
+{
+  "id": "eos.escalation.padel-iot.electrical",
+  "project_id": "eos.project.padel-iot",
+  "domain": "electrical_engineering",
+  "can_reason": true,
+  "can_execute": false,
+  "requires_professional_approval": true,
+  "reason": "Lighting circuits, mains power, and electrical compliance are outside autonomous software execution.",
+  "related_artifact_ids": [
+    "eos.artifact.padel-iot.electrical-scope"
+  ],
+  "related_gate_ids": [
+    "eos.gate.padel-iot.professional-electrical"
+  ],
+  "status": "required"
+}
