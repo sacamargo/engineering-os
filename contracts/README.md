@@ -1,29 +1,31 @@
 # Contracts
 
-Phase 1 contracts make Knowledge Architecture and Capability Model **enforceable**.
+Contracts make Engineering OS models **enforceable**.
+
+## Knowledge Layer
 
 | Artifact | Role |
 |---|---|
-| [SPEC.md](SPEC.md) | Human-readable contract invariants |
-| [unit.schema.json](unit.schema.json) | Machine-readable single-unit metadata shape |
-| [validate.py](validate.py) | Executable catalog validator |
-| `fixtures/` | Valid/invalid examples used by tests |
-| `tests/` | Contract behavior tests |
+| [SPEC.md](SPEC.md) | Knowledge unit/capability invariants |
+| [unit.schema.json](unit.schema.json) | Single-unit metadata shape |
+| [validate.py](validate.py) | Knowledge catalog validator (+ calls execution validator) |
+| `fixtures/` | Knowledge fixtures |
+| `tests/` | Knowledge contract tests |
+
+## Execution Layer
+
+| Artifact | Role |
+|---|---|
+| [execution/SPEC.md](execution/SPEC.md) | Project/task/artifact/plan/gate contracts |
+| `execution/schemas/` | JSON Schema mirrors |
+| [validate_execution.py](validate_execution.py) | Execution bundle validator |
 
 ## Validate
 
-From the repository root:
-
 ```bash
 python3 contracts/validate.py
-python3 contracts/validate.py --root path/to/units
+python3 contracts/validate_execution.py
 python3 -m unittest discover -s contracts/tests -v
 ```
 
-With no module directories present, validation succeeds with zero units (progressive adoption).
-
-## Design Intent
-
-Contracts exist so a future Orchestrator can discover units by stable IDs, trust metadata for routing, and assemble relationship graphs without repository folklore.
-
-They deliberately do **not** create Capabilities, playbooks, skills, or adapters.
+With no module directories / no example bundles, validators succeed with zero objects (progressive adoption).

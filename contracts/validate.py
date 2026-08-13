@@ -553,12 +553,24 @@ def main(argv: list[str] | None = None) -> int:
 
     if not findings:
         print(f"OK — validated {len(files)} unit file(s), 0 violation(s)")
-        return 0
+        knowledge_rc = 0
+    else:
+        for finding in findings:
+            print(finding.format(), file=sys.stderr)
+        print(f"FAILED — validated {len(files)} unit file(s), {len(findings)} violation(s)", file=sys.stderr)
+        knowledge_rc = 1
 
-    for finding in findings:
-        print(finding.format(), file=sys.stderr)
-    print(f"FAILED — validated {len(files)} unit file(s), {len(findings)} violation(s)", file=sys.stderr)
-    return 1
+    # Also validate Execution Layer bundles when present.
+    exec_validator = Path(__file__).resolve().parent / "validate_execution.py"
+    execution_rc = 0
+    if exec_validator.exists():
+        import validate_execution
+
+        execution_rc = validate_execution.main(["--repo-root", str(repo_root)])
+
+    if knowledge_rc == 0 and execution_rc == 0:
+        return 0
+    return 1 if knowledge_rc or execution_rc else 0
 
 
 if __name__ == "__main__":
