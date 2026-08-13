@@ -1,0 +1,12 @@
+{
+  "id": "eos.artifact.rivallium.architecture",
+  "type": "architecture",
+  "title": "System Architecture",
+  "project_id": "eos.project.rivallium",
+  "origin": {
+    "kind": "execution_plan",
+    "project": "rivallium"
+  },
+  "status": "planned",
+  "version": "0.1.0"
+}

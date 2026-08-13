@@ -1,0 +1,84 @@
+{
+  "id": "eos.project.rivallium",
+  "title": "Rivallium Booking SaaS",
+  "objective": "Coordinate multi-capability execution planning for a court-booking SaaS without implementing the product.",
+  "context": "Phase 3 Execution Layer proof. Live Knowledge catalog covers architecture, security, test planning, and observability. Database, backend, frontend, and DevOps are required for a real build but lack dedicated Capabilities \u2014 recorded as coverage gaps, not invented IDs.",
+  "constraints": [
+    "Do not invent Capability IDs",
+    "Do not implement product code in this fixture",
+    "Knowledge relationships are not execution dependencies"
+  ],
+  "status": "planned",
+  "capability_ids": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "insufficient_coverage": [
+    {
+      "area": "database_engineering",
+      "needed_for": "Authoritative booking schema and concurrency model",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    },
+    {
+      "area": "backend_implementation",
+      "needed_for": "Booking API and domain services",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    },
+    {
+      "area": "frontend_implementation",
+      "needed_for": "Player and venue UI",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    },
+    {
+      "area": "devops_delivery",
+      "needed_for": "CI/CD and deployment topology",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    }
+  ],
+  "role_ids": [
+    "eos.role.system-architect",
+    "eos.role.software-architect",
+    "eos.role.security-engineer",
+    "eos.role.qa-test-engineer",
+    "eos.role.observability-engineer",
+    "eos.role.database-engineer",
+    "eos.role.backend-engineer",
+    "eos.role.frontend-engineer",
+    "eos.role.devops-engineer",
+    "eos.role.sre-reliability-engineer"
+  ],
+  "artifact_ids": [
+    "eos.artifact.rivallium.architecture",
+    "eos.artifact.rivallium.threat-model",
+    "eos.artifact.rivallium.test-strategy",
+    "eos.artifact.rivallium.observability-plan",
+    "eos.artifact.rivallium.database-schema",
+    "eos.artifact.rivallium.api-contract",
+    "eos.artifact.rivallium.frontend-plan",
+    "eos.artifact.rivallium.deployment-plan"
+  ],
+  "task_ids": [
+    "eos.task.rivallium.design-architecture",
+    "eos.task.rivallium.security-review",
+    "eos.task.rivallium.test-planning",
+    "eos.task.rivallium.observability-design",
+    "eos.task.rivallium.database-schema",
+    "eos.task.rivallium.api-contract",
+    "eos.task.rivallium.frontend-plan",
+    "eos.task.rivallium.deployment-plan"
+  ],
+  "gate_ids": [
+    "eos.gate.rivallium.architecture",
+    "eos.gate.rivallium.security",
+    "eos.gate.rivallium.test"
+  ],
+  "decision_ids": [
+    "eos.decision.rivallium.postgres-authority"
+  ]
+}

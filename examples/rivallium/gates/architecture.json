@@ -1,0 +1,13 @@
+{
+  "id": "eos.gate.rivallium.architecture",
+  "title": "Architecture Gate",
+  "project_id": "eos.project.rivallium",
+  "condition": "Architecture artifact is coherent and approved for dependent work.",
+  "required_evidence": [
+    "eos.artifact.rivallium.architecture",
+    "eos.task.rivallium.design-architecture"
+  ],
+  "result": "pending",
+  "approver": "eos.role.system-architect",
+  "on_failure": "block_dependent_tasks"
+}

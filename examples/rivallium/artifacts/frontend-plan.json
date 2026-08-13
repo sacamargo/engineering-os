@@ -1,0 +1,16 @@
+{
+  "id": "eos.artifact.rivallium.frontend-plan",
+  "type": "ui_plan",
+  "title": "Frontend Plan (gap-aware)",
+  "project_id": "eos.project.rivallium",
+  "origin": {
+    "kind": "execution_plan",
+    "project": "rivallium"
+  },
+  "status": "planned",
+  "version": "0.1.0",
+  "depends_on_artifacts": [
+    "eos.artifact.rivallium.api-contract"
+  ],
+  "coverage_note": "Planned artifact; producing Capability not yet in catalog"
+}

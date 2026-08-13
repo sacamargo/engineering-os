@@ -1,0 +1,13 @@
+{
+  "id": "eos.gate.rivallium.security",
+  "title": "Security Gate",
+  "project_id": "eos.project.rivallium",
+  "condition": "Threat model exists and critical risks are dispositioned.",
+  "required_evidence": [
+    "eos.artifact.rivallium.threat-model",
+    "eos.task.rivallium.security-review"
+  ],
+  "result": "pending",
+  "approver": "eos.role.security-engineer",
+  "on_failure": "block_dependent_tasks"
+}

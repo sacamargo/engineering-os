@@ -1,0 +1,24 @@
+{
+  "id": "eos.task.rivallium.database-schema",
+  "title": "Database schema (blocked on capability gap)",
+  "description": "Schema for bookings uniqueness",
+  "objective": "Produce/update eos.artifact.rivallium.database-schema",
+  "project_id": "eos.project.rivallium",
+  "capability_ids": [],
+  "role_ids": [
+    "eos.role.database-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.rivallium.architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.rivallium.database-schema"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.rivallium.design-architecture"
+  ],
+  "status": "blocked",
+  "priority": "high",
+  "risk": "high",
+  "block_reason": "missing_capability_coverage"
+}

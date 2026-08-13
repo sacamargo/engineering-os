@@ -1,0 +1,21 @@
+{
+  "id": "eos.task.rivallium.design-architecture",
+  "title": "Design system architecture",
+  "description": "Architecture for Rivallium booking SaaS",
+  "objective": "Produce/update eos.artifact.rivallium.architecture",
+  "project_id": "eos.project.rivallium",
+  "capability_ids": [
+    "eos.capability.design.system-architecture"
+  ],
+  "role_ids": [
+    "eos.role.system-architect"
+  ],
+  "input_artifact_ids": [],
+  "output_artifact_ids": [
+    "eos.artifact.rivallium.architecture"
+  ],
+  "depends_on_task_ids": [],
+  "status": "ready",
+  "priority": "high",
+  "risk": "medium"
+}

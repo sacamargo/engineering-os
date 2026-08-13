@@ -1,0 +1,24 @@
+{
+  "id": "eos.task.rivallium.frontend-plan",
+  "title": "Frontend plan (blocked on capability gap)",
+  "description": "UI plan for players and venues",
+  "objective": "Produce/update eos.artifact.rivallium.frontend-plan",
+  "project_id": "eos.project.rivallium",
+  "capability_ids": [],
+  "role_ids": [
+    "eos.role.frontend-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.rivallium.api-contract"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.rivallium.frontend-plan"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.rivallium.api-contract"
+  ],
+  "status": "blocked",
+  "priority": "medium",
+  "risk": "high",
+  "block_reason": "missing_capability_coverage"
+}

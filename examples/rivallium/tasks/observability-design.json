@@ -1,0 +1,25 @@
+{
+  "id": "eos.task.rivallium.observability-design",
+  "title": "Observability design",
+  "description": "SLIs/SLOs and telemetry plan",
+  "objective": "Produce/update eos.artifact.rivallium.observability-plan",
+  "project_id": "eos.project.rivallium",
+  "capability_ids": [
+    "eos.capability.operations.observability"
+  ],
+  "role_ids": [
+    "eos.role.observability-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.rivallium.architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.rivallium.observability-plan"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.rivallium.design-architecture"
+  ],
+  "status": "pending",
+  "priority": "medium",
+  "risk": "medium"
+}

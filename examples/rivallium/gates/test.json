@@ -1,0 +1,12 @@
+{
+  "id": "eos.gate.rivallium.test",
+  "title": "Test Gate",
+  "project_id": "eos.project.rivallium",
+  "condition": "Test strategy covers booking uniqueness and concurrency risks.",
+  "required_evidence": [
+    "eos.artifact.rivallium.test-strategy"
+  ],
+  "result": "pending",
+  "approver": "eos.role.qa-test-engineer",
+  "on_failure": "block_dependent_tasks"
+}

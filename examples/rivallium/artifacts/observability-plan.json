@@ -1,0 +1,15 @@
+{
+  "id": "eos.artifact.rivallium.observability-plan",
+  "type": "observability_plan",
+  "title": "Observability Plan",
+  "project_id": "eos.project.rivallium",
+  "origin": {
+    "kind": "execution_plan",
+    "project": "rivallium"
+  },
+  "status": "planned",
+  "version": "0.1.0",
+  "depends_on_artifacts": [
+    "eos.artifact.rivallium.architecture"
+  ]
+}

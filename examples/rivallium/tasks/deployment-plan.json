@@ -1,0 +1,25 @@
+{
+  "id": "eos.task.rivallium.deployment-plan",
+  "title": "Deployment plan (blocked on capability gap)",
+  "description": "Delivery topology sketch",
+  "objective": "Produce/update eos.artifact.rivallium.deployment-plan",
+  "project_id": "eos.project.rivallium",
+  "capability_ids": [],
+  "role_ids": [
+    "eos.role.devops-engineer",
+    "eos.role.sre-reliability-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.rivallium.architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.rivallium.deployment-plan"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.rivallium.design-architecture"
+  ],
+  "status": "blocked",
+  "priority": "medium",
+  "risk": "high",
+  "block_reason": "missing_capability_coverage"
+}

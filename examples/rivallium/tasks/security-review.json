@@ -1,0 +1,25 @@
+{
+  "id": "eos.task.rivallium.security-review",
+  "title": "Security review",
+  "description": "Threat model from architecture",
+  "objective": "Produce/update eos.artifact.rivallium.threat-model",
+  "project_id": "eos.project.rivallium",
+  "capability_ids": [
+    "eos.capability.security.review"
+  ],
+  "role_ids": [
+    "eos.role.security-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.rivallium.architecture"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.rivallium.threat-model"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.rivallium.design-architecture"
+  ],
+  "status": "pending",
+  "priority": "high",
+  "risk": "medium"
+}

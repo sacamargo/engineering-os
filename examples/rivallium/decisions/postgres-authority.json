@@ -1,0 +1,16 @@
+{
+  "id": "eos.decision.rivallium.postgres-authority",
+  "title": "Use PostgreSQL as booking authority",
+  "choice": "PostgreSQL transactional authority for slot uniqueness",
+  "reason": "Strong uniqueness and concurrency guarantees for overlapping bookings.",
+  "alternatives": [
+    "Event-sourced bookings",
+    "Distributed locks only"
+  ],
+  "evidence": [
+    "Concurrency requirement for court slots"
+  ],
+  "validation": "Integration tests for double-booking prevention (when implementation capability exists)",
+  "status": "proposed",
+  "project_id": "eos.project.rivallium"
+}

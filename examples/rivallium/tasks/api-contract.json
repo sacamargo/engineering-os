@@ -1,0 +1,25 @@
+{
+  "id": "eos.task.rivallium.api-contract",
+  "title": "API contract (blocked on capability gap)",
+  "description": "HTTP/API surface for booking",
+  "objective": "Produce/update eos.artifact.rivallium.api-contract",
+  "project_id": "eos.project.rivallium",
+  "capability_ids": [],
+  "role_ids": [
+    "eos.role.backend-engineer",
+    "eos.role.api-integration-engineer"
+  ],
+  "input_artifact_ids": [
+    "eos.artifact.rivallium.database-schema"
+  ],
+  "output_artifact_ids": [
+    "eos.artifact.rivallium.api-contract"
+  ],
+  "depends_on_task_ids": [
+    "eos.task.rivallium.database-schema"
+  ],
+  "status": "blocked",
+  "priority": "high",
+  "risk": "high",
+  "block_reason": "missing_capability_coverage"
+}

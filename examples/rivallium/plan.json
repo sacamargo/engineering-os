@@ -1,0 +1,121 @@
+{
+  "id": "eos.plan.rivallium",
+  "project_id": "eos.project.rivallium",
+  "intent_summary": "Build Rivallium court-booking SaaS: resolve capabilities, plan artifacts/tasks/gates, and surface coverage gaps for database/backend/frontend/DevOps.",
+  "capability_ids": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "insufficient_coverage": [
+    {
+      "area": "database_engineering",
+      "needed_for": "Authoritative booking schema and concurrency model",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    },
+    {
+      "area": "backend_implementation",
+      "needed_for": "Booking API and domain services",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    },
+    {
+      "area": "frontend_implementation",
+      "needed_for": "Player and venue UI",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    },
+    {
+      "area": "devops_delivery",
+      "needed_for": "CI/CD and deployment topology",
+      "status": "missing_capability",
+      "escalation": "human_or_future_capability"
+    }
+  ],
+  "artifact_ids": [
+    "eos.artifact.rivallium.architecture",
+    "eos.artifact.rivallium.threat-model",
+    "eos.artifact.rivallium.test-strategy",
+    "eos.artifact.rivallium.observability-plan",
+    "eos.artifact.rivallium.database-schema",
+    "eos.artifact.rivallium.api-contract",
+    "eos.artifact.rivallium.frontend-plan",
+    "eos.artifact.rivallium.deployment-plan"
+  ],
+  "task_ids": [
+    "eos.task.rivallium.design-architecture",
+    "eos.task.rivallium.security-review",
+    "eos.task.rivallium.test-planning",
+    "eos.task.rivallium.observability-design",
+    "eos.task.rivallium.database-schema",
+    "eos.task.rivallium.api-contract",
+    "eos.task.rivallium.frontend-plan",
+    "eos.task.rivallium.deployment-plan"
+  ],
+  "gate_ids": [
+    "eos.gate.rivallium.architecture",
+    "eos.gate.rivallium.security",
+    "eos.gate.rivallium.test"
+  ],
+  "dependencies": [
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.rivallium.security-review",
+      "to": "eos.task.rivallium.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.rivallium.test-planning",
+      "to": "eos.task.rivallium.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.rivallium.observability-design",
+      "to": "eos.task.rivallium.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.rivallium.database-schema",
+      "to": "eos.task.rivallium.design-architecture"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.rivallium.api-contract",
+      "to": "eos.task.rivallium.database-schema"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.rivallium.frontend-plan",
+      "to": "eos.task.rivallium.api-contract"
+    },
+    {
+      "kind": "task_depends_on_task",
+      "from": "eos.task.rivallium.deployment-plan",
+      "to": "eos.task.rivallium.design-architecture"
+    },
+    {
+      "kind": "task_requires_artifact",
+      "from": "eos.task.rivallium.security-review",
+      "to": "eos.artifact.rivallium.architecture"
+    },
+    {
+      "kind": "gate_requires_artifact",
+      "from": "eos.gate.rivallium.architecture",
+      "to": "eos.artifact.rivallium.architecture"
+    },
+    {
+      "kind": "gate_requires_artifact",
+      "from": "eos.gate.rivallium.security",
+      "to": "eos.artifact.rivallium.threat-model"
+    },
+    {
+      "kind": "gate_requires_artifact",
+      "from": "eos.gate.rivallium.test",
+      "to": "eos.artifact.rivallium.test-strategy"
+    }
+  ],
+  "status": "draft",
+  "revision": 1
+}
