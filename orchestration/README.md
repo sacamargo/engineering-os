@@ -9,7 +9,9 @@ See [SPEC.md](SPEC.md) and [docs/PHASE-4-ORCHESTRATION-AUDIT.md](../docs/PHASE-4
 ## Demo
 
 ```bash
-python3 -m orchestration.cli "Build a booking SaaS that is secure, testable, and observable."
+PYTHONPATH=. python3 -m orchestration.cli "Build a booking SaaS that is secure, testable, and observable."
+PYTHONPATH=. python3 -m orchestration.cli --json "Audita este sistema por vulnerabilidades."
+PYTHONPATH=. python3 -m unittest discover -s orchestration/tests -v
 ```
 
 ## Design rule

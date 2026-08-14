@@ -50,15 +50,15 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-**Phase 3 — Execution Model** is landed as architecture + contracts + fixtures (not a production orchestrator).
+**Phase 4 — Orchestration** lands a **Planning Orchestrator** (`orchestration/`) that turns utterances into structured Execution Plans.
 
-- Knowledge + Capability catalog: architecture, security review, test planning, observability/metrics
-- Execution models under `foundation/` (project/task/artifact/plan/gates/roles/…)
-- Execution contracts + validators under `contracts/`
-- Multi-capability fixtures: `examples/rivallium/`, `examples/padel-iot/`
-- Agency scenario tests: `tests/agency/`
-- Portable agency skill: `eos.skill.agency.capability-routing`
-- Cursor adaptation: `.cursor/skills/engineering-os-agency`
+- Intent intake → Capability/Role/Knowledge resolution → plan/tasks/artifacts/gates
+- Readiness, gaps, human escalation, evidence vs claim, failure/replan/impact (planning-time)
+- Boundaries only for codebase intelligence, agents, delivery, and adapters
+- Demo: `PYTHONPATH=. python3 -m orchestration.cli "Build a secure, testable, observable booking SaaS."`
+- Phase 3 execution contracts/fixtures remain authoritative for on-disk bundles
+
+This is **not** autonomous coding, repo mutation, CI/CD, or production operations yet.
 
 Missing domains still return honest `insufficient_coverage` / professional escalation — never invented Capabilities.
 
@@ -76,6 +76,7 @@ Missing domains still return honest `insufficient_coverage` / professional escal
 | [Capability Model](foundation/CAPABILITY-MODEL.md) | Intent-class routing and fulfillment facades |
 | [Intent Resolution](foundation/INTENT-RESOLUTION.md) | Framing requests into Capability candidates |
 | [Execution Model](foundation/EXECUTION-MODEL.md) | Intent → plan → tasks → gates coordination |
+| [Orchestration package](orchestration/README.md) | Planning Orchestrator (Phase 4) |
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
 | [Contracts](contracts/README.md) | Knowledge + execution contracts and validation |

@@ -49,7 +49,7 @@ Minimum operational Capability catalog + agency MVP routing.
 
 ---
 
-## Phase 3 — Execution Model (current)
+## Phase 3 — Execution Model
 
 Architecture that turns Capabilities into coordinated engineering execution.
 
@@ -70,18 +70,25 @@ Architecture that turns Capabilities into coordinated engineering execution.
 
 ---
 
-## Phase 4 — Orchestration
+## Phase 4 — Orchestration (current)
 
-Implement a minimal Orchestrator that coordinates plans without becoming a god object.
+Implement a minimal **Planning Orchestrator** that coordinates plans without becoming a god object.
 
-Expected work:
+- [x] Intent Intake
+- [x] Capability Resolution + multi-capability arbitration
+- [x] Role + Knowledge resolution
+- [x] Plan generation with artifact-based dependencies
+- [x] Readiness / gaps / escalation / gates evaluation
+- [x] Evidence/decision/failure/replan/impact models (planning-time)
+- [x] Codebase / Agent / Delivery / Adapter boundaries
+- [x] Behavioral agency scenarios + anti-god-object guard
+- [ ] Live Orchestrator engine that executes tasks against real repos (Phase 5+)
+- [ ] Agent fleet runtime
+- [ ] CI/CD delivery automation
 
-- Plan generation assistance against live catalog
-- Task readiness evaluation
-- Gate evaluation hooks
-- Explicit replan / escalate paths
+**Exit criteria:** High-level intents produce valid Execution Plans with honest gaps and human stops — without pretending autonomous coding.
 
-**Not started.**
+**Not a full autonomous coding agency yet.**
 
 ---
 
