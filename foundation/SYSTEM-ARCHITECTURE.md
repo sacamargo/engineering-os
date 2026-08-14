@@ -1,10 +1,12 @@
 # System Architecture
 
-This document defines the **system architecture** of Engineering OS: layers, module taxonomy, dependency rules, and extension boundaries.
+This document defines the **system architecture** of Engineering OS: layers, module taxonomy, dependency rules, execution/agency boundaries, and extension rules.
 
 It does **not** define how knowledge is structured for humans and AI. That belongs to [Knowledge Architecture](KNOWLEDGE-ARCHITECTURE.md).
 
 It does **not** define the Capability catalog semantics. That belongs to [Capability Model](CAPABILITY-MODEL.md).
+
+It does **not** define execution object schemas. Those belong to Execution Layer foundation docs (`EXECUTION-MODEL`, `PROJECT-MODEL`, `TASK-MODEL`, …).
 
 It does **not** define how this repository is developed. That belongs to [Engineering Workflow](ENGINEERING-WORKFLOW.md).
 
@@ -28,22 +30,72 @@ The metaphor guides boundaries. It is not a mandate to imitate operating-system 
 
 ---
 
+
+---
+
+## Agency Architecture (Conceptual)
+
+Engineering OS aims to behave as an **autonomous software engineering agency**. The following diagram is conceptual — not a claim that runtime orchestration is implemented.
+
+```text
+                USER
+                  ↓
+               INTENT
+                  ↓
+          ┌───────────────┐
+          │    ROUTING    │
+          └───────┬───────┘
+                  ↓
+             CAPABILITIES
+                  ↓
+             KNOWLEDGE
+                  ↓
+          EXECUTION PLANNER
+                  ↓
+          EXECUTION PLAN
+                  ↓
+       ┌──────────┴──────────┐
+       ↓                     ↓
+     TASKS                 AGENTS
+       ↓                     ↓
+       └──────────┬──────────┘
+                  ↓
+              ARTIFACTS
+                  ↓
+           VALIDATION GATES
+                  ↓
+              DELIVERY
+                  ↓
+            OBSERVABILITY
+                  ↓
+             EVOLUTION
+```
+
+Composition rule: Capabilities, Knowledge Units, Roles, Agents, Tasks, Artifacts, and Gates must remain distinct. None may absorb the others.
+
 ## Layer Model
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
-│  Adaptations (optional, vendor-specific, replaceable)        │
+│  Adapter Layer (optional, vendor-specific, replaceable)      │
 ├──────────────────────────────────────────────────────────────┤
-│  Modules = Knowledge Units (playbooks, skills, standards…)   │
+│  Agent Layer (executors — boundary defined; runtime later)   │
 ├──────────────────────────────────────────────────────────────┤
-│  Capability Catalog (intent routing / fulfillment facades)   │
+│  Delivery Layer (repo/CI/deploy — boundary; runtime later)   │
 ├──────────────────────────────────────────────────────────────┤
-│  Contracts (schemas for units and capabilities)              │
+│  Validation Layer (gates + evidence)                         │
+├──────────────────────────────────────────────────────────────┤
+│  Execution Layer (projects, plans, tasks, artifacts, roles)  │
+├──────────────────────────────────────────────────────────────┤
+│  Knowledge Layer (playbooks, skills, standards, frameworks…) │
+├──────────────────────────────────────────────────────────────┤
+│  Capability Layer (intent routing / fulfillment facades)     │
+├──────────────────────────────────────────────────────────────┤
+│  Contracts (knowledge + execution schemas / validators)      │
 ├──────────────────────────────────────────────────────────────┤
 │  Foundation / Kernel                                         │
-│    vision · philosophy · principles                          │
-│    system · knowledge · capability model                     │
-│    project roadmap · engineering workflow                    │
+│    vision · philosophy · principles · architectures          │
+│    execution/agency models · roadmap · workflow              │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -62,6 +114,10 @@ Authoritative design intent. Changes rarely and only with explicit rationale.
 | `INTENT-RESOLUTION.md` | Intent framing and Capability candidate resolution |
 | `PROJECT-ROADMAP.md` | Long-term evolution sequence |
 | `ENGINEERING-WORKFLOW.md` | How this repository is developed |
+| `EXECUTION-MODEL.md` | Coordination spine Intent→Plan→Tasks→Gates |
+| `PROJECT-MODEL.md` / `TASK-MODEL.md` / `ARTIFACT-MODEL.md` | Execution objects |
+| `ORCHESTRATOR-MODEL.md` / `AGENT-MODEL.md` / `ADAPTER-MODEL.md` | Runtime boundaries (not implementations) |
+| `DELIVERY-MODEL.md` / `HUMAN-ESCALATION.md` | Delivery vs autonomy limits |
 
 ### Layer 1 — Contracts
 
@@ -87,7 +143,23 @@ Reusable engineering knowledge that fulfills Capabilities: methods, standards, p
 
 Modules must remain independently meaningful. Capabilities optimize routing; they do not make modules unreachable.
 
-### Layer 4 — Adaptations
+### Layer 4 — Execution, Validation, Delivery, Agents (models)
+
+Phase 3 lands **models and contracts**, not a production orchestrator.
+
+| Concern | Authority |
+|---|---|
+| Execution coordination | [EXECUTION-MODEL](EXECUTION-MODEL.md), [EXECUTION-PLAN](EXECUTION-PLAN.md) |
+| Validation | [VALIDATION-GATES](VALIDATION-GATES.md), [EVIDENCE-MODEL](EVIDENCE-MODEL.md) |
+| Delivery boundary | [DELIVERY-MODEL](DELIVERY-MODEL.md) |
+| Orchestrator boundary | [ORCHESTRATOR-MODEL](ORCHESTRATOR-MODEL.md) |
+| Agents / Roles | [AGENT-MODEL](AGENT-MODEL.md), [ROLE-MODEL](ROLE-MODEL.md) |
+| Adapters | [ADAPTER-MODEL](ADAPTER-MODEL.md) |
+
+Examples proving the model: `examples/rivallium/`, `examples/padel-iot/`.
+
+### Layer 5 — Adaptations
+
 
 Thin mappings from portable Capabilities/units onto specific tools. Adaptations may package or translate; they must not become the source of truth.
 
@@ -177,6 +249,8 @@ engineering-os/
 ├── frameworks/                      # Decision models
 ├── skills/                          # Portable AI-operable procedures
 ├── adaptations/                     # Optional tool packaging
+├── examples/                        # Execution / agency fixtures
+├── tests/                           # Contract + agency tests
 ├── standards/                       # Future
 ├── workflows/                       # Future
 ├── templates/                       # Future
