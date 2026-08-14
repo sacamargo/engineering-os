@@ -75,6 +75,21 @@ These are **catalog labels for specialization**, not mandatory permanent agents.
 ### External / professional specializations
 
 25. `eos.role.electrical-engineer-professional` — licensed electrical work (escalation; not an Engineering OS Capability)
+26. `eos.role.product-analyst`
+27. `eos.role.business-analyst`
+28. `eos.role.application-security-engineer`
+29. `eos.role.test-engineer`
+30. `eos.role.reliability-engineer`
+31. `eos.role.data-engineer`
+32. `eos.role.ml-engineer`
+33. `eos.role.integration-engineer`
+34. `eos.role.platform-engineer`
+35. `eos.role.mobile-engineer`
+36. `eos.role.ui-ux-designer`
+37. `eos.role.technical-writer`
+38. `eos.role.codebase-analyst`
+39. `eos.role.compliance-security-reviewer`
+40. `eos.role.human-professional-external`
 
 Roles may also denote other human professional lanes for escalation — without inventing Engineering OS Capabilities for regulated practice.
 

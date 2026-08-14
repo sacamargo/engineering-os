@@ -1,0 +1,53 @@
+{
+  "bindings": [
+    {
+      "capability_id": "eos.capability.design.system-architecture",
+      "role_ids": [
+        "eos.role.system-architect",
+        "eos.role.software-architect",
+        "eos.role.technical-lead"
+      ]
+    },
+    {
+      "capability_id": "eos.capability.security.review",
+      "role_ids": [
+        "eos.role.security-engineer",
+        "eos.role.application-security-engineer",
+        "eos.role.technical-lead"
+      ]
+    },
+    {
+      "capability_id": "eos.capability.quality.test-planning",
+      "role_ids": [
+        "eos.role.qa-test-engineer",
+        "eos.role.test-engineer",
+        "eos.role.technical-lead"
+      ]
+    },
+    {
+      "capability_id": "eos.capability.operations.observability",
+      "role_ids": [
+        "eos.role.observability-engineer",
+        "eos.role.sre-reliability-engineer",
+        "eos.role.reliability-engineer"
+      ]
+    }
+  ],
+  "gap_area_roles": {
+    "backend_implementation": ["eos.role.backend-engineer", "eos.role.api-integration-engineer"],
+    "frontend_implementation": ["eos.role.frontend-engineer", "eos.role.ui-ux-designer"],
+    "database_engineering": ["eos.role.database-engineer"],
+    "devops_delivery": ["eos.role.devops-engineer", "eos.role.release-engineer", "eos.role.platform-engineer"],
+    "cloud_mobile": ["eos.role.cloud-engineer", "eos.role.mobile-engineer"],
+    "iot_device_engineering": ["eos.role.integration-engineer", "eos.role.infrastructure-engineer"],
+    "networking": ["eos.role.infrastructure-engineer", "eos.role.cloud-engineer"],
+    "electrical_engineering": ["eos.role.electrical-engineer-professional"],
+    "physical_access_control": ["eos.role.human-professional-external", "eos.role.security-engineer"],
+    "payments_billing": ["eos.role.product-manager", "eos.role.backend-engineer"]
+  },
+  "human_required_roles": [
+    "eos.role.electrical-engineer-professional",
+    "eos.role.human-professional-external",
+    "eos.role.compliance-security-reviewer"
+  ]
+}
