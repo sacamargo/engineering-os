@@ -171,7 +171,9 @@ Deferred as runtime (define boundaries only where listed later in Phase 3):
 
 ## 7. Success Condition for Leaving This Audit
 
-After later Phase 3 tasks land, Engineering OS should be able to represent — as models and fixtures, not necessarily as autonomous runtime — a project such as Rivallium with:
+**Status (end of Phase 3):** Satisfied via models + fixtures (`examples/rivallium/`, `examples/padel-iot/`). Runtime orchestration remains future work.
+
+Engineering OS can represent — as models and fixtures, not as autonomous runtime — a project such as Rivallium with:
 
 - intent
 - required Capabilities

@@ -74,7 +74,9 @@ These are **catalog labels for specialization**, not mandatory permanent agents.
 
 ### External / professional specializations
 
-Roles may also denote human professional lanes (example: electrical engineer) for escalation — without inventing Engineering OS Capabilities for regulated practice.
+25. `eos.role.electrical-engineer-professional` — licensed electrical work (escalation; not an Engineering OS Capability)
+
+Roles may also denote other human professional lanes for escalation — without inventing Engineering OS Capabilities for regulated practice.
 
 ---
 
