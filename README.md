@@ -1,33 +1,28 @@
 # Engineering OS
 
-**An AI-native operating system for software engineering.**
+**An autonomous software engineering agency — vendor-neutral, AI-native, architecture-first.**
 
-Engineering OS is an engineering decision system — Capabilities, playbooks, decision frameworks, standards, workflows, templates, checklists, and specialized AI skills — designed to help humans and AI make better software engineering decisions.
+Engineering OS turns high-level engineering intent (“build this”, “audit this”, “investigate this”) into coordinated Capabilities, knowledge, execution plans, tasks, artifacts, and validation gates.
 
+It is **not** only a knowledge base.  
 It is **not** a prompt collection.  
 It is **not** a Cursor rules repository.  
 It is **not** a catalog of GPTs or vendor-specific agents.  
 It is **not** organized primarily around documents.
 
-It is a vendor-neutral platform and **knowledge system** that should remain useful regardless of which AI tools exist today — or ten years from now.
-
----
-
-## What This Is
-
-Engineering OS treats software engineering as a system that can be operated deliberately:
+It is a vendor-neutral platform composed of:
 
 | Layer | Role |
 |---|---|
-| **Foundation** | Vision, philosophy, principles, system/knowledge/capability models, workflow, roadmap |
-| **Contracts** | Enforceable schemas and validation for Capabilities and knowledge units |
-| **Capabilities** | Durable intent classes the system offers to fulfill |
-| **Modules** | Knowledge units that fulfill Capabilities: playbooks, skills, standards, workflows, templates, checklists, frameworks |
-| **Adaptations** | Thin, optional bridges to specific AI tools and environments |
+| **Knowledge Layer** | Playbooks, frameworks, skills, standards, and related units |
+| **Capability Layer** | Durable intent classes for routing |
+| **Execution Layer** | Projects, plans, tasks, artifacts, roles, dependencies |
+| **Validation Layer** | Gates and evidence requirements |
+| **Delivery Layer** | Boundary for repo/CI/deploy/release (runtime later) |
+| **Agent Layer** | Executor boundary (runtime later) |
+| **Adapter Layer** | Optional bridges to Cursor, CLI, GitHub, CI, clouds |
 
-Users ask for outcomes. Capabilities route those intents. Knowledge units fulfill them.
-
----
+Users ask for outcomes. Engineering OS resolves specialists, Capabilities, plans, and validations — users should not need to assemble that menu manually.
 
 ## Design Stance
 
@@ -55,14 +50,17 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-Functional agency MVP is available:
+**Phase 3 — Execution Model** is landed as architecture + contracts + fixtures (not a production orchestrator).
 
-- Capabilities: architecture, security review, test planning, observability/metrics
+- Knowledge + Capability catalog: architecture, security review, test planning, observability/metrics
+- Execution models under `foundation/` (project/task/artifact/plan/gates/roles/…)
+- Execution contracts + validators under `contracts/`
+- Multi-capability fixtures: `examples/rivallium/`, `examples/padel-iot/`
+- Agency scenario tests: `tests/agency/`
 - Portable agency skill: `eos.skill.agency.capability-routing`
-- Cursor adaptation skill: `.cursor/skills/engineering-os-agency`
-- Use cases: `experiments/agency-mvp/USE-CASES.md`
+- Cursor adaptation: `.cursor/skills/engineering-os-agency`
 
-This is not the full long-term catalog. Missing domains still return honest `insufficient_coverage`.
+Missing domains still return honest `insufficient_coverage` / professional escalation — never invented Capabilities.
 
 ---
 
@@ -77,9 +75,12 @@ This is not the full long-term catalog. Missing domains still return honest `ins
 | [Knowledge Architecture](foundation/KNOWLEDGE-ARCHITECTURE.md) | Knowledge units, retrieval, and AI consumption |
 | [Capability Model](foundation/CAPABILITY-MODEL.md) | Intent-class routing and fulfillment facades |
 | [Intent Resolution](foundation/INTENT-RESOLUTION.md) | Framing requests into Capability candidates |
+| [Execution Model](foundation/EXECUTION-MODEL.md) | Intent → plan → tasks → gates coordination |
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
-| [Contracts](contracts/README.md) | Enforceable unit/capability metadata and validation |
+| [Contracts](contracts/README.md) | Knowledge + execution contracts and validation |
+| [Rivallium Example](examples/rivallium/execution-plan.md) | Multi-capability execution proof |
+| [Padel IoT Example](examples/padel-iot/execution-plan.md) | Cross-domain + professional escalation |
 | [Intent Disambiguation Experiment](experiments/intent-disambiguation/README.md) | Authored routing cases + structural evaluator |
 | [Agency MVP Use Cases](experiments/agency-mvp/USE-CASES.md) | Runnable prompts to test the agency loop |
 | [System Architecture Capability](capabilities/design/system-architecture.md) | Architecture-design intent routing |
