@@ -1,0 +1,35 @@
+{
+  "capability_templates": {
+    "eos.capability.design.system-architecture": {
+      "artifact_type": "architecture",
+      "artifact_slug": "architecture",
+      "task_slug": "design-architecture",
+      "title": "Design system architecture",
+      "gate": "architecture"
+    },
+    "eos.capability.security.review": {
+      "artifact_type": "threat_model",
+      "artifact_slug": "threat-model",
+      "task_slug": "security-review",
+      "title": "Security review",
+      "gate": "security",
+      "depends_on_artifact": "architecture"
+    },
+    "eos.capability.quality.test-planning": {
+      "artifact_type": "test_strategy",
+      "artifact_slug": "test-strategy",
+      "task_slug": "test-planning",
+      "title": "Test planning",
+      "gate": "test",
+      "depends_on_artifact": "architecture"
+    },
+    "eos.capability.operations.observability": {
+      "artifact_type": "observability_plan",
+      "artifact_slug": "observability-plan",
+      "task_slug": "observability-design",
+      "title": "Observability design",
+      "gate": "observability",
+      "depends_on_artifact": "architecture"
+    }
+  }
+}
