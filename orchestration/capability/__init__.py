@@ -166,6 +166,15 @@ def _score_capability(intent: StructuredIntent, cap: CatalogUnit) -> tuple[float
         if "does not" in limits or "incident response" in limits:
             score -= 0.5
 
+    # Build/design product intents: architecture is typically the structural primary
+    if cap.id.endswith("system-architecture") and intents & {"build", "design"}:
+        if any(
+            token in utterance
+            for token in ("saas", "system", "sistema", "aplicación", "application", "constru", "build")
+        ):
+            score += 5.0
+            evidence.append("build_design_architecture_primary_boost")
+
     return score, evidence
 
 

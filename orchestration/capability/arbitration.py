@@ -45,7 +45,23 @@ def arbitrate_capabilities(
 
     candidates = list(resolution.candidates)
     primary = resolution.primary
-    secondary = [c.capability_id for c in candidates if c.capability_id != primary and c.confidence in {"high", "medium"}]
+
+    # For product build/design, prefer system-architecture as primary when present
+    intents = set(intent.possible_intents)
+    if intents & {"build", "design"}:
+        arch = "eos.capability.design.system-architecture"
+        if any(c.capability_id == arch for c in candidates):
+            primary = arch
+            notes.append(
+                "Build/design arbitration prefers system-architecture as PRIMARY when selected; "
+                "security/testing/observability remain SECONDARY."
+            )
+
+    secondary = [
+        c.capability_id
+        for c in candidates
+        if c.capability_id != primary and c.confidence in {"high", "medium"}
+    ]
     related = [r for r in resolution.related if r not in secondary and r != primary]
 
     # Ensure related suggested from catalog are marked related if not selected secondary
@@ -59,7 +75,6 @@ def arbitrate_capabilities(
 
     conflicting = list(resolution.conflicting)
     # Competing intents: audit-only vs build-heavy
-    intents = set(intent.possible_intents)
     if "audit" in intents and "build" in intents:
         conflicting.append("audit_and_build_bundled")
         notes.append("Bundled audit+build: keep both Capabilities selectable; do not collapse into one.")

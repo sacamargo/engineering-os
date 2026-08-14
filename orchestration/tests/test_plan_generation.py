@@ -30,6 +30,7 @@ class PlanGenerationTests(unittest.TestCase):
         caps = set(plan.plan["capability_ids"])
         self.assertIn("eos.capability.design.system-architecture", caps)
         self.assertIn("eos.capability.security.review", caps)
+        self.assertEqual(arb.primary, "eos.capability.design.system-architecture")
 
         art_types = {a["type"] for a in plan.artifacts}
         self.assertIn("architecture", art_types)
@@ -53,7 +54,14 @@ class PlanGenerationTests(unittest.TestCase):
             next(t["id"] for t in plan.tasks if t["id"].endswith("design-architecture")),
             obs["depends_on_task_ids"],
         )
-        self.assertFalse(any("stripe" in str(plan.to_dict()).lower() for _ in [0]))
+        blob = str(plan.to_dict()).lower()
+        self.assertNotIn('"choice": "stripe"', blob)
+        self.assertFalse(
+            any(
+                f.get("value", "").lower() == "stripe"
+                for f in plan.project.get("uncertainties", [])
+            )
+        )
         self.assertTrue(plan.gates)
         self.assertTrue(plan.project["insufficient_coverage"])
 

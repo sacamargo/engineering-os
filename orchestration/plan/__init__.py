@@ -124,61 +124,18 @@ def generate_plan(
         )
         task_ids_by_slug["define-requirements"] = req_task
 
+    # Pass 1: create artifacts/tasks/gates for every selected Capability that has a template
+    selected_specs: list[tuple[str, dict[str, Any]]] = []
     for cap_id in arbitration.selected:
         spec = cap_artifacts.get(cap_id)
         if not spec:
             notes.append(f"No default artifact template for {cap_id}; skipped structural generation.")
             continue
+        selected_specs.append((cap_id, spec))
         art_id = f"eos.artifact.{slug}.{spec['artifact_slug']}"
         task_id = f"eos.task.{slug}.{spec['task_slug']}"
         artifact_ids_by_slug[spec["artifact_slug"]] = art_id
         task_ids_by_slug[spec["task_slug"]] = task_id
-
-        depends_art_slug = spec.get("depends_on_artifact")
-        input_arts: list[str] = []
-        depends_tasks: list[str] = []
-        if depends_art_slug and depends_art_slug in artifact_ids_by_slug:
-            input_arts.append(artifact_ids_by_slug[depends_art_slug])
-        if spec["artifact_slug"] == "architecture" and "requirements" in artifact_ids_by_slug:
-            input_arts.append(artifact_ids_by_slug["requirements"])
-            depends_tasks.append(task_ids_by_slug["define-requirements"])
-            dependencies.append(
-                {
-                    "kind": "task_depends_on_task",
-                    "from": task_id,
-                    "to": task_ids_by_slug["define-requirements"],
-                }
-            )
-            dependencies.append(
-                {
-                    "kind": "task_requires_artifact",
-                    "from": task_id,
-                    "to": artifact_ids_by_slug["requirements"],
-                }
-            )
-
-        if depends_art_slug:
-            producer = None
-            for other_cap, other_spec in cap_artifacts.items():
-                if (
-                    other_spec["artifact_slug"] == depends_art_slug
-                    and other_cap in arbitration.selected
-                ):
-                    producer = task_ids_by_slug.get(other_spec["task_slug"])
-                    break
-            if producer:
-                depends_tasks.append(producer)
-                dependencies.append(
-                    {"kind": "task_depends_on_task", "from": task_id, "to": producer}
-                )
-                dependencies.append(
-                    {
-                        "kind": "task_requires_artifact",
-                        "from": task_id,
-                        "to": artifact_ids_by_slug[depends_art_slug],
-                    }
-                )
-
         artifacts.append(
             {
                 "id": art_id,
@@ -186,12 +143,9 @@ def generate_plan(
                 "title": spec["title"] + " artifact",
                 "project_id": project_id,
                 "status": "planned",
-                "depends_on_artifacts": list(input_arts),
+                "depends_on_artifacts": [],
             }
         )
-
-        knowledge_ids = [s.unit_id for s in knowledge.selected if s.capability_id == cap_id]
-        status = "pending" if depends_tasks else "ready"
         tasks.append(
             {
                 "id": task_id,
@@ -201,16 +155,17 @@ def generate_plan(
                 "project_id": project_id,
                 "capability_ids": [cap_id],
                 "role_ids": role_by_cap.get(cap_id, []),
-                "input_artifact_ids": input_arts,
+                "input_artifact_ids": [],
                 "output_artifact_ids": [art_id],
-                "depends_on_task_ids": depends_tasks,
-                "status": status,
+                "depends_on_task_ids": [],
+                "status": "ready",
                 "priority": "high",
                 "risk": "medium",
-                "knowledge_unit_ids": knowledge_ids,
+                "knowledge_unit_ids": [
+                    s.unit_id for s in knowledge.selected if s.capability_id == cap_id
+                ],
             }
         )
-
         gate_id = f"eos.gate.{slug}.{spec['gate']}"
         gates.append(
             {
@@ -225,6 +180,41 @@ def generate_plan(
             }
         )
         dependencies.append({"kind": "gate_requires_artifact", "from": gate_id, "to": art_id})
+
+    # Pass 2: wire artifact/task dependencies regardless of Capability selection order
+    tasks_by_id = {t["id"]: t for t in tasks}
+    artifacts_by_id = {a["id"]: a for a in artifacts}
+    for cap_id, spec in selected_specs:
+        art_id = artifact_ids_by_slug[spec["artifact_slug"]]
+        task_id = task_ids_by_slug[spec["task_slug"]]
+        input_arts: list[str] = []
+        depends_tasks: list[str] = []
+
+        if spec["artifact_slug"] == "architecture" and "requirements" in artifact_ids_by_slug:
+            input_arts.append(artifact_ids_by_slug["requirements"])
+            depends_tasks.append(task_ids_by_slug["define-requirements"])
+
+        depends_art_slug = spec.get("depends_on_artifact")
+        if depends_art_slug and depends_art_slug in artifact_ids_by_slug:
+            input_arts.append(artifact_ids_by_slug[depends_art_slug])
+            for other_cap, other_spec in selected_specs:
+                if other_spec["artifact_slug"] == depends_art_slug:
+                    depends_tasks.append(task_ids_by_slug[other_spec["task_slug"]])
+                    break
+
+        # de-dupe
+        input_arts = list(dict.fromkeys(input_arts))
+        depends_tasks = list(dict.fromkeys(depends_tasks))
+
+        artifacts_by_id[art_id]["depends_on_artifacts"] = input_arts
+        tasks_by_id[task_id]["input_artifact_ids"] = input_arts
+        tasks_by_id[task_id]["depends_on_task_ids"] = depends_tasks
+        tasks_by_id[task_id]["status"] = "pending" if depends_tasks else "ready"
+
+        for dep in depends_tasks:
+            dependencies.append({"kind": "task_depends_on_task", "from": task_id, "to": dep})
+        for art in input_arts:
+            dependencies.append({"kind": "task_requires_artifact", "from": task_id, "to": art})
 
     for gap in arbitration.insufficient:
         area = gap["area"]
