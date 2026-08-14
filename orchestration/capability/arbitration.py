@@ -46,9 +46,10 @@ def arbitrate_capabilities(
     candidates = list(resolution.candidates)
     primary = resolution.primary
 
-    # For product build/design, prefer system-architecture as primary when present
+    # For product build/design, prefer system-architecture as primary when present —
+    # unless audit/incident intents dominate.
     intents = set(intent.possible_intents)
-    if intents & {"build", "design"}:
+    if intents & {"build", "design"} and not (intents & {"audit", "investigate_incident"}):
         arch = "eos.capability.design.system-architecture"
         if any(c.capability_id == arch for c in candidates):
             primary = arch
@@ -56,6 +57,11 @@ def arbitrate_capabilities(
                 "Build/design arbitration prefers system-architecture as PRIMARY when selected; "
                 "security/testing/observability remain SECONDARY."
             )
+    if "audit" in intents and any(
+        c.capability_id == "eos.capability.security.review" for c in candidates
+    ):
+        primary = "eos.capability.security.review"
+        notes.append("Audit intents prefer security.review as PRIMARY.")
 
     secondary = [
         c.capability_id

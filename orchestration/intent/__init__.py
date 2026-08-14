@@ -116,8 +116,6 @@ def intake_intent(utterance: str, context: dict[str, Any] | None = None) -> Stru
         "saas",
         "aplicación",
         "application",
-        "system",
-        "sistema",
         "automatiz",
     )
     design_phrases = ("design", "diseñ", "architecture", "arquitectura", "structure", "estructura")
