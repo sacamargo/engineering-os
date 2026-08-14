@@ -8,7 +8,7 @@ A **Role** is an execution specialization — the kind of expertise a task may r
 
 Users ask for outcomes. Engineering OS may compose roles internally. Users must not be forced to assemble specialist menus.
 
-Sibling models: [Capability Model](CAPABILITY-MODEL.md), [Task Model](TASK-MODEL.md), [Agent Model](AGENT-MODEL.md) (boundary later)
+Sibling models: [Capability Model](CAPABILITY-MODEL.md), [Task Model](TASK-MODEL.md), [Agent Model](AGENT-MODEL.md)
 
 ---
 

@@ -56,7 +56,7 @@ Keep optional fields optional. Progressive adoption applies.
 
 ## Project States
 
-Aligned with the Execution Layer state machine (detailed later):
+Aligned with the Execution Layer state machine ([EXECUTION-STATE-MACHINE](EXECUTION-STATE-MACHINE.md)):
 
 ```text
 discovered → planned → ready → executing → blocked → validating → completed
