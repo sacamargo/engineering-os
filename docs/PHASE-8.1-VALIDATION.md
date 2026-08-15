@@ -86,4 +86,4 @@ PYTHONPATH=. python3 -m unittest discover -s agents/tests
 
 ## Final git
 
-Final `main` hash: verify with `git rev-parse HEAD` (closeout tip after this docs fix).
+Final `main` hash: see `git rev-parse HEAD` on synchronized `main` (reported in Phase 8.1 closeout).
