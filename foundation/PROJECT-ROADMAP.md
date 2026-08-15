@@ -70,7 +70,7 @@ Architecture that turns Capabilities into coordinated engineering execution.
 
 ---
 
-## Phase 4 — Orchestration (current)
+## Phase 4 — Orchestration
 
 Implement a minimal **Planning Orchestrator** that coordinates plans without becoming a god object.
 
@@ -82,7 +82,7 @@ Implement a minimal **Planning Orchestrator** that coordinates plans without bec
 - [x] Evidence/decision/failure/replan/impact models (planning-time)
 - [x] Codebase / Agent / Delivery / Adapter boundaries
 - [x] Behavioral agency scenarios + anti-god-object guard
-- [ ] Live Orchestrator engine that executes tasks against real repos (Phase 5+)
+- [ ] Live Orchestrator engine that executes tasks against real repos (Phase 6+)
 - [ ] Agent fleet runtime
 - [ ] CI/CD delivery automation
 
@@ -92,17 +92,28 @@ Implement a minimal **Planning Orchestrator** that coordinates plans without bec
 
 ---
 
-## Phase 5 — Codebase Intelligence
+## Phase 5 — Codebase Intelligence (current complete)
 
-Treat repositories as evidence sources for analyze/refactor/migrate intents.
+Treat repositories as evidence sources for analyze/refactor/migrate/audit intents.
 
-Expected work:
+- [x] Conceptual model (observation ≠ interpretation ≠ decision)
+- [x] Immutable Codebase Snapshot + reproducibility fingerprint
+- [x] Filesystem index + read boundary
+- [x] Extensible language parsers (Python + JS/TS lite)
+- [x] Symbol index, dependency graph, tests, configuration
+- [x] Architecture signals, findings, evidence, change impact
+- [x] CLI + human report + machine JSON
+- [x] Orchestrator `codebase_analysis` task + readiness gating
+- [x] Rivallium / Padel IoT / legacy fixtures + agency scenarios
+- [x] Security/performance static heuristics (epistemic labels)
+- [x] Incremental snapshot diff + git provenance + metrics
+- [x] Contracts/validators + Phase 5 validation docs
 
-- Structure/dependency/test/CI evidence extraction
-- Claim→evidence linking
-- Integration with plan generation
+**Exit criteria:** A real repository can be analyzed into a structured snapshot that feeds Orchestration without inventing architecture or becoming a Capability.
 
-**Not started** (foundation doc only).
+**Non-goals:** agent fleets, autonomous mutation, CI/CD autonomy, mandatory LLM, full polyglot semantic perfection.
+
+Evidence: [docs/PHASE-5-VALIDATION.md](../docs/PHASE-5-VALIDATION.md)
 
 ---
 
@@ -116,7 +127,7 @@ Expected work:
 - Avoid one-agent-per-role zoo
 - Tool-use policies + failure handling
 
-**Not started** (boundary doc only).
+**Not started** (boundary doc only). Do not begin until Phase 5 review completes.
 
 ---
 

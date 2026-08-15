@@ -50,15 +50,15 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-**Phase 4 — Orchestration** lands a **Planning Orchestrator** (`orchestration/`) that turns utterances into structured Execution Plans.
+**Phase 5 — Codebase Intelligence** lands a real repository observation pipeline (`codebase/`) and wires it into the Planning Orchestrator.
 
-- Intent intake → Capability/Role/Knowledge resolution → plan/tasks/artifacts/gates
-- Readiness, gaps, human escalation, evidence vs claim, failure/replan/impact (planning-time)
-- Boundaries only for codebase intelligence, agents, delivery, and adapters
-- Demo: `PYTHONPATH=. python3 -m orchestration.cli "Build a secure, testable, observable booking SaaS."`
-- Phase 3 execution contracts/fixtures remain authoritative for on-disk bundles
+- Snapshot → filesystem index → parsers → symbols → dependencies → tests → configuration → architecture signals → findings → evidence
+- CLI: `PYTHONPATH=. python3 -m codebase.cli analyze ./path --format json`
+- Orchestrator inserts `codebase_analysis` before blind refactor/migrate/audit work and gates readiness
+- Fixtures: `codebase/fixtures/{rivallium-mini,padel-iot-mini,legacy-chaos}`
+- Contracts: `python3 contracts/validate_codebase.py --self-check`
 
-This is **not** autonomous coding, repo mutation, CI/CD, or production operations yet.
+Phase 4 orchestration remains for Intent→Plan. This is **not** autonomous coding, agent fleets, CI/CD, or production operations (Phase 6+).
 
 Missing domains still return honest `insufficient_coverage` / professional escalation — never invented Capabilities.
 
@@ -77,6 +77,8 @@ Missing domains still return honest `insufficient_coverage` / professional escal
 | [Intent Resolution](foundation/INTENT-RESOLUTION.md) | Framing requests into Capability candidates |
 | [Execution Model](foundation/EXECUTION-MODEL.md) | Intent → plan → tasks → gates coordination |
 | [Orchestration package](orchestration/README.md) | Planning Orchestrator (Phase 4) |
+| [Codebase Intelligence](codebase/README.md) | Repository observation pipeline (Phase 5) |
+| [Phase 5 Validation](docs/PHASE-5-VALIDATION.md) | Phase 5 evidence, limits, next step |
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
 | [Contracts](contracts/README.md) | Knowledge + execution contracts and validation |

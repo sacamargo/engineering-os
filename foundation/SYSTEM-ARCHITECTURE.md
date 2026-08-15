@@ -85,6 +85,8 @@ Composition rule: Capabilities, Knowledge Units, Roles, Agents, Tasks, Artifacts
 ├──────────────────────────────────────────────────────────────┤
 │  Validation Layer (gates + evidence)                         │
 ├──────────────────────────────────────────────────────────────┤
+│  Codebase Intelligence (repo observation → evidential snapshot)│
+├──────────────────────────────────────────────────────────────┤
 │  Execution Layer (projects, plans, tasks, artifacts, roles)  │
 ├──────────────────────────────────────────────────────────────┤
 │  Knowledge Layer (playbooks, skills, standards, frameworks…) │
@@ -117,6 +119,7 @@ Authoritative design intent. Changes rarely and only with explicit rationale.
 | `EXECUTION-MODEL.md` | Coordination spine Intent→Plan→Tasks→Gates |
 | `PROJECT-MODEL.md` / `TASK-MODEL.md` / `ARTIFACT-MODEL.md` | Execution objects |
 | `ORCHESTRATOR-MODEL.md` / `AGENT-MODEL.md` / `ADAPTER-MODEL.md` | Runtime boundaries (not implementations) |
+| `CODEBASE-INTELLIGENCE.md` / `CODEBASE-BOUNDARY.md` | Repository observation model + read policy |
 | `DELIVERY-MODEL.md` / `HUMAN-ESCALATION.md` | Delivery vs autonomy limits |
 
 ### Layer 1 — Contracts
