@@ -27,7 +27,7 @@ Audit; ProductionOperation/Environment/DeploymentTarget; DeploymentAdapter + loc
 
 ## Final main hash
 
-Recorded after this docs merge (see git `main` tip).
+`3882ab811d755c662ca641f768964d1203db7263`
 
 ## Architecture
 
