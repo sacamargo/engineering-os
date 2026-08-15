@@ -86,4 +86,4 @@ PYTHONPATH=. python3 -m unittest discover -s agents/tests
 
 ## Final git
 
-Recorded at closeout commit on `main` (see git log / `git rev-parse HEAD`).
+Final `main` hash: `941af32ee0140a5e5b1d2006cea3d98275719087`.
