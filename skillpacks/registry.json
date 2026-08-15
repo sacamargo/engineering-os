@@ -30,6 +30,13 @@
       "version": "0.0.0",
       "path": "packs/ui-ux-pro-max/manifest.json",
       "category": "design"
+    },
+    {
+      "id": "eos.skillpack.context.engineering",
+      "status": "experimental",
+      "version": "0.1.0",
+      "path": "packs/context-engineering/manifest.json",
+      "category": "context"
     }
   ]
 }

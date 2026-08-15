@@ -1,0 +1,128 @@
+{
+  "id": "eos.skillpack.context.engineering",
+  "name": "Context Engineering",
+  "version": "0.1.0",
+  "purpose": "Assemble relevant, bounded, provenance-bearing agent context for Engineering OS / Cursor — never dump the whole repository.",
+  "category": "context",
+  "source": "skillpacks/packs/context-engineering",
+  "status": "experimental",
+  "provenance": {
+    "origin": "engineering-os",
+    "source": "eos-native",
+    "version": "0.1.0",
+    "license": "unknown",
+    "adaptation_status": "eos-native",
+    "modifications": [
+      "Adapted for Engineering OS and Cursor; no Claude-specific primitives",
+      "Vendor-neutral context assembly integrated with Codebase Intelligence relevance"
+    ],
+    "limitations": [
+      "More context ≠ better context",
+      "Not a universal routing shortcut",
+      "Does not grant tools or permissions"
+    ],
+    "unavailable_source_content": false
+  },
+  "triggers": [
+    {
+      "signal_type": "domain",
+      "value": "context_engineering",
+      "weight": 3.0,
+      "polarity": "positive"
+    },
+    {
+      "signal_type": "intent_class",
+      "value": "build",
+      "weight": 0.4,
+      "polarity": "positive",
+      "notes": "Weak affinity only — not auto-select for every project"
+    },
+    {
+      "signal_type": "intent_class",
+      "value": "analyze",
+      "weight": 0.6,
+      "polarity": "positive"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "task",
+      "required": true
+    },
+    {
+      "name": "selected_skills",
+      "required": false
+    },
+    {
+      "name": "codebase_evidence",
+      "required": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "assembled_context",
+      "artifact_kinds": ["agent_context"]
+    }
+  ],
+  "required_context": [],
+  "workflows": [
+    {
+      "id": "assemble",
+      "name": "Assemble context",
+      "mode": "default",
+      "steps": [
+        "collect_candidates",
+        "prioritize",
+        "filter_irrelevant",
+        "compress",
+        "attach_provenance",
+        "emit"
+      ]
+    }
+  ],
+  "quality_gates": [
+    "context_budget_respected",
+    "provenance_present",
+    "no_full_repo_dump"
+  ],
+  "evidence_requirements": [
+    "skill_id",
+    "skill_version",
+    "included_refs",
+    "excluded_refs",
+    "budget"
+  ],
+  "escalation_rules": [
+    {
+      "when": "required_context_missing",
+      "action": "NEEDS_INPUT",
+      "reason": "Cannot invent missing requirements"
+    }
+  ],
+  "composition_rules": [
+    {
+      "kind": "transversal",
+      "with_skill_ids": [],
+      "implies_task_dependency": false,
+      "notes": "Supports execution workflows without becoming the router"
+    }
+  ],
+  "capability_relationships": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.security.review",
+    "eos.capability.quality.test-planning",
+    "eos.capability.operations.observability"
+  ],
+  "role_relationships": ["eos.role.technical-lead"],
+  "agent_compatibility": ["coding", "analysis"],
+  "constraints": [
+    "cannot_grant_permissions",
+    "cannot_dump_entire_repository",
+    "not_a_routing_shortcut"
+  ],
+  "limitations": [
+    "Context assembly is heuristic and bounded",
+    "Does not replace Codebase Intelligence analysis"
+  ],
+  "cannot_grant_permissions": true
+}
