@@ -20,11 +20,19 @@ Contracts make Engineering OS models **enforceable**.
 | `execution/schemas/` | JSON Schema mirrors |
 | [validate_execution.py](validate_execution.py) | Execution bundle validator |
 
+## Codebase Intelligence
+
+| Artifact | Role |
+|---|---|
+| [codebase/SPEC.md](codebase/SPEC.md) | Snapshot/finding/evidence/dependency invariants |
+| [validate_codebase.py](validate_codebase.py) | Analysis JSON validator |
+
 ## Validate
 
 ```bash
 python3 contracts/validate.py
 python3 contracts/validate_execution.py
+python3 contracts/validate_codebase.py --self-check
 python3 -m unittest discover -s contracts/tests -v
 ```
 
