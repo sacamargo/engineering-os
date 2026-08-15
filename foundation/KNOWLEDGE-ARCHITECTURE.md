@@ -68,6 +68,8 @@ Unit types align with the module taxonomy in [System Architecture](SYSTEM-ARCHIT
 | `checklist` | Verifiable inspection list |
 | `adaptation` | Tool-specific packaging of one or more canonical units or capabilities |
 
+**Note (Phase 8):** Integrated Skills (`eos.skillpack.*` in `skillpacks/`) are **not** knowledge units. Do not confuse them with `type: skill` procedures above. See [Skill Model](SKILL-MODEL.md).
+
 ### Atomicity Rule
 
 One unit = one primary responsibility.

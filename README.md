@@ -50,14 +50,14 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-**Phase 7 — Delivery / CI/CD** lands a vendor-neutral Delivery Layer (`delivery/`) that validates Agent ChangeSets through build/test/security/artifact gates into a ReleaseCandidate.
+**Phase 8 — Skill Integration Layer** lands contract-driven Integrated Skills (`skillpacks/`, `eos.skillpack.*`) selectable after Capabilities — without collapsing Skill into Capability, Role, Agent, or knowledge-unit `skill`.
 
-- Local deterministic pipeline; deployment remains an adapter boundary (not executed)
-- CLI: `PYTHONPATH=. python3 -m delivery.cli deliver <workspace> --format json`
-- Deny-by-default delivery permissions; production requires non-agent human approval
-- Tests: `PYTHONPATH=. python3 -m unittest discover -s delivery/tests -v`
+- Registry-driven discovery/routing/composition; Orchestrator does not hardcode Skill lists
+- Marketing / Stop Slop / UI UX PRO MAX: `unavailable` until source exists (not fabricated)
+- Context Engineering: EOS-native experimental context assembly (vendor-neutral)
+- CLI/tests: `PYTHONPATH=. python3 -m unittest discover -s skillpacks/tests -v`
 
-Phases 1–6 remain foundational. This is **not** autonomous production deployment or cloud provisioning (Phase 8+).
+Phases 1–7 remain foundational. This is **not** Production Operations (now Phase 9).
 
 ---
 
@@ -77,6 +77,9 @@ Phases 1–6 remain foundational. This is **not** autonomous production deployme
 | [Codebase Intelligence](codebase/README.md) | Repository observation pipeline (Phase 5) |
 | [Agent Runtime](agents/README.md) | Sandboxed Task execution (Phase 6) |
 | [Delivery Layer](delivery/README.md) | Build/validate/release readiness (Phase 7) |
+| [Skillpacks](skillpacks/README.md) | Integrated Skills layer (Phase 8) |
+| [Skill Model](foundation/SKILL-MODEL.md) | Skill ≠ Capability ≠ Role ≠ Agent |
+| [Phase 8 Validation](docs/PHASE-8-VALIDATION.md) | Phase 8 evidence and limits |
 | [Phase 7 Validation](docs/PHASE-7-VALIDATION.md) | Phase 7 evidence and limits |
 | [Phase 6 Validation](docs/PHASE-6-VALIDATION.md) | Phase 6 evidence and limits |
 | [Phase 5 Validation](docs/PHASE-5-VALIDATION.md) | Phase 5 evidence, limits, next step |

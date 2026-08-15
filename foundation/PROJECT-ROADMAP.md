@@ -161,7 +161,27 @@ Evidence: [docs/PHASE-7-VALIDATION.md](../docs/PHASE-7-VALIDATION.md)
 
 ---
 
-## Phase 8 — Production Operations
+## Phase 8 — Skill Integration Layer (current complete)
+
+Integrate specialized expertise packs without collapsing Skill into Capability/Role/Agent.
+
+- [x] Skill Integration audit (`docs/PHASE-8-SKILL-INTEGRATION-AUDIT.md`)
+- [x] Canonical Skill model (`eos.skillpack.*`) distinct from knowledge-unit `eos.skill.*`
+- [x] Contracts + registry + discovery/routing + composition
+- [x] Marketing / Stop Slop / UI UX PRO MAX (unavailable until source) + Context Engineering (EOS-native)
+- [x] Capability/Role bindings, agent boundary, gates, evidence, failures, security, conflicts
+- [x] Electrolinera + quotation assessment scenarios
+- [x] Self-refutation + validation docs
+
+**Exit criteria:** Skills are discoverable, selectable, composable, auditable — with honest unavailable handling and preserved architectural boundaries.
+
+**Non-goals:** fabricating external methodology; Skill marketplace; Production Ops.
+
+Evidence: [docs/PHASE-8-VALIDATION.md](../docs/PHASE-8-VALIDATION.md)
+
+---
+
+## Phase 9 — Production Operations
 
 Incident, reliability, and operational loops as first-class agency work.
 
@@ -171,11 +191,11 @@ Expected work:
 - SLO/error-budget tied observability
 - Change management under production constraints
 
-**Not started.** Do not begin until Phase 7 review completes.
+**Not started.** Do not begin until Phase 8 review completes.
 
 ---
 
-## Phase 9 — Continuous Evolution
+## Phase 10 — Continuous Evolution
 
 Operate Engineering OS for decades: prune, version, learn, extend.
 

@@ -54,6 +54,9 @@ It is not:
 | User utterance / goal | Demand | Ephemeral, any language |
 | Capability | Supply catalog | Durable canonical intent class (English) |
 | Knowledge unit | Implementation | Method, standard, skill, checklist, etc. |
+| Integrated Skill (skillpack) | Expertise pack | `eos.skillpack.*` — selected after Capabilities; not a Capability |
+
+See [Skill Model](SKILL-MODEL.md). **Skill ≠ Capability.**
 
 The Orchestrator (future) matches demand → Capability → knowledge units → context package.
 

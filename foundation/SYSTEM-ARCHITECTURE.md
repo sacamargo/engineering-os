@@ -81,6 +81,9 @@ Composition rule: Capabilities, Knowledge Units, Roles, Agents, Tasks, Artifacts
 ├──────────────────────────────────────────────────────────────┤
 │  Agent Layer (executors — `agents/` runtime; no swarm)       │
 ├──────────────────────────────────────────────────────────────┤
+│  Skill Integration Layer (`skillpacks/` — eos.skillpack.*)   │
+│  Skill ≠ Capability ≠ Role ≠ knowledge-unit skill            │
+├──────────────────────────────────────────────────────────────┤
 │  Delivery Layer (build/validate/release readiness — `delivery/`) │
 │  Deployment = adapter boundary only (not core)                 │
 ├──────────────────────────────────────────────────────────────┤
