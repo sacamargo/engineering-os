@@ -81,7 +81,8 @@ Composition rule: Capabilities, Knowledge Units, Roles, Agents, Tasks, Artifacts
 ├──────────────────────────────────────────────────────────────┤
 │  Agent Layer (executors — `agents/` runtime; no swarm)       │
 ├──────────────────────────────────────────────────────────────┤
-│  Delivery Layer (repo/CI/deploy — boundary; runtime later)   │
+│  Delivery Layer (build/validate/release readiness — `delivery/`) │
+│  Deployment = adapter boundary only (not core)                 │
 ├──────────────────────────────────────────────────────────────┤
 │  Validation Layer (gates + evidence)                         │
 ├──────────────────────────────────────────────────────────────┤

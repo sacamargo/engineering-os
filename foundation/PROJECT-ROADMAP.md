@@ -141,17 +141,23 @@ Evidence: [docs/PHASE-6-VALIDATION.md](../docs/PHASE-6-VALIDATION.md)
 
 ---
 
-## Phase 7 — Delivery / CI/CD
+## Phase 7 — Delivery / CI/CD (current complete)
 
-Land changes through repository, tests, pipelines, deploy, release, rollback.
+Validate that Agent ChangeSets can pass controlled quality gates and become release-ready.
 
-Expected work:
+- [x] Delivery audit + model (Build, ValidationRun, Pipeline, Environment, ReleaseCandidate)
+- [x] State machine + gates (NOT_RUN ≠ PASSED; no release without evidence)
+- [x] Local delivery runtime + allowlisted executors + artifacts with digest
+- [x] Security/risk integration + Codebase Intelligence signals
+- [x] Deployment boundary (READY_FOR_DEPLOYMENT only; no real deploy)
+- [x] Approvals, rollback model, CLI, contracts, agency scenarios
+- [x] Self-refutation + validation docs
 
-- Delivery adapters (GitHub/CI/cloud)
-- Map gates to pipeline evidence
-- Rollback playbooks bound to Capabilities as warranted
+**Exit criteria:** ChangeSet → Build → Tests → Security → Artifact → Gates → ReleaseCandidate → Readiness, with honest NOT READY.
 
-**Not started** (boundary doc only). Do not begin until Phase 6 review completes.
+**Non-goals:** real cloud deploy, auto-prod approval, vendor CI inside core, swarm.
+
+Evidence: [docs/PHASE-7-VALIDATION.md](../docs/PHASE-7-VALIDATION.md)
 
 ---
 
@@ -165,7 +171,7 @@ Expected work:
 - SLO/error-budget tied observability
 - Change management under production constraints
 
-**Not started.**
+**Not started.** Do not begin until Phase 7 review completes.
 
 ---
 

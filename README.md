@@ -50,15 +50,14 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-**Phase 6 — Agent Execution** lands a sandboxed runtime (`agents/`) that executes Tasks with authorized Tools, Evidence, and Gates.
+**Phase 7 — Delivery / CI/CD** lands a vendor-neutral Delivery Layer (`delivery/`) that validates Agent ChangeSets through build/test/security/artifact gates into a ReleaseCandidate.
 
-- Deterministic coding agent (no LLM required)
-- Workspace sandbox, allowlisted commands, permission/risk checks
-- Execution loop with retry/rollback/dry-run/human escalation
-- Orchestrator assigns Agent Definitions; does not own tool execution
-- Demo tests: `PYTHONPATH=. python3 -m unittest discover -s agents/tests -v`
+- Local deterministic pipeline; deployment remains an adapter boundary (not executed)
+- CLI: `PYTHONPATH=. python3 -m delivery.cli deliver <workspace> --format json`
+- Deny-by-default delivery permissions; production requires non-agent human approval
+- Tests: `PYTHONPATH=. python3 -m unittest discover -s delivery/tests -v`
 
-Phase 5 Codebase Intelligence and Phase 4 Planning remain. This is **not** CI/CD autonomy, deploy, or agent swarms (Phase 7+).
+Phases 1–6 remain foundational. This is **not** autonomous production deployment or cloud provisioning (Phase 8+).
 
 ---
 
@@ -77,6 +76,8 @@ Phase 5 Codebase Intelligence and Phase 4 Planning remain. This is **not** CI/CD
 | [Orchestration package](orchestration/README.md) | Planning Orchestrator (Phase 4) |
 | [Codebase Intelligence](codebase/README.md) | Repository observation pipeline (Phase 5) |
 | [Agent Runtime](agents/README.md) | Sandboxed Task execution (Phase 6) |
+| [Delivery Layer](delivery/README.md) | Build/validate/release readiness (Phase 7) |
+| [Phase 7 Validation](docs/PHASE-7-VALIDATION.md) | Phase 7 evidence and limits |
 | [Phase 6 Validation](docs/PHASE-6-VALIDATION.md) | Phase 6 evidence and limits |
 | [Phase 5 Validation](docs/PHASE-5-VALIDATION.md) | Phase 5 evidence, limits, next step |
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
