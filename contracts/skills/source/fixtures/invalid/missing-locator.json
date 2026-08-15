@@ -1,0 +1,10 @@
+{
+  "source_id": "eos.skillsource.design.ui-ux.missing-loc",
+  "skillpack_id": "eos.skillpack.design.ui-ux-pro-max",
+  "source_type": "file",
+  "title": "Missing locator",
+  "origin": "external",
+  "locator": "",
+  "version": "1",
+  "status": "discovered"
+}

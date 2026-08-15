@@ -1,0 +1,17 @@
+{
+  "source_id": "eos.skillsource.context.engineering.v1",
+  "skillpack_id": "eos.skillpack.context.engineering",
+  "source_type": "eos_native",
+  "title": "Context Engineering EOS-native implementation",
+  "origin": "engineering-os",
+  "locator": "skillpacks/context_engineering.py",
+  "version": "0.1.0",
+  "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "trust_level": "validated_internal",
+  "extraction_method": "eos_native_module",
+  "status": "normalized",
+  "license": "unknown",
+  "revision": 1,
+  "allowed_usage": ["methodology_reference", "runtime_assembly"],
+  "notes": ["Fixture hash placeholder — real hash computed at ingest"]
+}

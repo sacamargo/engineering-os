@@ -214,15 +214,57 @@ def validate_path(manifest_path: Path, repo_root: Path) -> list[Finding]:
     return validate_skillpack(data, path=str(manifest_path), known_capabilities=caps, known_roles=roles)
 
 
+def validate_source(data: dict[str, Any], *, path: str = "$") -> list[Finding]:
+    findings: list[Finding] = []
+    try:
+        from skillpacks.sources.model import source_from_dict
+
+        src = source_from_dict(data)
+        for err in src.validate_shape():
+            code = "source_invalid"
+            if "provenance" in err or "origin" in err:
+                code = "missing_provenance"
+            elif "locator" in err:
+                code = "missing_locator"
+            elif "content_hash" in err:
+                code = "missing_hash"
+            elif "skillpack" in err:
+                code = "missing_skill_target"
+            elif "status" in err:
+                code = "invalid_status"
+            elif "untrusted" in err or "unavailable_placeholder" in err:
+                code = "activation_without_evidence"
+            elif "forbidden" in err:
+                code = "privilege_escalation"
+            elif "source_id" in err:
+                code = "malformed_id"
+            findings.append(Finding(path, code, err))
+    except Exception as exc:  # noqa: BLE001
+        findings.append(Finding(path, "source_invalid", str(exc)))
+    # Reject fake activation claims without evidence markers
+    if data.get("status") == "active" and not data.get("content_hash"):
+        findings.append(Finding(path, "activation_without_evidence", "active requires content_hash"))
+    if data.get("status") == "active" and data.get("source_type") == "unavailable_placeholder":
+        findings.append(
+            Finding(path, "activation_without_evidence", "placeholder cannot activate skill")
+        )
+    return findings
+
+
+def validate_source_path(source_path: Path) -> list[Finding]:
+    data = json.loads(source_path.read_text(encoding="utf-8"))
+    return validate_source(data, path=str(source_path))
+
+
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Validate skillpack contracts")
-    parser.add_argument("paths", nargs="*", type=Path, help="Manifest JSON files")
+    parser = argparse.ArgumentParser(description="Validate skillpack and skill source contracts")
+    parser.add_argument("paths", nargs="*", type=Path, help="Manifest or source JSON files")
     parser.add_argument("--repo-root", type=Path, default=ROOT)
     parser.add_argument("--self-check", action="store_true")
     args = parser.parse_args(argv)
     if args.self_check:
-        fixtures = ROOT / "contracts" / "skills" / "fixtures"
         ok = True
+        fixtures = ROOT / "contracts" / "skills" / "fixtures"
         for path in (fixtures / "valid").glob("*.json"):
             findings = validate_path(path, args.repo_root)
             if findings:
@@ -235,6 +277,19 @@ def main(argv: list[str] | None = None) -> int:
             if not findings:
                 print(f"UNEXPECTED PASS {path}", file=sys.stderr)
                 ok = False
+        src_fix = ROOT / "contracts" / "skills" / "source" / "fixtures"
+        for path in (src_fix / "valid").glob("*.json"):
+            findings = validate_source_path(path)
+            if findings:
+                print(f"UNEXPECTED FAIL {path}", file=sys.stderr)
+                for f in findings:
+                    print(f.format(), file=sys.stderr)
+                ok = False
+        for path in (src_fix / "invalid").glob("*.json"):
+            findings = validate_source_path(path)
+            if not findings:
+                print(f"UNEXPECTED PASS {path}", file=sys.stderr)
+                ok = False
         if not ok:
             return 1
         print("skill contracts self-check OK")
@@ -244,13 +299,17 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     all_findings: list[Finding] = []
     for p in args.paths:
-        all_findings.extend(validate_path(p, args.repo_root))
+        raw = json.loads(p.read_text(encoding="utf-8"))
+        if "source_id" in raw:
+            all_findings.extend(validate_source(raw, path=str(p)))
+        else:
+            all_findings.extend(validate_path(p, args.repo_root))
     for f in all_findings:
         print(f.format(), file=sys.stderr)
     if all_findings:
         print(f"FAIL — {len(all_findings)} finding(s)", file=sys.stderr)
         return 1
-    print("OK — skillpack manifests valid")
+    print("OK — skill contracts valid")
     return 0
 
 

@@ -1,0 +1,12 @@
+{
+  "source_id": "eos.skillsource.quality.stop-slop.fake-active",
+  "skillpack_id": "eos.skillpack.quality.stop-slop",
+  "source_type": "unavailable_placeholder",
+  "title": "Fake activation",
+  "origin": "external",
+  "locator": "NEEDS_SOURCE",
+  "version": "0",
+  "status": "active",
+  "trust_level": "verified_primary",
+  "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-os.local/contracts/skills/source/skill-source.schema.json",
+  "title": "Engineering OS Skill Source",
+  "type": "object",
+  "required": [
+    "source_id",
+    "skillpack_id",
+    "source_type",
+    "title",
+    "origin",
+    "locator",
+    "version",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^eos\\.skillsource\\.[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)+$"
+    },
+    "skillpack_id": {
+      "type": "string",
+      "pattern": "^eos\\.skillpack\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["file", "directory", "url", "eos_native", "fixture", "unavailable_placeholder"]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "origin": { "type": "string", "minLength": 1 },
+    "locator": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "content_hash": { "type": ["string", "null"] },
+    "retrieved_at": { "type": ["number", "null"] },
+    "license": { "type": "string" },
+    "trust_level": {
+      "type": "string",
+      "enum": [
+        "untrusted",
+        "verified_primary",
+        "verified_official",
+        "validated_internal",
+        "experimental_inference"
+      ]
+    },
+    "extraction_method": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": [
+        "discovered",
+        "verified",
+        "ingested",
+        "normalized",
+        "active",
+        "unavailable",
+        "rejected",
+        "stale"
+      ]
+    },
+    "allowed_usage": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "revision": { "type": "integer", "minimum": 1 },
+    "parent_source_id": { "type": ["string", "null"] },
+    "metadata": { "type": "object" }
+  }
+}

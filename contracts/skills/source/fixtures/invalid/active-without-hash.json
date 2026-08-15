@@ -1,0 +1,12 @@
+{
+  "source_id": "eos.skillsource.design.ui-ux.no-hash",
+  "skillpack_id": "eos.skillpack.design.ui-ux-pro-max",
+  "source_type": "file",
+  "title": "Active without hash",
+  "origin": "external",
+  "locator": "path/to/source",
+  "version": "1",
+  "status": "active",
+  "trust_level": "verified_primary",
+  "content_hash": null
+}
