@@ -119,7 +119,17 @@ def intake_intent(utterance: str, context: dict[str, Any] | None = None) -> Stru
         "automatiz",
     )
     design_phrases = ("design", "diseñ", "architecture", "arquitectura", "structure", "estructura")
-    audit_phrases = ("audit", "audita", "vulnerab", "security review", "revisión de seguridad")
+    audit_phrases = (
+        "audit",
+        "audita",
+        "vulnerab",
+        "security review",
+        "revisión de seguridad",
+        "problemas de seguridad",
+        "security problems",
+        "seguridad",
+        "security",
+    )
     analyze_phrases = ("analyze", "analiza", "analyse", "repository", "repositorio", "codebase")
     refactor_phrases = ("refactor", "refactoriza")
     incident_phrases = (
@@ -163,7 +173,7 @@ def intake_intent(utterance: str, context: dict[str, Any] | None = None) -> Stru
 
     # Domain signals
     domain_map = {
-        "security": ("secur", "segura", "seguro", "vulnerab", "threat", "amenaza"),
+        "security": ("secur", "segura", "seguro", "seguridad", "vulnerab", "threat", "amenaza"),
         "testing": ("test", "testeable", "qa", "quality", "calidad"),
         "observability": ("observab", "metric", "métric", "monitor", "slo", "telemetry"),
         "architecture": ("architect", "arquitect"),
