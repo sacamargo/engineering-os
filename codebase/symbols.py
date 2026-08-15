@@ -84,6 +84,8 @@ def build_symbol_index(root: str | Path, fs: FilesystemIndex) -> SymbolIndex:
             errors.append(f"{file.path}:read_error:{exc}")
             continue
         result = parser.parse(full, source)
+        # Normalize to repo-relative path so dependency/impact graphs stay comparable.
+        result.path = file.path
         used.add(parser.name)
         parse_results.append(result)
         errors.extend(f"{file.path}:{e}" for e in result.errors)
