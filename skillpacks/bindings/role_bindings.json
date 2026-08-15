@@ -1,0 +1,30 @@
+{
+  "schema": "eos.skillpack.role-bindings.v1",
+  "notes": [
+    "Skill ≠ Role",
+    "A Role may use multiple Skills; a Skill may be used by multiple Roles"
+  ],
+  "bindings": [
+    {
+      "skill_id": "eos.skillpack.design.ui-ux-pro-max",
+      "role_ids": [
+        "eos.role.ui-ux-designer",
+        "eos.role.frontend-engineer",
+        "eos.role.product-manager"
+      ],
+      "notes": "Frontend engineer is implementation boundary, not Skill identity"
+    },
+    {
+      "skill_id": "eos.skillpack.marketing.corey-haines",
+      "role_ids": ["eos.role.product-manager"]
+    },
+    {
+      "skill_id": "eos.skillpack.quality.stop-slop",
+      "role_ids": ["eos.role.qa-test-engineer", "eos.role.technical-lead"]
+    },
+    {
+      "skill_id": "eos.skillpack.context.engineering",
+      "role_ids": ["eos.role.technical-lead"]
+    }
+  ]
+}
