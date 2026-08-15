@@ -5,8 +5,8 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
-from skillpacks.context_engineering import assemble_context
 from skillpacks.evidence import record_skill_evidence
+from skillpacks.invocation import build_bounded_skill_context, record_invocation
 from skillpacks.registry import load_registry
 from skillpacks.security import check_skill_security
 
@@ -20,6 +20,7 @@ class SkillAgentBinding:
     agent_type: str
     context: dict[str, Any]
     evidence: list[dict[str, Any]] = field(default_factory=list)
+    invocations: list[dict[str, Any]] = field(default_factory=list)
     rejected: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
 
@@ -40,6 +41,7 @@ def bind_skills_to_agent(
     usable: list[str] = []
     rejected: list[str] = []
     evidence: list[dict[str, Any]] = []
+    invocations: list[dict[str, Any]] = []
     for sid in skill_ids:
         pack = reg.get(sid)
         if pack is None:
@@ -63,6 +65,13 @@ def bind_skills_to_agent(
             )
             continue
         usable.append(sid)
+        inv = record_invocation(
+            skillpack_id=sid,
+            invocation_mode="bind",
+            task_id=str(task.get("id", "")),
+            agent_type=agent_type,
+        )
+        invocations.append(inv.to_dict())
         evidence.append(
             record_skill_evidence(
                 skill_id=sid,
@@ -72,27 +81,23 @@ def bind_skills_to_agent(
                 reasoning_summary=f"Skill bound to agent type {agent_type}",
                 findings=[f"bound:{sid}"],
                 decisions=[f"use_skill:{sid}@{pack.version}"],
+                output_refs=[f"invocation:{sid}"],
             ).to_dict()
         )
-    ctx = assemble_context(
-        task=task,
-        capability_ids=capability_ids,
-        skill_ids=usable,
-        role_ids=role_ids,
-        tool_permissions=tool_permissions,
-        skill_version="0.1.0",
-    )
+    bounded = build_bounded_skill_context(usable, task=task)
     return SkillAgentBinding(
         task_id=str(task.get("id", "")),
         capability_ids=capability_ids,
         skill_ids=usable,
         role_ids=role_ids,
         agent_type=agent_type,
-        context=ctx.to_dict(),
+        context=bounded,
         evidence=evidence,
+        invocations=invocations,
         rejected=rejected,
         notes=[
             "Agent executes work; Skill defines expertise/method; Role defines responsibility",
             "Skill authority without evidence is rejected",
+            "Agent receives bounded Skill Context — not entire SkillPack",
         ],
     )

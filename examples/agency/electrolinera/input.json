@@ -1,9 +1,10 @@
 {
   "id": "eos.example.agency.electrolinera",
-  "utterance": "Quiero crear una aplicación para una electrolinera para personas que tienen carros eléctricos.\n\nCriterios de aceptación:\n1. Debe funcionar en iOS y Android.\n2. Debe poder visualizarse también en la web.",
+  "utterance": "Quiero que construyas una aplicación para una electrolinera.\nDebe funcionar en iOS y Android y también poder visualizarse en la web.",
   "notes": [
     "Do not add requirements beyond the utterance",
     "Unknowns must remain unknown",
-    "Skills are candidates after Capabilities"
+    "Distinguish KNOWN / INFERRED / UNKNOWN / NEEDS_INPUT / NEEDS_HUMAN",
+    "iOS/Android ≠ responsive web only"
   ]
 }

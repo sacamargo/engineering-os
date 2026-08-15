@@ -27,6 +27,12 @@ def evaluate_skill_gates(
     evidence_attached: bool,
     tools_available: bool = True,
     knowledge_available: bool = True,
+    source_valid: bool | None = None,
+    provenance_valid: bool | None = None,
+    context_bounded: bool = True,
+    conflict_resolved: bool = True,
+    version_pinned: bool = True,
+    negative_triggers_checked: bool = True,
 ) -> list[GateResult]:
     results: list[GateResult] = []
     results.append(
@@ -40,7 +46,52 @@ def evaluate_skill_gates(
         results.append(
             GateResult("skill_applicable", "blocked", "skill source unavailable", [])
         )
+        results.append(GateResult("SKILL_SOURCE_VALID", "failed", "source unavailable"))
         return results
+    if source_valid is not None:
+        results.append(
+            GateResult(
+                "SKILL_SOURCE_VALID",
+                "passed" if source_valid else "failed",
+                "source valid" if source_valid else "source invalid",
+            )
+        )
+    if provenance_valid is not None:
+        results.append(
+            GateResult(
+                "SKILL_PROVENANCE_VALID",
+                "passed" if provenance_valid else "failed",
+                "provenance valid" if provenance_valid else "provenance invalid",
+            )
+        )
+    results.append(
+        GateResult(
+            "SKILL_CONTEXT_BOUNDED",
+            "passed" if context_bounded else "failed",
+            "context bounded" if context_bounded else "context dump detected",
+        )
+    )
+    results.append(
+        GateResult(
+            "SKILL_CONFLICT_RESOLVED",
+            "passed" if conflict_resolved else "failed",
+            "conflicts resolved" if conflict_resolved else "SKILL_CONFLICT unresolved",
+        )
+    )
+    results.append(
+        GateResult(
+            "SKILL_VERSION_PINNED",
+            "passed" if version_pinned and bool(pack.version) else "failed",
+            "version pinned" if version_pinned else "version missing",
+        )
+    )
+    results.append(
+        GateResult(
+            "SKILL_NEGATIVE_TRIGGERS_CHECKED",
+            "passed" if negative_triggers_checked else "not_run",
+            "negative triggers checked" if negative_triggers_checked else "NOT_RUN — cannot declare success",
+        )
+    )
     results.append(
         GateResult(
             "required_inputs_present",
@@ -76,7 +127,6 @@ def evaluate_skill_gates(
             "evidence ok" if evidence_attached else "missing evidence",
         )
     )
-    # Stop Slop: review performed ≠ product correct
     if pack.id.endswith("stop-slop"):
         results.append(
             GateResult(
@@ -84,5 +134,10 @@ def evaluate_skill_gates(
                 "passed" if evidence_attached else "not_run",
                 "review evidence present; does NOT mean product is correct",
             )
+        )
+    # Agent cannot declare success if required gate NOT_RUN
+    if any(r.status == "not_run" and r.gate_id.startswith("SKILL_") for r in results):
+        results.append(
+            GateResult("agent_success_allowed", "failed", "required skill gate NOT_RUN")
         )
     return results

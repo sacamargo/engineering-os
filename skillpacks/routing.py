@@ -113,8 +113,16 @@ def _intent_signal_values(intent: dict[str, Any]) -> set[tuple[str, str]]:
         utterance, ("physical gate", "access control", "torniquete", "control de acceso físico")
     ):
         values.add(("domain", "physical_access"))
-    if _has_phrase(utterance, ("database migration", "schema migration")):
+    if _has_phrase(utterance, ("database migration", "schema migration", "pure database")):
         values.add(("domain", "database"))
+        values.add(("negative", "ux_ui_primary"))
+        values.add(("negative", "marketing"))
+    if _has_phrase(utterance, ("backend bug", "fix bug", "null pointer", "stack trace")):
+        values.add(("domain", "backend_bugfix"))
+        values.add(("negative", "marketing"))
+        values.add(("negative", "ux_ui_primary"))
+    if _has_phrase(utterance, ("system architecture", "architecture decision", "threat model only")):
+        values.add(("negative", "stop_slop_as_architecture"))
     if _has_phrase(utterance, ("build an api", "rest api", "grpc", "api only")) and not _has_phrase(
         utterance, ("ux", "ui", "mobile app", "landing page", "interface")
     ):
@@ -164,7 +172,13 @@ def score_pack(
         negative.append("payment/gateway context rejects physical_access skill category")
     if ("negative", "ux_ui_primary") in signals and pack.category in {"design", "ux", "ui"}:
         score -= 2
-        negative.append("API-focused intent reduces UX primary selection")
+        negative.append("API/DB/bugfix intent reduces UX primary selection")
+    if ("negative", "marketing") in signals and pack.category == "marketing":
+        score -= 5
+        negative.append("pure technical/bugfix intent rejects marketing skill")
+    if ("negative", "stop_slop_as_architecture") in signals and "stop-slop" in pack.id:
+        score -= 5
+        negative.append("Stop Slop is not architecture authority")
 
     selectable = pack.is_selectable()
     if pack.status == "unavailable" or pack.provenance.unavailable_source_content:
