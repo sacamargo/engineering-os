@@ -1,0 +1,51 @@
+{
+  "schema": "eos.skillpack.capability-bindings.v1",
+  "notes": [
+    "Associations only — Skill ≠ Capability",
+    "Not every Capability needs a Skill",
+    "Context Engineering must not become a routing shortcut"
+  ],
+  "bindings": [
+    {
+      "capability_id": "eos.capability.design.system-architecture",
+      "skill_ids": [
+        "eos.skillpack.design.ui-ux-pro-max",
+        "eos.skillpack.context.engineering",
+        "eos.skillpack.quality.stop-slop"
+      ]
+    },
+    {
+      "capability_id": "eos.capability.quality.test-planning",
+      "skill_ids": [
+        "eos.skillpack.quality.stop-slop",
+        "eos.skillpack.context.engineering"
+      ]
+    },
+    {
+      "capability_id": "eos.capability.security.review",
+      "skill_ids": [
+        "eos.skillpack.context.engineering",
+        "eos.skillpack.quality.stop-slop"
+      ]
+    },
+    {
+      "capability_id": "eos.capability.operations.observability",
+      "skill_ids": ["eos.skillpack.context.engineering"]
+    }
+  ],
+  "skill_to_capabilities": {
+    "eos.skillpack.marketing.corey-haines": ["eos.capability.design.system-architecture"],
+    "eos.skillpack.design.ui-ux-pro-max": ["eos.capability.design.system-architecture"],
+    "eos.skillpack.quality.stop-slop": [
+      "eos.capability.design.system-architecture",
+      "eos.capability.quality.test-planning",
+      "eos.capability.security.review"
+    ],
+    "eos.skillpack.context.engineering": [
+      "eos.capability.design.system-architecture",
+      "eos.capability.security.review",
+      "eos.capability.quality.test-planning",
+      "eos.capability.operations.observability"
+    ]
+  }
+}
