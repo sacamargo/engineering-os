@@ -10,7 +10,10 @@ from pathlib import Path
 from typing import Any
 
 from orchestration.boundaries.agent import suggest_executor
-from orchestration.boundaries.codebase import NullCodebaseIntelligence
+from orchestration.boundaries.codebase import (
+    LocalCodebaseIntelligence,
+    intent_requires_codebase,
+)
 from orchestration.boundaries.delivery import delivery_boundary
 from orchestration.boundaries.adapter import core_adapter_policy
 from orchestration.capability import resolve_capabilities
@@ -81,19 +84,42 @@ class PlanningOrchestrator:
 
     def __init__(self, repo_root: Path | None = None) -> None:
         self.repo_root = repo_root or ROOT
-        self.codebase = NullCodebaseIntelligence()
+        self.codebase = LocalCodebaseIntelligence()
 
     def plan(self, utterance: str, context: dict[str, Any] | None = None) -> PlanningResult:
+        context = context or {}
         intent = intake_intent(utterance, context)
         resolution = resolve_capabilities(intent, self.repo_root)
         arbitration = arbitrate_capabilities(intent, resolution)
         roles = resolve_roles(intent, arbitration)
         knowledge = resolve_knowledge(arbitration, self.repo_root)
-        generated = generate_plan(intent, arbitration, roles, knowledge)
+        needs_cb = intent_requires_codebase(intent.possible_intents, context)
+        generated = generate_plan(
+            intent,
+            arbitration,
+            roles,
+            knowledge,
+            require_codebase_analysis=needs_cb,
+        )
         deps = resolve_dependencies(
             generated.plan, generated.tasks, generated.artifacts, generated.gates
         )
         escalations = build_escalations(generated.project, generated.tasks)
+
+        # Optionally run analysis now (still planning-time evidence, not code mutation).
+        if context.get("run_codebase_analysis") or (
+            needs_cb and "analyze" in intent.possible_intents and context.get("analyze_now", False)
+        ):
+            payload = self.codebase.analyze(str(self.repo_root))
+            codebase_view = self.codebase.summarize_analysis(payload).to_dict()
+            codebase_view["full_analysis"] = {
+                "snapshot_id": codebase_view.get("snapshot_id"),
+                "findings_count": codebase_view.get("findings_count"),
+                "schema": payload.get("schema"),
+            }
+        else:
+            codebase_view = self.codebase.inspect(str(self.repo_root)).to_dict()
+
         from orchestration.readiness import evaluate_readiness
 
         readiness = evaluate_readiness(
@@ -101,6 +127,7 @@ class PlanningOrchestrator:
             generated.tasks,
             deps.ok,
             [e.to_dict() for e in escalations],
+            codebase=codebase_view,
         )
         gaps = detect_gaps(
             generated.project,
@@ -108,14 +135,35 @@ class PlanningOrchestrator:
             [r.to_dict() for r in roles.roles],
             [s.unit_id for s in knowledge.selected],
         )
+        if needs_cb and codebase_view.get("analysis_status") != "complete":
+            from orchestration.gaps import Gap
+
+            gaps.append(
+                Gap(
+                    kind="MISSING_CODEBASE_EVIDENCE",
+                    area="codebase_intelligence",
+                    severity="high",
+                    blocking=True,
+                    reason="Intent requires repository evidence before safe change planning",
+                    affected_tasks=[
+                        t["id"]
+                        for t in generated.tasks
+                        if t.get("task_kind") != "codebase_analysis"
+                    ],
+                    possible_resolution="Run codebase_analysis task / LocalCodebaseIntelligence.analyze",
+                )
+            )
         gate_evals = evaluate_gates(generated.gates, generated.artifacts, generated.tasks)
         decisions = decisions_from_plan(generated.decisions)
         executors = [suggest_executor(t).to_dict() for t in generated.tasks]
         notes = [
             "PlanningOrchestrator delegates; it does not own Capability catalog content.",
-            "Phase 4 is planning-only; no code execution/deploy.",
+            "Phase 4/5 is planning + codebase evidence; no autonomous code execution/deploy.",
             f"Project state planned valid from discovered: {can_transition('discovered', 'planned')}",
+            "Codebase Intelligence is not a Capability.",
         ]
+        if needs_cb:
+            notes.append("Plan requires codebase_analysis before dependent refactor/audit/migrate work.")
         # Example claim (not evidence)
         _ = record_claim(
             f"eos.evidence.{generated.project['id'].split('.')[-1]}.plan-created",
@@ -138,7 +186,7 @@ class PlanningOrchestrator:
             executor_suggestions=executors,
             delivery=delivery_boundary(generated.project["id"]).to_dict(),
             adapter_policy=core_adapter_policy().to_dict(),
-            codebase=self.codebase.inspect(str(self.repo_root)).to_dict(),
+            codebase=codebase_view,
             notes=notes,
         )
 

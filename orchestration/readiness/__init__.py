@@ -33,6 +33,7 @@ def evaluate_readiness(
     tasks: list[dict[str, Any]],
     dependency_ok: bool,
     escalations: list[dict[str, Any]],
+    codebase: dict[str, Any] | None = None,
 ) -> ReadinessResult:
     if not dependency_ok:
         return ReadinessResult(status="invalid", reasons=["dependency graph invalid"])
@@ -57,6 +58,40 @@ def evaluate_readiness(
         or t.get("block_reason") == "professional_validation_required"
     ]
     blocked = [t["id"] for t in tasks if t.get("status") == "blocked"]
+
+    codebase = codebase or {}
+    needs_cb = bool(project.get("requires_codebase_analysis"))
+    cb_complete = codebase.get("analysis_status") == "complete" and bool(
+        codebase.get("snapshot_id") or codebase.get("has_usable_evidence")
+    )
+    cb_tasks = [t["id"] for t in tasks if t.get("task_kind") == "codebase_analysis"]
+    pending_impl = [
+        t["id"]
+        for t in tasks
+        if t.get("task_kind") != "codebase_analysis"
+        and t.get("status") in {"pending", "ready", "blocked"}
+        and not t.get("requires_professional_approval")
+    ]
+
+    if needs_cb and not cb_complete:
+        # Do not allow blind implementation/refactor plans.
+        if cb_tasks and not pending_impl:
+            return ReadinessResult(
+                status="ready",
+                reasons=[
+                    "codebase_analysis task is ready; full repository evidence not yet produced"
+                ],
+                automatable_task_ids=cb_tasks,
+            )
+        return ReadinessResult(
+            status="partially_ready" if cb_tasks else "needs_input",
+            reasons=[
+                "Repository evidence missing: run codebase_analysis before change/audit work",
+                f"codebase.analysis_status={codebase.get('analysis_status', 'unknown')}",
+            ],
+            automatable_task_ids=cb_tasks,
+            blocked_task_ids=sorted(set(blocked + pending_impl)),
+        )
 
     if open_escalations or human_tasks:
         reasons = ["professional/human approval required for some scopes"]

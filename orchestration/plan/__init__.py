@@ -62,6 +62,7 @@ def generate_plan(
     knowledge: KnowledgeResolution,
     project_slug: str | None = None,
     templates: dict[str, Any] | None = None,
+    require_codebase_analysis: bool = False,
 ) -> GeneratedPlan:
     cap_artifacts = templates if templates is not None else load_capability_templates()
     slug = project_slug or _slugify(
@@ -90,6 +91,47 @@ def generate_plan(
 
     artifact_ids_by_slug: dict[str, str] = {}
     task_ids_by_slug: dict[str, str] = {}
+
+    # Codebase Intelligence is evidence infrastructure — not a Capability.
+    if require_codebase_analysis:
+        cb_art = f"eos.artifact.{slug}.codebase-snapshot"
+        cb_task = f"eos.task.{slug}.codebase-analysis"
+        artifact_ids_by_slug["codebase-snapshot"] = cb_art
+        task_ids_by_slug["codebase-analysis"] = cb_task
+        artifacts.append(
+            {
+                "id": cb_art,
+                "type": "codebase_snapshot",
+                "title": "Codebase Intelligence snapshot",
+                "project_id": project_id,
+                "status": "planned",
+            }
+        )
+        tasks.append(
+            {
+                "id": cb_task,
+                "title": "Analyze repository (Codebase Intelligence)",
+                "description": (
+                    "Produce an evidential codebase snapshot before implementation, "
+                    "refactor, audit, or migrate work that depends on repository truth."
+                ),
+                "objective": "Structured snapshot + findings + unknowns available as evidence",
+                "project_id": project_id,
+                "capability_ids": [],
+                "role_ids": ["eos.role.technical-lead", "eos.role.software-architect"],
+                "input_artifact_ids": [],
+                "output_artifact_ids": [cb_art],
+                "depends_on_task_ids": [],
+                "status": "ready",
+                "priority": "critical",
+                "risk": "high",
+                "task_kind": "codebase_analysis",
+                "knowledge_unit_ids": [],
+            }
+        )
+        notes.append(
+            "Inserted codebase_analysis task: repository evidence required before dependent work."
+        )
 
     if "build" in intent.possible_intents or "design" in intent.possible_intents:
         req_id = f"eos.artifact.{slug}.requirements"
@@ -202,6 +244,12 @@ def generate_plan(
                     depends_tasks.append(task_ids_by_slug[other_spec["task_slug"]])
                     break
 
+        # Repository-dependent work waits on Codebase Intelligence evidence.
+        if require_codebase_analysis and "codebase-snapshot" in artifact_ids_by_slug:
+            if spec["artifact_slug"] != "codebase-snapshot":
+                input_arts.append(artifact_ids_by_slug["codebase-snapshot"])
+                depends_tasks.append(task_ids_by_slug["codebase-analysis"])
+
         # de-dupe
         input_arts = list(dict.fromkeys(input_arts))
         depends_tasks = list(dict.fromkeys(depends_tasks))
@@ -215,6 +263,31 @@ def generate_plan(
             dependencies.append({"kind": "task_depends_on_task", "from": task_id, "to": dep})
         for art in input_arts:
             dependencies.append({"kind": "task_requires_artifact", "from": task_id, "to": art})
+
+    # Requirements / gap tasks also wait when codebase evidence is mandatory for blind changes.
+    if require_codebase_analysis and "codebase-analysis" in task_ids_by_slug:
+        cb_task = task_ids_by_slug["codebase-analysis"]
+        cb_art = artifact_ids_by_slug["codebase-snapshot"]
+        for t in tasks:
+            if t["id"] == cb_task:
+                continue
+            if t.get("task_kind") == "codebase_analysis":
+                continue
+            # Analyze-only plans may only have the analysis task — fine.
+            if any(
+                x in intent.possible_intents
+                for x in ("refactor", "migrate", "audit", "optimize", "investigate_incident")
+            ):
+                deps = list(t.get("depends_on_task_ids") or [])
+                if cb_task not in deps:
+                    deps.append(cb_task)
+                    t["depends_on_task_ids"] = deps
+                    t["status"] = "pending"
+                    dependencies.append({"kind": "task_depends_on_task", "from": t["id"], "to": cb_task})
+                inputs = list(t.get("input_artifact_ids") or [])
+                if cb_art not in inputs:
+                    inputs.append(cb_art)
+                    t["input_artifact_ids"] = inputs
 
     for gap in arbitration.insufficient:
         area = gap["area"]
@@ -320,9 +393,22 @@ def generate_plan(
         "task_ids": [t["id"] for t in tasks],
         "gate_ids": [g["id"] for g in gates],
         "decision_ids": [d["id"] for d in decisions],
-        "uncertainties": [asdict_fact(u) for u in intent.uncertainties],
+        "uncertainties": [asdict_fact(u) for u in intent.uncertainties]
+        + (
+            [
+                {
+                    "key": "codebase_context",
+                    "value": "Repository not analyzed yet",
+                    "certainty": "required",
+                    "reason": "Intent requires Codebase Intelligence evidence before safe change planning",
+                }
+            ]
+            if require_codebase_analysis
+            else []
+        ),
         "clarifying_questions": intent.clarifying_questions,
         "risk_signals": intent.risk_signals,
+        "requires_codebase_analysis": require_codebase_analysis,
     }
 
     plan = {

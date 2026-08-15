@@ -19,7 +19,13 @@ class ExtraScenarioTests(unittest.TestCase):
         result = self.orch.plan("Refactoriza este repositorio sin romper funcionalidades.")
         data = result.to_dict()
         self.assertTrue(data["capability_resolution"]["candidates"])
-        self.assertIn("boundary only", " ".join(data["codebase"]["notes"]).lower())
+        tasks = data["generated"]["tasks"]
+        self.assertTrue(any(t.get("task_kind") == "codebase_analysis" for t in tasks))
+        self.assertIn(data["readiness"]["status"], {"partially_ready", "ready", "needs_input"})
+        self.assertTrue(
+            any(g.get("kind") == "MISSING_CODEBASE_EVIDENCE" for g in data["gaps"])
+        )
+        self.assertIn(data["codebase"]["analysis_status"], {"deferred", "not_run", "complete"})
 
     def test_incident_scenario(self) -> None:
         result = self.orch.plan("Mi API está devolviendo 500 en producción.")
