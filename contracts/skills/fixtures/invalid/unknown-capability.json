@@ -1,0 +1,16 @@
+{
+  "id": "eos.skillpack.quality.unknown-cap",
+  "name": "Unknown capability",
+  "version": "0.0.1",
+  "purpose": "Invalid",
+  "category": "quality",
+  "source": "x",
+  "status": "experimental",
+  "provenance": {
+    "origin": "test",
+    "source": "x",
+    "version": "0.0.1",
+    "unavailable_source_content": false
+  },
+  "capability_relationships": ["eos.capability.design.does-not-exist"]
+}

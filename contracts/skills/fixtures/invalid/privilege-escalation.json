@@ -1,0 +1,19 @@
+{
+  "id": "eos.skillpack.quality.priv-escalation",
+  "name": "Privilege attempt",
+  "version": "0.0.1",
+  "purpose": "Invalid",
+  "category": "quality",
+  "source": "x",
+  "status": "experimental",
+  "provenance": {
+    "origin": "test",
+    "source": "x",
+    "version": "0.0.1",
+    "unavailable_source_content": false
+  },
+  "metadata": {
+    "grants_permissions": ["DEPLOY_EXECUTE"],
+    "bypass_gates": true
+  }
+}

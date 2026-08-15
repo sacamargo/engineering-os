@@ -1,0 +1,42 @@
+{
+  "id": "eos.skillpack.quality.fixture-review",
+  "name": "Fixture Quality Review",
+  "version": "0.0.1",
+  "purpose": "Valid fixture for skill contract tests",
+  "category": "quality",
+  "source": "contracts/skills/fixtures/valid",
+  "status": "experimental",
+  "provenance": {
+    "origin": "engineering-os",
+    "source": "fixture",
+    "version": "0.0.1",
+    "license": "unknown",
+    "adaptation_status": "eos-native",
+    "unavailable_source_content": false,
+    "limitations": ["Fixture only"]
+  },
+  "triggers": [
+    {
+      "signal_type": "intent_class",
+      "value": "design",
+      "weight": 0.5,
+      "polarity": "positive"
+    }
+  ],
+  "capability_relationships": ["eos.capability.design.system-architecture"],
+  "role_relationships": ["eos.role.system-architect"],
+  "tool_requirements": [],
+  "composition_rules": [
+    {
+      "kind": "transversal",
+      "with_skill_ids": [],
+      "implies_task_dependency": false,
+      "notes": "Review layer"
+    }
+  ],
+  "constraints": ["cannot_grant_permissions"],
+  "limitations": ["Not a domain authority"],
+  "cannot_grant_permissions": true,
+  "quality_gates": ["skill_review_performed"],
+  "evidence_requirements": ["findings_list"]
+}

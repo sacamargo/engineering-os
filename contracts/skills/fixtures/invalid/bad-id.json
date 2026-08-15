@@ -1,0 +1,15 @@
+{
+  "id": "EOS.skillpack.Bad.ID",
+  "name": "Bad",
+  "version": "0.0.1",
+  "purpose": "Invalid id",
+  "category": "quality",
+  "source": "x",
+  "status": "experimental",
+  "provenance": {
+    "origin": "test",
+    "source": "x",
+    "version": "0.0.1",
+    "unavailable_source_content": false
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-os.local/contracts/skills/skillpack.schema.json",
+  "title": "Engineering OS Skillpack Manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "purpose",
+    "category",
+    "source",
+    "provenance",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^eos\\.skillpack\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "source": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["active", "experimental", "deprecated", "unavailable"]
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["origin", "source", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "origin": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "license": { "type": "string" },
+        "adaptation_status": {
+          "type": "string",
+          "enum": ["none", "adapted", "eos-native"]
+        },
+        "modifications": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "unavailable_source_content": { "type": "boolean" }
+      }
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["signal_type", "value"],
+        "properties": {
+          "signal_type": { "type": "string" },
+          "value": { "type": "string" },
+          "weight": { "type": "number" },
+          "polarity": { "type": "string", "enum": ["positive", "negative"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "inputs": { "type": "array" },
+    "outputs": { "type": "array" },
+    "required_context": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "knowledge_dependencies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tool_requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "capability_relationships": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^eos\\.capability\\."
+      }
+    },
+    "role_relationships": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^eos\\.role\\."
+      }
+    },
+    "agent_compatibility": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "workflows": { "type": "array" },
+    "quality_gates": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "escalation_rules": { "type": "array" },
+    "composition_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["primary", "supporting", "transversal"]
+          },
+          "with_skill_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "notes": { "type": "string" },
+          "implies_task_dependency": { "type": "boolean" }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cannot_grant_permissions": { "type": "boolean" },
+    "metadata": { "type": "object" }
+  }
+}

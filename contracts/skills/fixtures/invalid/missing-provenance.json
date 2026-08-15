@@ -1,0 +1,14 @@
+{
+  "id": "eos.skillpack.quality.missing-prov",
+  "name": "Missing provenance fields",
+  "version": "0.0.1",
+  "purpose": "Invalid",
+  "category": "quality",
+  "source": "x",
+  "status": "unavailable",
+  "provenance": {
+    "origin": "",
+    "source": "",
+    "version": ""
+  }
+}

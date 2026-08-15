@@ -1,0 +1,22 @@
+{
+  "id": "eos.skillpack.quality.hidden-dag",
+  "name": "Hidden DAG",
+  "version": "0.0.1",
+  "purpose": "Invalid",
+  "category": "quality",
+  "source": "x",
+  "status": "experimental",
+  "provenance": {
+    "origin": "test",
+    "source": "x",
+    "version": "0.0.1",
+    "unavailable_source_content": false
+  },
+  "composition_rules": [
+    {
+      "kind": "supporting",
+      "with_skill_ids": ["eos.skillpack.design.ui-ux-pro-max"],
+      "implies_task_dependency": true
+    }
+  ]
+}
