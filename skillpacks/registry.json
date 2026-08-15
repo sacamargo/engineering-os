@@ -1,0 +1,14 @@
+{
+  "schema": "eos.skillpack.registry.v1",
+  "version": "0.1.0",
+  "description": "Canonical Integrated Skill registry — data-driven discovery; Orchestrator must not hardcode this list.",
+  "skills": [
+    {
+      "id": "eos.skillpack.quality.fixture-review",
+      "status": "experimental",
+      "version": "0.0.1",
+      "path": "packs/fixture-review/manifest.json",
+      "category": "quality"
+    }
+  ]
+}

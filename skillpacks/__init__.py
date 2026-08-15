@@ -15,6 +15,7 @@ from skillpacks.model import (
     is_skillpack_id,
     skillpack_from_dict,
 )
+from skillpacks.registry import SkillRegistry, discover_skills, load_registry
 
 __all__ = [
     "CompositionRule",
@@ -22,8 +23,11 @@ __all__ = [
     "SkillIO",
     "SkillPack",
     "SkillProvenance",
+    "SkillRegistry",
     "SkillTrigger",
     "SkillWorkflow",
+    "discover_skills",
     "is_skillpack_id",
+    "load_registry",
     "skillpack_from_dict",
 ]

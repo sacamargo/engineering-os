@@ -1,0 +1,38 @@
+{
+  "id": "eos.skillpack.quality.fixture-review",
+  "name": "Fixture Quality Review",
+  "version": "0.0.1",
+  "purpose": "Discovery fixture skillpack for registry tests",
+  "category": "quality",
+  "source": "skillpacks/packs/fixture-review",
+  "status": "experimental",
+  "provenance": {
+    "origin": "engineering-os",
+    "source": "fixture",
+    "version": "0.0.1",
+    "license": "unknown",
+    "adaptation_status": "eos-native",
+    "unavailable_source_content": false,
+    "limitations": ["Test fixture only — not a production skill"]
+  },
+  "triggers": [
+    {
+      "signal_type": "artifact_kind",
+      "value": "design_spec",
+      "weight": 0.4,
+      "polarity": "positive"
+    }
+  ],
+  "capability_relationships": ["eos.capability.design.system-architecture"],
+  "role_relationships": ["eos.role.system-architect"],
+  "composition_rules": [
+    {
+      "kind": "transversal",
+      "with_skill_ids": [],
+      "implies_task_dependency": false
+    }
+  ],
+  "constraints": ["cannot_grant_permissions"],
+  "limitations": ["Fixture"],
+  "cannot_grant_permissions": true
+}
