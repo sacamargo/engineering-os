@@ -79,7 +79,7 @@ Composition rule: Capabilities, Knowledge Units, Roles, Agents, Tasks, Artifacts
 ┌──────────────────────────────────────────────────────────────┐
 │  Adapter Layer (optional, vendor-specific, replaceable)      │
 ├──────────────────────────────────────────────────────────────┤
-│  Agent Layer (executors — boundary defined; runtime later)   │
+│  Agent Layer (executors — `agents/` runtime; no swarm)       │
 ├──────────────────────────────────────────────────────────────┤
 │  Delivery Layer (repo/CI/deploy — boundary; runtime later)   │
 ├──────────────────────────────────────────────────────────────┤

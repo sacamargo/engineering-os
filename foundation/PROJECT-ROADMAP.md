@@ -117,17 +117,27 @@ Evidence: [docs/PHASE-5-VALIDATION.md](../docs/PHASE-5-VALIDATION.md)
 
 ---
 
-## Phase 6 — Agent Execution
+## Phase 6 — Agent Execution (current complete)
 
-Flexible executors that run tasks using knowledge units and role metadata.
+Flexible executors that run tasks using authorized tools, evidence, and gates.
 
-Expected work:
+- [x] Execution audit (reuse Task/Evidence/Gate/Failure; new agents runtime)
+- [x] Agent Definition vs Runtime Instance
+- [x] Agent lifecycle + task state integration
+- [x] Tool model, permissions, risk
+- [x] Sandboxed local tool runtime + allowlisted commands
+- [x] Execution loop (assign→execute→evidence→gate→retry/replan/escalate)
+- [x] ChangeSet, rollback, dry-run, cancellation
+- [x] Deterministic coding agent (LLM optional boundary only)
+- [x] Agency scenarios + security tests
+- [x] Orchestrator assignment wiring (`execute_task` delegates to agents/)
+- [x] Phase 6 validation docs
 
-- Agent runtime boundary implementation
-- Avoid one-agent-per-role zoo
-- Tool-use policies + failure handling
+**Exit criteria:** A Task can be executed by an Agent with tools against a fixture repo, producing ChangeSet + test evidence + gate outcome — or fail/escalate honestly.
 
-**Not started** (boundary doc only). Do not begin until Phase 5 review completes.
+**Non-goals:** swarm, deploy, CI/CD autonomy, mandatory LLM, production ops.
+
+Evidence: [docs/PHASE-6-VALIDATION.md](../docs/PHASE-6-VALIDATION.md)
 
 ---
 
@@ -141,7 +151,7 @@ Expected work:
 - Map gates to pipeline evidence
 - Rollback playbooks bound to Capabilities as warranted
 
-**Not started** (boundary doc only).
+**Not started** (boundary doc only). Do not begin until Phase 6 review completes.
 
 ---
 

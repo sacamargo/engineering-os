@@ -50,17 +50,15 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-**Phase 5 — Codebase Intelligence** lands a real repository observation pipeline (`codebase/`) and wires it into the Planning Orchestrator.
+**Phase 6 — Agent Execution** lands a sandboxed runtime (`agents/`) that executes Tasks with authorized Tools, Evidence, and Gates.
 
-- Snapshot → filesystem index → parsers → symbols → dependencies → tests → configuration → architecture signals → findings → evidence
-- CLI: `PYTHONPATH=. python3 -m codebase.cli analyze ./path --format json`
-- Orchestrator inserts `codebase_analysis` before blind refactor/migrate/audit work and gates readiness
-- Fixtures: `codebase/fixtures/{rivallium-mini,padel-iot-mini,legacy-chaos}`
-- Contracts: `python3 contracts/validate_codebase.py --self-check`
+- Deterministic coding agent (no LLM required)
+- Workspace sandbox, allowlisted commands, permission/risk checks
+- Execution loop with retry/rollback/dry-run/human escalation
+- Orchestrator assigns Agent Definitions; does not own tool execution
+- Demo tests: `PYTHONPATH=. python3 -m unittest discover -s agents/tests -v`
 
-Phase 4 orchestration remains for Intent→Plan. This is **not** autonomous coding, agent fleets, CI/CD, or production operations (Phase 6+).
-
-Missing domains still return honest `insufficient_coverage` / professional escalation — never invented Capabilities.
+Phase 5 Codebase Intelligence and Phase 4 Planning remain. This is **not** CI/CD autonomy, deploy, or agent swarms (Phase 7+).
 
 ---
 
@@ -78,6 +76,8 @@ Missing domains still return honest `insufficient_coverage` / professional escal
 | [Execution Model](foundation/EXECUTION-MODEL.md) | Intent → plan → tasks → gates coordination |
 | [Orchestration package](orchestration/README.md) | Planning Orchestrator (Phase 4) |
 | [Codebase Intelligence](codebase/README.md) | Repository observation pipeline (Phase 5) |
+| [Agent Runtime](agents/README.md) | Sandboxed Task execution (Phase 6) |
+| [Phase 6 Validation](docs/PHASE-6-VALIDATION.md) | Phase 6 evidence and limits |
 | [Phase 5 Validation](docs/PHASE-5-VALIDATION.md) | Phase 5 evidence, limits, next step |
 | [Engineering Workflow](foundation/ENGINEERING-WORKFLOW.md) | Git workflow and repository discipline |
 | [Project Roadmap](foundation/PROJECT-ROADMAP.md) | Long-term evolution plan |
