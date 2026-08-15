@@ -1,0 +1,97 @@
+{
+  "id": "eos.skillpack.marketing.corey-haines",
+  "name": "Marketing Skills / Corey Haines",
+  "version": "0.0.0",
+  "purpose": "Marketing and product-oriented methodology pack when source material is available.",
+  "category": "marketing",
+  "source": "unavailable",
+  "status": "unavailable",
+  "provenance": {
+    "origin": "external:Corey Haines Marketing Skills",
+    "source": "unavailable",
+    "version": "0.0.0",
+    "license": "unknown",
+    "adaptation_status": "none",
+    "modifications": [],
+    "limitations": [
+      "Source material is not present in this repository",
+      "Engineering OS must not fabricate marketing methodology content",
+      "Does not create software architecture decisions",
+      "Does not grant deployment permissions"
+    ],
+    "unavailable_source_content": true
+  },
+  "triggers": [
+    {
+      "signal_type": "domain",
+      "value": "marketing",
+      "weight": 2.5,
+      "polarity": "positive",
+      "notes": "Landing/conversion/positioning intents"
+    },
+    {
+      "signal_type": "domain",
+      "value": "database",
+      "weight": 2.0,
+      "polarity": "negative",
+      "notes": "Pure database migration is not marketing work"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "product_positioning_brief",
+      "required": false,
+      "artifact_kinds": ["brief", "copy_draft"]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "marketing_guidance",
+      "required": false,
+      "artifact_kinds": ["marketing_notes"]
+    }
+  ],
+  "required_context": ["intent", "selected_capabilities"],
+  "knowledge_dependencies": [],
+  "tool_requirements": [],
+  "capability_relationships": ["eos.capability.design.system-architecture"],
+  "role_relationships": ["eos.role.product-manager"],
+  "agent_compatibility": ["analysis"],
+  "workflows": [
+    {
+      "id": "marketing-guidance",
+      "name": "Marketing guidance",
+      "mode": "default",
+      "description": "Blocked until source is provided",
+      "steps": ["verify_source", "NEEDS_SOURCE"]
+    }
+  ],
+  "quality_gates": ["provenance_known", "source_available"],
+  "evidence_requirements": ["skill_id", "skill_version", "provenance", "uncertainty"],
+  "escalation_rules": [
+    {
+      "when": "source_missing",
+      "action": "NEEDS_SOURCE",
+      "reason": "Marketing methodology source not in repository"
+    }
+  ],
+  "composition_rules": [
+    {
+      "kind": "supporting",
+      "with_skill_ids": ["eos.skillpack.design.ui-ux-pro-max"],
+      "implies_task_dependency": false,
+      "notes": "May support landing-page UX work when both applicable"
+    }
+  ],
+  "constraints": [
+    "cannot_grant_permissions",
+    "cannot_own_architecture",
+    "cannot_deploy"
+  ],
+  "limitations": [
+    "Not a Product Manager Role",
+    "Not a Capability",
+    "Unavailable until source is added with provenance"
+  ],
+  "cannot_grant_permissions": true
+}

@@ -9,6 +9,13 @@
       "version": "0.0.1",
       "path": "packs/fixture-review/manifest.json",
       "category": "quality"
+    },
+    {
+      "id": "eos.skillpack.marketing.corey-haines",
+      "status": "unavailable",
+      "version": "0.0.0",
+      "path": "packs/marketing-corey-haines/manifest.json",
+      "category": "marketing"
     }
   ]
 }
