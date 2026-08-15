@@ -50,14 +50,13 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-**Phase 8 — Skill Integration Layer** lands contract-driven Integrated Skills (`skillpacks/`, `eos.skillpack.*`) selectable after Capabilities — without collapsing Skill into Capability, Role, Agent, or knowledge-unit `skill`.
+**Phase 8.1 — Skill Source Ingestion** adds verified Source objects, ingestion pipeline, and honest activation (Context Engineering `active`; external packs remain `unavailable` / `NEEDS_SOURCE`).
 
-- Registry-driven discovery/routing/composition; Orchestrator does not hardcode Skill lists
-- Marketing / Stop Slop / UI UX PRO MAX: `unavailable` until source exists (not fabricated)
-- Context Engineering: EOS-native experimental context assembly (vendor-neutral)
-- CLI/tests: `PYTHONPATH=. python3 -m unittest discover -s skillpacks/tests -v`
+- Sources: `skillpacks/sources/`
+- Docs: `docs/PHASE-8.1-VALIDATION.md`
+- Tests: `PYTHONPATH=. python3 -m unittest discover -s skillpacks/tests -v`
 
-Phases 1–7 remain foundational. This is **not** Production Operations (now Phase 9).
+Phases 1–8 remain foundational. **Phase 9 Production Operations is not started.**
 
 ---
 
@@ -80,6 +79,7 @@ Phases 1–7 remain foundational. This is **not** Production Operations (now Pha
 | [Skillpacks](skillpacks/README.md) | Integrated Skills layer (Phase 8) |
 | [Skill Model](foundation/SKILL-MODEL.md) | Skill ≠ Capability ≠ Role ≠ Agent |
 | [Phase 8 Validation](docs/PHASE-8-VALIDATION.md) | Phase 8 evidence and limits |
+| [Phase 8.1 Validation](docs/PHASE-8.1-VALIDATION.md) | Source ingestion & activation |
 | [Phase 7 Validation](docs/PHASE-7-VALIDATION.md) | Phase 7 evidence and limits |
 | [Phase 6 Validation](docs/PHASE-6-VALIDATION.md) | Phase 6 evidence and limits |
 | [Phase 5 Validation](docs/PHASE-5-VALIDATION.md) | Phase 5 evidence, limits, next step |

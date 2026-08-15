@@ -179,6 +179,18 @@ Integrate specialized expertise packs without collapsing Skill into Capability/R
 
 Evidence: [docs/PHASE-8-VALIDATION.md](../docs/PHASE-8-VALIDATION.md)
 
+### Phase 8.1 — Skill Source Ingestion & Activation (current complete)
+
+- [x] Source model, contracts, registry, ingestion pipeline
+- [x] Hashing / revisions / extraction / CAN_ACTIVATE_SKILL / status transitions
+- [x] Honest NEEDS_SOURCE for Marketing / Stop Slop / UI UX PRO MAX
+- [x] Context Engineering activated via EOS-native verified source
+- [x] Bounded agent skill context + invocation evidence
+- [x] Electrolinera 8.1 + role discovery + UX skeleton contracts
+- [x] Self-refutation + validation docs
+
+Evidence: [docs/PHASE-8.1-VALIDATION.md](../docs/PHASE-8.1-VALIDATION.md)
+
 ---
 
 ## Phase 9 — Production Operations
