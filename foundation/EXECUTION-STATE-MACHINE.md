@@ -44,13 +44,38 @@ discovered → planned → ready → executing ⇄ blocked
 ## Task States
 
 ```text
-pending → ready → in_progress → completed
-                 ↘ blocked
-                 ↘ failed
-                 ↘ cancelled
+pending → ready → assigned → in_progress → validating → completed
+                              ↘ blocked
+                              ↘ failed
+                              ↘ cancelled
+
+failed → ready   (explicit retry re-arm only)
 ```
 
-See [TASK-MODEL.md](TASK-MODEL.md) for readiness rules.
+Phase 6 adds `assigned` (executor bound) and `validating` (gates evaluating agent outputs).
+See [TASK-MODEL.md](TASK-MODEL.md) and `agents/task_states.py`.
+
+Agent success maps to task `validating`, **not** `completed`. Completion requires gate evidence.
+
+---
+
+## Agent States (Phase 6)
+
+Separate object from Task/Project/Gate — see [AGENT-MODEL.md](AGENT-MODEL.md).
+
+```text
+created → ready → running ⇄ waiting
+                 ↘ blocked → escalated
+                 ↘ succeeded | failed | cancelled
+```
+
+| Coupling rule | Meaning |
+|---|---|
+| Agent `succeeded` | Task may enter `validating` — never auto-`completed` |
+| Agent `failed` | Task `failed` (then retry/replan/escalate via Failure Model) |
+| Agent `escalated` | Task `blocked` + human escalation |
+
+Runtime: `agents/lifecycle.py`, `agents/task_states.py`.
 
 ---
 
