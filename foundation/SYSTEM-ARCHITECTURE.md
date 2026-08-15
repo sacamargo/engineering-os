@@ -84,8 +84,11 @@ Composition rule: Capabilities, Knowledge Units, Roles, Agents, Tasks, Artifacts
 │  Skill Integration Layer (`skillpacks/` — eos.skillpack.*)   │
 │  Skill ≠ Capability ≠ Role ≠ knowledge-unit skill            │
 ├──────────────────────────────────────────────────────────────┤
+│  Production Operations (`production/` — fake/local adapters) │
+│  ProductionOperation ≠ Deployment; human approval for prod     │
+├──────────────────────────────────────────────────────────────┤
 │  Delivery Layer (build/validate/release readiness — `delivery/`) │
-│  Deployment = adapter boundary only (not core)                 │
+│  READY_FOR_DEPLOYMENT ≠ deployed                               │
 ├──────────────────────────────────────────────────────────────┤
 │  Validation Layer (gates + evidence)                         │
 ├──────────────────────────────────────────────────────────────┤
@@ -125,6 +128,7 @@ Authoritative design intent. Changes rarely and only with explicit rationale.
 | `ORCHESTRATOR-MODEL.md` / `AGENT-MODEL.md` / `ADAPTER-MODEL.md` | Runtime boundaries (not implementations) |
 | `CODEBASE-INTELLIGENCE.md` / `CODEBASE-BOUNDARY.md` | Repository observation model + read policy |
 | `DELIVERY-MODEL.md` / `HUMAN-ESCALATION.md` | Delivery vs autonomy limits |
+| Phase 9 ops docs | `docs/PHASE-9-OPERATIONS.md` — ProductionOperation loop |
 
 ### Layer 1 — Contracts
 

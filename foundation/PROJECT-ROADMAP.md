@@ -193,17 +193,25 @@ Evidence: [docs/PHASE-8.1-VALIDATION.md](../docs/PHASE-8.1-VALIDATION.md)
 
 ---
 
-## Phase 9 — Production Operations
+## Phase 9 — Production Operations (current complete)
 
-Incident, reliability, and operational loops as first-class agency work.
+Incident, reliability, and operational loops as first-class agency work — **vendor-neutral**, fake/local adapters only.
 
-Expected work:
+Completed:
 
-- Incident investigation execution paths
-- SLO/error-budget tied observability
-- Change management under production constraints
+- [x] Audit vs Delivery/Codebase/Agents reuse
+- [x] ProductionOperation state machine + Environment + DeploymentTarget
+- [x] DeploymentAdapter contract + local/web/backend fakes
+- [x] Pre-deploy readiness, human approval, safety gate
+- [x] Health / verification / rollback policy (AUTO vs HUMAN)
+- [x] Incident / Alert / Severity → orchestration work items
+- [x] Permissions, secrets, config refs, impact/migrations/compatibility
+- [x] ReleaseBundle + mobile prepare-only boundaries
+- [x] CLI, contracts, security/agency/scale tests, docs
 
-**Not started.** Do not begin until Phase 8 review completes.
+Evidence: [docs/PHASE-9-VALIDATION.md](../docs/PHASE-9-VALIDATION.md)
+
+**Stop.** Do not begin Phase 10 until explicitly requested.
 
 ---
 

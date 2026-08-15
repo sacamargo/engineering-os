@@ -4,6 +4,22 @@ Separates **Planning**, **Execution**, and **Delivery**.
 
 Runtime: `delivery/` (Phase 7). Deployment remains an **adapter boundary** — not core execution.
 
+Phase 9 adds `production/`: a vendor-neutral **ProductionOperation** loop that consumes a Delivery `ReleaseCandidate` and may execute **fake/local** deploy/health/rollback adapters. Real cloud/App Store/Play Store publishing is out of scope.
+
+## Hard distinctions
+
+```text
+Delivery ≠ Deployment
+Release ≠ Deployment
+READY_FOR_DEPLOYMENT ≠ deployed
+ProductionOperation ≠ Deployment ≠ ReleaseCandidate
+Environment ≠ Cloud provider
+Evidence ≠ Success
+Approval ≠ Execution
+Alert ≠ Incident
+UNKNOWN ≠ PASSED
+```
+
 Authorities: [ARTIFACT-MODEL](ARTIFACT-MODEL.md), [VALIDATION-GATES](VALIDATION-GATES.md), [EVIDENCE-MODEL](EVIDENCE-MODEL.md), [DECISION-MODEL](DECISION-MODEL.md), audit [`docs/PHASE-7-DELIVERY-AUDIT.md`](../docs/PHASE-7-DELIVERY-AUDIT.md).
 
 ---
@@ -74,3 +90,14 @@ ChangeSet
 ## Out of scope (Phase 7)
 
 Real cloud deploy, secret management, auto-prod approval, vendor CI inside core.
+
+## Phase 9 handoff
+
+When Delivery signals `READY_FOR_DEPLOYMENT`, Production Operations may:
+
+1. Evaluate pre-deploy readiness gaps  
+2. Require human approval for production  
+3. Run fake/local adapter deploy + health verification  
+4. Emit evidence / incidents / rollback work  
+
+See [docs/PHASE-9-OPERATIONS.md](../docs/PHASE-9-OPERATIONS.md).

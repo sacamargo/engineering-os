@@ -50,13 +50,14 @@ Communication is language-independent. Users and contributors may interact with 
 
 ## Repository Status
 
-**Phase 8.1 — Skill Source Ingestion** adds verified Source objects, ingestion pipeline, and honest activation (Context Engineering `active`; external packs remain `unavailable` / `NEEDS_SOURCE`).
+**Phase 9 — Production Operations** is complete (fake/local ops loop over Delivery ReleaseCandidates).
 
-- Sources: `skillpacks/sources/`
-- Docs: `docs/PHASE-8.1-VALIDATION.md`
-- Tests: `PYTHONPATH=. python3 -m unittest discover -s skillpacks/tests -v`
+- Package: `production/`
+- Docs: `docs/PHASE-9-VALIDATION.md`, `docs/PHASE-9-OPERATIONS.md`, `docs/PHASE-9-SECURITY.md`
+- Tests: `PYTHONPATH=. python3 -m unittest discover -s production/tests -v`
+- CLI: `PYTHONPATH=. python3 -m production dry-run --environment local`
 
-Phases 1–8 remain foundational. **Phase 9 Production Operations is not started.**
+Phases 1–8.1 remain foundational. **Phase 10 Continuous Evolution is not started.** Real cloud/App Store deploy is **not** implemented.
 
 ---
 
@@ -76,6 +77,7 @@ Phases 1–8 remain foundational. **Phase 9 Production Operations is not started
 | [Codebase Intelligence](codebase/README.md) | Repository observation pipeline (Phase 5) |
 | [Agent Runtime](agents/README.md) | Sandboxed Task execution (Phase 6) |
 | [Delivery Layer](delivery/README.md) | Build/validate/release readiness (Phase 7) |
+| [Production Operations](production/README.md) | Fake/local deploy/health/rollback loop (Phase 9) |
 | [Skillpacks](skillpacks/README.md) | Integrated Skills layer (Phase 8) |
 | [Skill Model](foundation/SKILL-MODEL.md) | Skill ≠ Capability ≠ Role ≠ Agent |
 | [Phase 8 Validation](docs/PHASE-8-VALIDATION.md) | Phase 8 evidence and limits |
