@@ -1,0 +1,171 @@
+{
+  "id": "eos.skillpack.design.ui-ux-pro-max",
+  "name": "UI UX PRO MAX",
+  "version": "0.0.0",
+  "purpose": "UX/UI expertise pack for design, review, and improvement modes when source is available.",
+  "category": "design",
+  "source": "unavailable",
+  "status": "unavailable",
+  "provenance": {
+    "origin": "external:UI UX PRO MAX",
+    "source": "unavailable",
+    "version": "0.0.0",
+    "license": "unknown",
+    "adaptation_status": "none",
+    "modifications": [],
+    "limitations": [
+      "Source material is not present in this repository",
+      "Modes DESIGN/REVIEW/IMPROVEMENT are contract slots only until source exists",
+      "Does not automatically grant frontend code execution",
+      "Does not bypass security gates",
+      "Does not equal frontend engineering Role"
+    ],
+    "unavailable_source_content": true
+  },
+  "triggers": [
+    {
+      "signal_type": "domain",
+      "value": "ux_ui",
+      "weight": 3.0,
+      "polarity": "positive"
+    },
+    {
+      "signal_type": "intent_class",
+      "value": "design",
+      "weight": 1.0,
+      "polarity": "positive"
+    },
+    {
+      "signal_type": "domain",
+      "value": "api",
+      "weight": 2.0,
+      "polarity": "negative",
+      "notes": "API-only builds are not primary UX work"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "product_intent",
+      "required": true,
+      "artifact_kinds": ["intent"]
+    },
+    {
+      "name": "existing_interface",
+      "required": false,
+      "artifact_kinds": ["ui_spec", "screenshot_ref"]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "user_flows",
+      "artifact_kinds": ["user_flow"]
+    },
+    {
+      "name": "wireframe_spec",
+      "artifact_kinds": ["wireframe_spec"]
+    },
+    {
+      "name": "ui_spec",
+      "artifact_kinds": ["ui_spec"]
+    },
+    {
+      "name": "accessibility_requirements",
+      "artifact_kinds": ["a11y_requirements"]
+    },
+    {
+      "name": "design_review_findings",
+      "artifact_kinds": ["review_findings"]
+    }
+  ],
+  "required_context": ["intent", "target_platforms", "selected_capabilities"],
+  "workflows": [
+    {
+      "id": "design",
+      "name": "DESIGN mode",
+      "mode": "DESIGN",
+      "description": "Produce inspectable design artifacts before implementation",
+      "steps": ["verify_source", "define_journeys", "specify_ui", "a11y", "emit_artifacts"]
+    },
+    {
+      "id": "review",
+      "name": "REVIEW mode",
+      "mode": "REVIEW",
+      "description": "Review existing interfaces",
+      "steps": ["verify_source", "inspect_interface", "emit_findings"]
+    },
+    {
+      "id": "improvement",
+      "name": "IMPROVEMENT mode",
+      "mode": "IMPROVEMENT",
+      "description": "Propose improvements without silent production mutation",
+      "steps": ["verify_source", "diff_current", "propose_changes"]
+    }
+  ],
+  "quality_gates": [
+    "provenance_known",
+    "source_available",
+    "mode_selected",
+    "inspectable_artifact_produced"
+  ],
+  "evidence_requirements": [
+    "skill_id",
+    "skill_version",
+    "mode",
+    "output_refs",
+    "uncertainty"
+  ],
+  "escalation_rules": [
+    {
+      "when": "source_missing",
+      "action": "NEEDS_SOURCE",
+      "reason": "UI UX PRO MAX source unavailable"
+    },
+    {
+      "when": "proprietary_asset_missing",
+      "action": "NEEDS_INPUT",
+      "reason": "Cannot invent proprietary brand assets"
+    }
+  ],
+  "composition_rules": [
+    {
+      "kind": "primary",
+      "with_skill_ids": ["eos.skillpack.quality.stop-slop"],
+      "implies_task_dependency": false,
+      "notes": "Stop Slop may review UX artifacts; not a pipeline"
+    }
+  ],
+  "capability_relationships": ["eos.capability.design.system-architecture"],
+  "role_relationships": [
+    "eos.role.ui-ux-designer",
+    "eos.role.frontend-engineer",
+    "eos.role.product-manager"
+  ],
+  "agent_compatibility": ["analysis"],
+  "constraints": [
+    "cannot_grant_permissions",
+    "cannot_grant_frontend_code_execution",
+    "cannot_bypass_security_gates",
+    "not_frontend_engineering"
+  ],
+  "limitations": [
+    "Unavailable until source is added",
+    "Supported areas listed only as intended coverage slots — not invented methodology"
+  ],
+  "cannot_grant_permissions": true,
+  "metadata": {
+    "intended_coverage_slots": [
+      "ux",
+      "ui",
+      "information_architecture",
+      "user_flows",
+      "interaction_design",
+      "visual_hierarchy",
+      "design_systems",
+      "responsive_design",
+      "accessibility",
+      "interface_consistency",
+      "design_validation"
+    ],
+    "modes": ["DESIGN", "REVIEW", "IMPROVEMENT"]
+  }
+}

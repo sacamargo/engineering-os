@@ -23,6 +23,13 @@
       "version": "0.0.0",
       "path": "packs/stop-slop/manifest.json",
       "category": "quality"
+    },
+    {
+      "id": "eos.skillpack.design.ui-ux-pro-max",
+      "status": "unavailable",
+      "version": "0.0.0",
+      "path": "packs/ui-ux-pro-max/manifest.json",
+      "category": "design"
     }
   ]
 }
