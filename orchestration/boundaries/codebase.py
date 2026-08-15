@@ -124,4 +124,12 @@ def intent_requires_codebase(possible_intents: list[str], context: dict[str, Any
     context = context or {}
     if context.get("codebase_snapshot_id") or context.get("codebase_analyzed"):
         return False
+    # Assessment / quotation artifacts are not repositories
+    if context.get("assessment") or context.get("artifact_kind") in {
+        "quotation",
+        "assessment",
+        "cotizacion",
+        "proposal",
+    }:
+        return False
     return any(i in CODEBASE_REQUIRED_INTENTS for i in possible_intents)
