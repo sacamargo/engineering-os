@@ -1,7 +1,7 @@
 {
   "schema": "eos.skillsource.registry.v1",
   "version": "0.1.0",
-  "description": "Data-driven Skill Source registry — Orchestrator must not hardcode sources.",
+  "description": "Data-driven Skill Source registry \u2014 Orchestrator must not hardcode sources.",
   "sources": [
     {
       "source_id": "eos.skillsource.marketing.corey-haines.placeholder",
@@ -25,7 +25,7 @@
       "source_id": "eos.skillsource.context.engineering.v1",
       "skillpack_id": "eos.skillpack.context.engineering",
       "path": "context-engineering/sources.json",
-      "status": "discovered"
+      "status": "active"
     }
   ]
 }

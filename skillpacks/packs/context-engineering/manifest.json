@@ -1,23 +1,24 @@
 {
   "id": "eos.skillpack.context.engineering",
   "name": "Context Engineering",
-  "version": "0.1.0",
-  "purpose": "Assemble relevant, bounded, provenance-bearing agent context for Engineering OS / Cursor — never dump the whole repository.",
+  "version": "0.1.1",
+  "purpose": "Assemble relevant, bounded, provenance-bearing agent context for Engineering OS / Cursor \u2014 never dump the whole repository.",
   "category": "context",
   "source": "skillpacks/packs/context-engineering",
-  "status": "experimental",
+  "status": "active",
   "provenance": {
     "origin": "engineering-os",
     "source": "eos-native",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "license": "unknown",
     "adaptation_status": "eos-native",
     "modifications": [
       "Adapted for Engineering OS and Cursor; no Claude-specific primitives",
-      "Vendor-neutral context assembly integrated with Codebase Intelligence relevance"
+      "Vendor-neutral context assembly integrated with Codebase Intelligence relevance",
+      "Phase 8.1: activated after CAN_ACTIVATE_SKILL on eos-native source"
     ],
     "limitations": [
-      "More context ≠ better context",
+      "More context \u2260 better context",
       "Not a universal routing shortcut",
       "Does not grant tools or permissions"
     ],
@@ -35,7 +36,7 @@
       "value": "build",
       "weight": 0.4,
       "polarity": "positive",
-      "notes": "Weak affinity only — not auto-select for every project"
+      "notes": "Weak affinity only \u2014 not auto-select for every project"
     },
     {
       "signal_type": "intent_class",
@@ -61,7 +62,9 @@
   "outputs": [
     {
       "name": "assembled_context",
-      "artifact_kinds": ["agent_context"]
+      "artifact_kinds": [
+        "agent_context"
+      ]
     }
   ],
   "required_context": [],
@@ -113,8 +116,13 @@
     "eos.capability.quality.test-planning",
     "eos.capability.operations.observability"
   ],
-  "role_relationships": ["eos.role.technical-lead"],
-  "agent_compatibility": ["coding", "analysis"],
+  "role_relationships": [
+    "eos.role.technical-lead"
+  ],
+  "agent_compatibility": [
+    "coding",
+    "analysis"
+  ],
   "constraints": [
     "cannot_grant_permissions",
     "cannot_dump_entire_repository",

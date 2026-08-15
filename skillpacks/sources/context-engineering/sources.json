@@ -9,13 +9,20 @@
       "origin": "engineering-os",
       "locator": "skillpacks/context_engineering.py",
       "version": "0.1.0",
-      "status": "discovered",
+      "status": "active",
       "trust_level": "validated_internal",
       "extraction_method": "eos_native_module",
       "license": "unknown",
       "revision": 1,
-      "allowed_usage": ["methodology_reference", "runtime_assembly"],
-      "notes": ["EOS-native; hash assigned at ingest"]
+      "allowed_usage": [
+        "methodology_reference",
+        "runtime_assembly"
+      ],
+      "notes": [
+        "EOS-native source activated via Phase 8.1 pipeline",
+        "hash=0d8cd4d2cf15c6974adfa95c06699cd47b18604cc63ebb275ecd2bee14d4807b"
+      ],
+      "content_hash": "0d8cd4d2cf15c6974adfa95c06699cd47b18604cc63ebb275ecd2bee14d4807b"
     }
   ]
 }

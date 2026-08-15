@@ -12,7 +12,7 @@ class ContextEngineeringTests(unittest.TestCase):
     def test_registered_selectable(self) -> None:
         pack = load_registry().get("eos.skillpack.context.engineering")
         assert pack is not None
-        self.assertEqual(pack.status, "experimental")
+        self.assertEqual(pack.status, "active")
         self.assertTrue(pack.is_selectable())
         self.assertEqual(pack.provenance.adaptation_status, "eos-native")
 
