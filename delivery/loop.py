@@ -305,27 +305,41 @@ def run_delivery(
                 notes=["Production requires human approval."],
             )
 
-        # Prevent agent self-approval spoof: RELEASE_APPROVE required for production
+        # Prevent agent self-approval spoofing for production
         if environment == "production":
+            if not approval_granted or not approver or str(approver).startswith("agent:"):
+                rec.status = transition("validating", "needs_human")
+                rec.readiness = "NEEDS_HUMAN"
+                return DeliveryResult(
+                    delivery=rec.to_dict(),
+                    build=build.to_dict(),
+                    artifacts=[artifact.to_dict()],
+                    validations=[v.to_dict() for v in validations],
+                    gates=[g.to_dict() for g in gates],
+                    release_candidate=rc.to_dict(),
+                    decision=decision,
+                    status="needs_human",
+                    readiness="NEEDS_HUMAN",
+                    audit_trail=audit,
+                    notes=["Production requires non-agent human approval; self-approval forbidden."],
+                )
             try:
-                assert_authorized(granted | ({"RELEASE_APPROVE"} if approval_granted else set()), ["RELEASE_APPROVE"])
+                assert_authorized(granted | {"RELEASE_APPROVE"}, ["RELEASE_APPROVE"])
             except PermissionError:
-                # approval_granted from human path — require approver identity
-                if not approver or approver.startswith("agent:"):
-                    rec.status = transition("validating", "needs_human")
-                    rec.readiness = "NEEDS_HUMAN"
-                    return DeliveryResult(
-                        delivery=rec.to_dict(),
-                        build=build.to_dict(),
-                        artifacts=[artifact.to_dict()],
-                        validations=[v.to_dict() for v in validations],
-                        gates=[g.to_dict() for g in gates],
-                        release_candidate=rc.to_dict(),
-                        status="needs_human",
-                        readiness="NEEDS_HUMAN",
-                        audit_trail=audit,
-                        notes=["Agent self-approval forbidden."],
-                    )
+                rec.status = transition("validating", "needs_human")
+                rec.readiness = "NEEDS_HUMAN"
+                return DeliveryResult(
+                    delivery=rec.to_dict(),
+                    build=build.to_dict(),
+                    artifacts=[artifact.to_dict()],
+                    validations=[v.to_dict() for v in validations],
+                    gates=[g.to_dict() for g in gates],
+                    release_candidate=rc.to_dict(),
+                    status="needs_human",
+                    readiness="NEEDS_HUMAN",
+                    audit_trail=audit,
+                    notes=["RELEASE_APPROVE permission required for production."],
+                )
 
         rec.status = transition("validating", "ready")
         rec.release_candidate_id = rc.id

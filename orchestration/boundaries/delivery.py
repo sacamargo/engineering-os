@@ -22,5 +22,10 @@ class DeliveryPlanStub:
 def delivery_boundary(project_id: str) -> DeliveryPlanStub:
     return DeliveryPlanStub(
         project_id=project_id,
-        notes=["Delivery runtime not implemented in Phase 4; boundary only."],
+        stages=["build", "validate", "artifact", "gates", "release_candidate", "deployment_boundary"],
+        status="available",
+        notes=[
+            "Delivery runtime lives in delivery/ package (Phase 7).",
+            "Deployment remains adapter-boundary only — not executed by core.",
+        ],
     )
