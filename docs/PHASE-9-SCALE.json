@@ -1,0 +1,30 @@
+{
+  "measured_at": 1786767791.977684,
+  "note": "Measured locally with LocalFakeAdapter; do not claim 10k/100k without measurement",
+  "runs": [
+    {
+      "projects": 10,
+      "execution_time_sec": 0.0018,
+      "memory_rss_mb_delta": 0.0,
+      "memory_rss_mb_end": 16.2969,
+      "artifact_count": 10,
+      "evidence_count": 40
+    },
+    {
+      "projects": 100,
+      "execution_time_sec": 0.0231,
+      "memory_rss_mb_delta": 0.0312,
+      "memory_rss_mb_end": 16.3281,
+      "artifact_count": 100,
+      "evidence_count": 400
+    },
+    {
+      "projects": 1000,
+      "execution_time_sec": 0.1431,
+      "memory_rss_mb_delta": 0.1719,
+      "memory_rss_mb_end": 16.5,
+      "artifact_count": 1000,
+      "evidence_count": 4000
+    }
+  ]
+}

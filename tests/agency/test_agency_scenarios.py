@@ -102,6 +102,30 @@ class AgencyScenarioTests(unittest.TestCase):
         self.assertTrue(LIVE_CAPABILITIES.issubset(caps) or caps == LIVE_CAPABILITIES)
         self.assertGreaterEqual(len(project["insufficient_coverage"]), 1)
 
+    def test_production_lifecycle_module_available(self) -> None:
+        from production.loop import run_production_operation
+        from production.model import DeploymentTarget
+
+        result = run_production_operation(
+            release_candidate={
+                "id": "eos.rc.agency-prod",
+                "status": "ready",
+                "readiness": "READY_FOR_DEPLOYMENT",
+            },
+            target=DeploymentTarget(
+                "eos.target.agency",
+                "agency-demo",
+                "local",
+                "1.0.0",
+                "eos.artifact.agency",
+                "local_fake",
+            ),
+            environment_name="local",
+            granted_permissions=["PRODUCTION_READ", "PRODUCTION_DEPLOY"],
+        )
+        self.assertEqual(result.operation.status, "succeeded")
+        self.assertTrue(result.audit)
+
 
 if __name__ == "__main__":
     unittest.main()

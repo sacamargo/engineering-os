@@ -83,6 +83,9 @@ class LocalFakeAdapter:
         if not request.previous_version:
             return AdapterResult("failed", "rollback target version unknown", adapter=self.name)
         self._deployed[request.environment] = request.previous_version
+        # Prior version is assumed healthy in the fake unless explicitly forced unknown
+        if self.force_health in {"unhealthy", "degraded"}:
+            self.force_health = "healthy"
         return AdapterResult(
             "ok",
             f"rolled back to {request.previous_version}",

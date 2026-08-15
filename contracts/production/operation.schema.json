@@ -1,0 +1,23 @@
+{
+  "id": "eos.contract.production.operation",
+  "kind": "production_operation",
+  "statuses": [
+    "planned",
+    "validating",
+    "awaiting_approval",
+    "deploying",
+    "verifying",
+    "succeeded",
+    "failed",
+    "degraded",
+    "rollback_required",
+    "rolling_back",
+    "rolled_back",
+    "needs_human",
+    "cancelled"
+  ],
+  "rules": [
+    "UNKNOWN health never equals succeeded",
+    "deploying cannot transition directly to succeeded"
+  ]
+}

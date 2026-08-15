@@ -1,0 +1,20 @@
+{
+  "id": "eos.contract.production.environment",
+  "kind": "environment",
+  "required_fields": [
+    "id",
+    "name",
+    "classification",
+    "risk",
+    "deployment_policy",
+    "approval_policy",
+    "health_checks",
+    "rollback_policy",
+    "adapter",
+    "permissions_required"
+  ],
+  "production_rules": {
+    "risk": ["high", "critical"],
+    "approval_policy": "human_required"
+  }
+}
