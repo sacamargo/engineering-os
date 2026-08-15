@@ -5,7 +5,6 @@ Anti-god-object: this class must stay a coordinator, not own catalog/methodology
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -32,52 +31,13 @@ from orchestration.knowledge import resolve_knowledge
 from orchestration.plan import generate_plan
 from orchestration.replan import replan_after_task_failure
 from orchestration.role import resolve_roles
+from orchestration.skill import resolve_skill_candidates
 from orchestration.state import can_transition
+from orchestration.facade.result import PlanningResult
 
+__all__ = ["PlanningOrchestrator", "PlanningResult"]
 
 ROOT = Path(__file__).resolve().parents[2]
-
-
-@dataclass
-class PlanningResult:
-    intent: dict[str, Any]
-    capability_resolution: dict[str, Any]
-    arbitration: dict[str, Any]
-    roles: dict[str, Any]
-    knowledge: dict[str, Any]
-    generated: dict[str, Any]
-    dependencies: dict[str, Any]
-    gaps: list[dict[str, Any]]
-    escalations: list[dict[str, Any]]
-    gates: list[dict[str, Any]]
-    readiness: dict[str, Any]
-    decisions: list[dict[str, Any]]
-    executor_suggestions: list[dict[str, Any]]
-    delivery: dict[str, Any]
-    adapter_policy: dict[str, Any]
-    codebase: dict[str, Any]
-    notes: list[str] = field(default_factory=list)
-
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            "intent": self.intent,
-            "capability_resolution": self.capability_resolution,
-            "arbitration": self.arbitration,
-            "roles": self.roles,
-            "knowledge": self.knowledge,
-            "generated": self.generated,
-            "dependencies": self.dependencies,
-            "gaps": self.gaps,
-            "escalations": self.escalations,
-            "gates": self.gates,
-            "readiness": self.readiness,
-            "decisions": self.decisions,
-            "executor_suggestions": self.executor_suggestions,
-            "delivery": self.delivery,
-            "adapter_policy": self.adapter_policy,
-            "codebase": self.codebase,
-            "notes": self.notes,
-        }
 
 
 class PlanningOrchestrator:
@@ -92,6 +52,18 @@ class PlanningOrchestrator:
         intent = intake_intent(utterance, context)
         resolution = resolve_capabilities(intent, self.repo_root)
         arbitration = arbitrate_capabilities(intent, resolution)
+        cap_ids = [
+            c
+            for c in [arbitration.primary, *(arbitration.secondary or []), *(arbitration.related or [])]
+            if c
+        ]
+        if not cap_ids:
+            cap_ids = [c.capability_id for c in resolution.candidates]
+        skill_resolution = resolve_skill_candidates(
+            intent.to_dict(),
+            cap_ids,
+            registry_root=self.repo_root / "skillpacks",
+        )
         roles = resolve_roles(intent, arbitration)
         knowledge = resolve_knowledge(arbitration, self.repo_root)
         needs_cb = intent_requires_codebase(intent.possible_intents, context)
@@ -166,6 +138,7 @@ class PlanningOrchestrator:
             "Phase 6: planning can assign Agent Definitions; execution lives in agents/ runtime.",
             f"Project state planned valid from discovered: {can_transition('discovered', 'planned')}",
             "Codebase Intelligence is not a Capability. Role ≠ Agent.",
+            "Skills are registry-driven candidates after Capabilities; Skill ≠ Capability.",
         ]
         if needs_cb:
             notes.append("Plan requires codebase_analysis before dependent refactor/audit/migrate work.")
@@ -179,6 +152,7 @@ class PlanningOrchestrator:
             intent=intent.to_dict(),
             capability_resolution=resolution.to_dict(),
             arbitration=arbitration.to_dict(),
+            skill_resolution=skill_resolution.to_dict(),
             roles=roles.to_dict(),
             knowledge=knowledge.to_dict(),
             generated=generated.to_dict(),
