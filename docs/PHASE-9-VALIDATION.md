@@ -27,7 +27,7 @@ Audit; ProductionOperation/Environment/DeploymentTarget; DeploymentAdapter + loc
 
 ## Final main hash
 
-`3882ab811d755c662ca641f768964d1203db7263`
+`37e1f1960a48cb387ef4bcdd59137cd5484869b4` (docs tip; includes this pointer lineage)
 
 ## Architecture
 
