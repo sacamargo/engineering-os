@@ -16,6 +16,13 @@
       "version": "0.0.0",
       "path": "packs/marketing-corey-haines/manifest.json",
       "category": "marketing"
+    },
+    {
+      "id": "eos.skillpack.quality.stop-slop",
+      "status": "unavailable",
+      "version": "0.0.0",
+      "path": "packs/stop-slop/manifest.json",
+      "category": "quality"
     }
   ]
 }

@@ -1,0 +1,111 @@
+{
+  "id": "eos.skillpack.quality.stop-slop",
+  "name": "Stop Slop",
+  "version": "0.0.0",
+  "purpose": "Transversal quality/review Skill for detecting low-quality (slop) artifacts when source is available.",
+  "category": "quality",
+  "source": "unavailable",
+  "status": "unavailable",
+  "provenance": {
+    "origin": "external:Stop Slop",
+    "source": "unavailable",
+    "version": "0.0.0",
+    "license": "unknown",
+    "adaptation_status": "none",
+    "modifications": [],
+    "limitations": [
+      "Source material is not present in this repository",
+      "Must not invent Stop Slop evaluation criteria beyond declared boundaries",
+      "Quality review findings ≠ product correctness",
+      "Cannot replace architecture, security, accessibility, or product decisions",
+      "Cannot bypass required specialists"
+    ],
+    "unavailable_source_content": true
+  },
+  "triggers": [
+    {
+      "signal_type": "domain",
+      "value": "quality_review",
+      "weight": 2.0,
+      "polarity": "positive"
+    },
+    {
+      "signal_type": "domain",
+      "value": "ux_ui",
+      "weight": 0.8,
+      "polarity": "positive",
+      "notes": "May review UX artifacts as transversal quality — not as UX authority"
+    },
+    {
+      "signal_type": "artifact_kind",
+      "value": "design_spec",
+      "weight": 1.0,
+      "polarity": "positive"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "artifact_under_review",
+      "required": true,
+      "artifact_kinds": ["design_spec", "copy_draft", "doc", "ui_spec"]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "quality_findings",
+      "required": true,
+      "artifact_kinds": ["review_findings"]
+    }
+  ],
+  "required_context": ["artifact_refs", "selected_skills"],
+  "workflows": [
+    {
+      "id": "review",
+      "name": "Quality review",
+      "mode": "review",
+      "description": "Review artifacts for low-quality patterns when source available",
+      "steps": ["verify_source", "inspect_artifact", "emit_findings", "gate"]
+    }
+  ],
+  "quality_gates": ["skill_review_performed", "findings_attached"],
+  "evidence_requirements": ["skill_id", "skill_version", "findings", "uncertainty"],
+  "escalation_rules": [
+    {
+      "when": "source_missing",
+      "action": "NEEDS_SOURCE",
+      "reason": "Stop Slop source unavailable"
+    },
+    {
+      "when": "domain_beyond_authority",
+      "action": "NEEDS_SPECIALIST",
+      "reason": "Cannot replace domain specialist review"
+    }
+  ],
+  "composition_rules": [
+    {
+      "kind": "transversal",
+      "with_skill_ids": ["eos.skillpack.design.ui-ux-pro-max", "eos.skillpack.marketing.corey-haines"],
+      "implies_task_dependency": false,
+      "notes": "Reviews outputs; does not own design or marketing method"
+    }
+  ],
+  "capability_relationships": [
+    "eos.capability.design.system-architecture",
+    "eos.capability.quality.test-planning"
+  ],
+  "role_relationships": ["eos.role.qa-test-engineer", "eos.role.technical-lead"],
+  "agent_compatibility": ["analysis"],
+  "constraints": [
+    "cannot_grant_permissions",
+    "cannot_claim_factual_correctness_without_evidence",
+    "cannot_replace_domain_review",
+    "cannot_bypass_specialist",
+    "not_a_god_skill"
+  ],
+  "limitations": [
+    "Not universal reviewer for all domains",
+    "Passing Stop Slop gate ≠ product is correct",
+    "Unavailable until source is added"
+  ],
+  "cannot_grant_permissions": true
+}
