@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from orchestration.boundaries.agent import suggest_executor
+from agents.assignment import assign_agent
 from orchestration.boundaries.codebase import (
     LocalCodebaseIntelligence,
     intent_requires_codebase,
@@ -155,12 +156,16 @@ class PlanningOrchestrator:
             )
         gate_evals = evaluate_gates(generated.gates, generated.artifacts, generated.tasks)
         decisions = decisions_from_plan(generated.decisions)
-        executors = [suggest_executor(t).to_dict() for t in generated.tasks]
+        executors = []
+        for t in generated.tasks:
+            hint = suggest_executor(t).to_dict()
+            assignment = assign_agent(t).to_dict()
+            executors.append({**hint, "runtime_assignment": assignment})
         notes = [
             "PlanningOrchestrator delegates; it does not own Capability catalog content.",
-            "Phase 4/5 is planning + codebase evidence; no autonomous code execution/deploy.",
+            "Phase 6: planning can assign Agent Definitions; execution lives in agents/ runtime.",
             f"Project state planned valid from discovered: {can_transition('discovered', 'planned')}",
-            "Codebase Intelligence is not a Capability.",
+            "Codebase Intelligence is not a Capability. Role ≠ Agent.",
         ]
         if needs_cb:
             notes.append("Plan requires codebase_analysis before dependent refactor/audit/migrate work.")
@@ -189,6 +194,13 @@ class PlanningOrchestrator:
             codebase=codebase_view,
             notes=notes,
         )
+
+    def execute_task(self, workspace: str, task: dict[str, Any], plan_steps: list[dict[str, Any]], **kwargs):
+        """Delegate Task execution to agents runtime (Orchestrator does not own tools)."""
+        from agents.coding import DeterministicPlan
+        from agents.loop import run_execution
+
+        return run_execution(workspace, task, DeterministicPlan(steps=plan_steps), **kwargs)
 
     def classify_failure(self, task_id: str, error_kind: str, message: str = ""):
         return classify_failure(task_id, error_kind, message)

@@ -15,7 +15,12 @@ class ExecutionLoopTests(unittest.TestCase):
             root = Path(tmp)
             (root / "mathutil.py").write_text("def add(a, b):\n    return a + b\n", encoding="utf-8")
             (root / "test_mathutil.py").write_text(
-                "from mathutil import add, mul\n\ndef test_add():\n    assert add(2, 3) == 5\n\ndef test_mul():\n    assert mul(2, 3) == 6\n",
+                "import unittest\nfrom mathutil import add, mul\n\n"
+                "class T(unittest.TestCase):\n"
+                "    def test_add(self):\n"
+                "        self.assertEqual(add(2, 3), 5)\n"
+                "    def test_mul(self):\n"
+                "        self.assertEqual(mul(2, 3), 6)\n",
                 encoding="utf-8",
             )
             # Initially mul missing — first show failure path separately; for success write both

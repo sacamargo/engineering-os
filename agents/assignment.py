@@ -38,12 +38,15 @@ def assign_agent(task: dict[str, Any]) -> Assignment:
         return Assignment(task_id, HUMAN_EXECUTOR, "human", "professional/human executor required")
     kind = task.get("task_kind") or ""
     title = (task.get("title") or "").lower()
-    if kind == "codebase_analysis" or "analy" in title:
-        return Assignment(task_id, ANALYSIS_AGENT, "ai_agent", "read-only analysis task")
+    # Coding / mutation intents take precedence over the word "analyze" in titles.
     if kind in {"coding", "bugfix", "implement"} or any(
-        w in title for w in ("fix", "add", "implement", "refactor", "código", "code")
+        w in title for w in ("fix", "add ", "implement", "refactor", "código", "code", "bug")
     ):
         return Assignment(task_id, CODING_AGENT, "ai_agent", "coding/modification task")
+    if kind == "codebase_analysis" or (
+        "analy" in title and not any(w in title for w in ("fix", "modify", "implement"))
+    ):
+        return Assignment(task_id, ANALYSIS_AGENT, "ai_agent", "read-only analysis task")
     # default: analysis (least privilege)
     return Assignment(task_id, ANALYSIS_AGENT, "ai_agent", "default least-privilege analysis agent")
 

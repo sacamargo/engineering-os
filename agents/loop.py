@@ -59,7 +59,18 @@ def _new_execution_id(task_id: str) -> str:
 def _gate_tests_passed(results: list[ToolResult]) -> bool:
     for r in results:
         if r.tool_id == "run_tests":
-            return r.success and int(r.output.get("exit_code", 1)) == 0
+            if not r.success:
+                return False
+            if int(r.output.get("exit_code", 1)) != 0:
+                return False
+            # unittest may exit 0 with "Ran 0 tests" — that is not evidence of validation
+            blob = f"{r.output.get('stdout', '')}\n{r.output.get('stderr', '')}"
+            if "Ran 0 tests" in blob:
+                return False
+            if "OK" not in blob and "passed" not in blob.lower():
+                # require an explicit success marker from runner output
+                return False
+            return True
     return False
 
 
