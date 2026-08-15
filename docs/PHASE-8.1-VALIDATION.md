@@ -86,4 +86,4 @@ PYTHONPATH=. python3 -m unittest discover -s agents/tests
 
 ## Final git
 
-Final `main` hash: `941af32ee0140a5e5b1d2006cea3d98275719087`.
+Final `main` hash: verify with `git rev-parse HEAD` (closeout tip after this docs fix).
