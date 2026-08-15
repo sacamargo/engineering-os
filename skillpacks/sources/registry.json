@@ -1,0 +1,31 @@
+{
+  "schema": "eos.skillsource.registry.v1",
+  "version": "0.1.0",
+  "description": "Data-driven Skill Source registry — Orchestrator must not hardcode sources.",
+  "sources": [
+    {
+      "source_id": "eos.skillsource.marketing.corey-haines.placeholder",
+      "skillpack_id": "eos.skillpack.marketing.corey-haines",
+      "path": "marketing-corey-haines/sources.json",
+      "status": "unavailable"
+    },
+    {
+      "source_id": "eos.skillsource.quality.stop-slop.placeholder",
+      "skillpack_id": "eos.skillpack.quality.stop-slop",
+      "path": "stop-slop/sources.json",
+      "status": "unavailable"
+    },
+    {
+      "source_id": "eos.skillsource.design.ui-ux-pro-max.placeholder",
+      "skillpack_id": "eos.skillpack.design.ui-ux-pro-max",
+      "path": "ui-ux-pro-max/sources.json",
+      "status": "unavailable"
+    },
+    {
+      "source_id": "eos.skillsource.context.engineering.v1",
+      "skillpack_id": "eos.skillpack.context.engineering",
+      "path": "context-engineering/sources.json",
+      "status": "discovered"
+    }
+  ]
+}

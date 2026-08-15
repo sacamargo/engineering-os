@@ -1,0 +1,20 @@
+{
+  "skillpack_id": "eos.skillpack.design.ui-ux-pro-max",
+  "sources": [
+    {
+      "source_id": "eos.skillsource.design.ui-ux-pro-max.placeholder",
+      "skillpack_id": "eos.skillpack.design.ui-ux-pro-max",
+      "source_type": "unavailable_placeholder",
+      "title": "UI UX PRO MAX — source missing",
+      "origin": "external:UI UX PRO MAX",
+      "locator": "NEEDS_SOURCE",
+      "version": "0.0.0",
+      "status": "unavailable",
+      "trust_level": "untrusted",
+      "extraction_method": "none",
+      "license": "unknown",
+      "revision": 1,
+      "notes": ["NEEDS_SOURCE", "Do not invent UI UX PRO MAX methodology"]
+    }
+  ]
+}

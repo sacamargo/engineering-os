@@ -1,0 +1,20 @@
+{
+  "skillpack_id": "eos.skillpack.quality.stop-slop",
+  "sources": [
+    {
+      "source_id": "eos.skillsource.quality.stop-slop.placeholder",
+      "skillpack_id": "eos.skillpack.quality.stop-slop",
+      "source_type": "unavailable_placeholder",
+      "title": "Stop Slop — source missing",
+      "origin": "external:Stop Slop",
+      "locator": "NEEDS_SOURCE",
+      "version": "0.0.0",
+      "status": "unavailable",
+      "trust_level": "untrusted",
+      "extraction_method": "none",
+      "license": "unknown",
+      "revision": 1,
+      "notes": ["NEEDS_SOURCE", "Do not invent Stop Slop methodology"]
+    }
+  ]
+}

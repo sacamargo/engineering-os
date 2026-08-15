@@ -302,6 +302,9 @@ def main(argv: list[str] | None = None) -> int:
         raw = json.loads(p.read_text(encoding="utf-8"))
         if "source_id" in raw:
             all_findings.extend(validate_source(raw, path=str(p)))
+        elif isinstance(raw.get("sources"), list):
+            for i, item in enumerate(raw["sources"]):
+                all_findings.extend(validate_source(item, path=f"{p}.sources[{i}]"))
         else:
             all_findings.extend(validate_path(p, args.repo_root))
     for f in all_findings:

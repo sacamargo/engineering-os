@@ -1,0 +1,24 @@
+{
+  "skillpack_id": "eos.skillpack.marketing.corey-haines",
+  "sources": [
+    {
+      "source_id": "eos.skillsource.marketing.corey-haines.placeholder",
+      "skillpack_id": "eos.skillpack.marketing.corey-haines",
+      "source_type": "unavailable_placeholder",
+      "title": "Marketing Skills / Corey Haines — source missing",
+      "origin": "external:Corey Haines Marketing Skills",
+      "locator": "NEEDS_SOURCE",
+      "version": "0.0.0",
+      "status": "unavailable",
+      "trust_level": "untrusted",
+      "extraction_method": "none",
+      "license": "unknown",
+      "revision": 1,
+      "notes": [
+        "NEEDS_SOURCE",
+        "Do not invent marketing methodology",
+        "Do not activate SkillPack without real source"
+      ]
+    }
+  ]
+}
